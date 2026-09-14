@@ -1,0 +1,8 @@
+# Cloudflare Pages direct-upload exclusions (wrangler ignores .gitignore)
+.claude
+.mimosa
+.wrangler
+.zcode
+skills-lock.json
+node_modules
+.git

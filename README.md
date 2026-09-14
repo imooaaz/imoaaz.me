@@ -26,13 +26,17 @@ python -m http.server 8080
 
 ## Deploy
 
-The site is deployed on Cloudflare Pages via direct upload (no build command):
+The site is deployed on Cloudflare Pages via direct upload (no build command).
+
+**Important:** `wrangler pages deploy .` uploads everything in the folder — including local tool state (`.claude/`, `.zcode/`, `.mimosa/`, `skills-lock.json`) that is git-ignored but NOT ignored by wrangler. Always deploy from a clean snapshot of the tracked files:
 
 ```bash
-wrangler pages deploy . --project-name imoaaz
+rm -rf dist-clean && mkdir dist-clean && git archive HEAD | tar -x -C dist-clean
+wrangler pages deploy dist-clean --project-name imoaaz --branch main
+rm -rf dist-clean
 ```
 
-Pushing to GitHub does **not** auto-deploy (direct-upload project). After editing, run the deploy command, or reconnect the repo in the Cloudflare dashboard for git-based deploys.
+Pushing to GitHub does **not** auto-deploy (direct-upload project). After editing, commit, then run the deploy above, or reconnect the repo in the Cloudflare dashboard for git-based deploys.
 
 ## Attaching the imoaz.me domain (when you buy it)
 
