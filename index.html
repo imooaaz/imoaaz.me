@@ -7,7 +7,7 @@
   <meta name="description" content="Moaaz Afifi — cybersecurity engineer and penetration tester. Offensive security with a developer's mindset: application security, DevSecOps, bug bounty. CVE-2024-36436, eCPPT, eWPTX, eMAPT.">
   <meta name="author" content="Moaaz Afifi">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#0b0e0c">
+  <meta name="theme-color" content="#0a0d0c">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Moaaz Afifi — Cybersecurity Engineer &amp; Penetration Tester">
@@ -28,6 +28,7 @@
 <body>
 
   <a class="skip-link" href="#main">skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
   <header class="site-header">
     <nav class="nav container" aria-label="Primary">
@@ -46,29 +47,55 @@
 
     <!-- ============================== hero ============================== -->
     <section class="hero" id="top">
-      <div class="container">
-        <p class="hero-prompt mono" aria-hidden="true"><span class="dollar">$</span> <span class="typed" data-type="whoami">whoami</span><span class="cursor" aria-hidden="true"></span></p>
+      <div class="glow glow-a" aria-hidden="true"></div>
+      <div class="glow glow-b" aria-hidden="true"></div>
 
-        <h1 class="hero-name">Moaaz<br>Afifi</h1>
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <p class="hero-kicker mono">// cybersecurity engineer &amp; penetration tester</p>
 
-        <p class="hero-role">
-          Cybersecurity engineer and penetration tester. I combine offensive
-          security with a developer's mindset across application security,
-          DevSecOps, and bug bounty.
-        </p>
+          <h1 class="hero-name">Moaaz<br>Afifi</h1>
 
-        <ul class="hero-creeds" aria-label="Credentials">
-          <li class="creed cve">CVE-2024-36436</li>
-          <li class="creed">eCPPT</li>
-          <li class="creed">eWPTX</li>
-          <li class="creed">eMAPT</li>
-          <li class="creed">bug hunter</li>
-        </ul>
+          <p class="hero-role">
+            I combine offensive security with a developer's mindset across
+            application security, DevSecOps, and bug bounty — and I report
+            what I find so a developer can act on it.
+          </p>
 
-        <div class="hero-actions">
-          <a class="btn btn-solid" href="#contact">get in touch</a>
-          <a class="btn" href="#experience">see experience</a>
-          <p class="hero-status mono"><span class="dot" aria-hidden="true"></span>open for pentest &amp; research work</p>
+          <ul class="hero-creeds" aria-label="Credentials">
+            <li class="creed cve">CVE-2024-36436</li>
+            <li class="creed">eCPPT</li>
+            <li class="creed">eWPTX</li>
+            <li class="creed">eMAPT</li>
+            <li class="creed">bug hunter</li>
+          </ul>
+
+          <div class="hero-actions">
+            <a class="btn btn-solid" href="#contact">get in touch</a>
+            <a class="btn" href="#experience">see experience</a>
+            <p class="hero-status mono"><span class="dot" aria-hidden="true"></span>open for pentest &amp; research work</p>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="term" id="term" aria-label="Interactive terminal — type help">
+            <div class="term-bar" aria-hidden="true">
+              <span class="tdot td-r"></span><span class="tdot td-a"></span><span class="tdot td-g"></span>
+              <span class="term-title mono">moaaz@imoaaz: ~/portfolio</span>
+            </div>
+            <div class="term-body mono" id="term-body"></div>
+            <div class="term-input mono" id="term-input-row" hidden>
+              <span class="ti-prompt">$</span>
+              <span class="ti-text" id="ti-text"></span><span class="cursor" aria-hidden="true"></span>
+            </div>
+            <input id="term-real-input" class="term-real-input" autocomplete="off" autocapitalize="off" spellcheck="false" tabindex="-1" aria-hidden="true">
+          </div>
+          <div class="term-chips mono" id="term-chips">
+            <button type="button" data-cmd="help">help</button>
+            <button type="button" data-cmd="cve">cve</button>
+            <button type="button" data-cmd="experience">experience</button>
+            <button type="button" data-cmd="contact">contact</button>
+          </div>
         </div>
       </div>
     </section>
@@ -76,31 +103,16 @@
     <!-- ============================== whoami ============================== -->
     <section class="section" id="whoami">
       <div class="container">
-        <h2 class="section-title mono">whoami</h2>
+        <h2 class="section-title mono reveal">whoami</h2>
 
         <div class="whoami-grid">
           <div class="whoami-text">
-            <p>
-              I'm a cybersecurity engineer and penetration tester focused on
-              application security, secure SDLC, and DevSecOps. I came to
-              security from software development, and that background still
-              shapes how I work: I read code, not just responses — an exploit
-              makes sense when you understand what the developer intended.
-            </p>
-            <p>
-              My experience spans vulnerability assessment, bug bounty hunting,
-              and penetration testing as a service — inside product teams at a
-              technology company, and as a consultant working directly with
-              clients.
-            </p>
-            <p>
-              What I keep sharpening: offensive security, web and mobile
-              application security, secure development practices, and security
-              research — including the security of AI-powered features.
-            </p>
+            <p class="reveal">I'm a cybersecurity engineer and penetration tester focused on application security, secure SDLC, and DevSecOps. I came to security from software development, and that background still shapes how I work: I read code, not just responses — an exploit makes sense when you understand what the developer intended.</p>
+            <p class="reveal" style="--d:90ms">My experience spans vulnerability assessment, bug bounty hunting, and penetration testing as a service — inside product teams at a technology company, and as a consultant working directly with clients.</p>
+            <p class="reveal" style="--d:180ms">What I keep sharpening: offensive security, web and mobile application security, secure development practices, and security research — including the security of AI-powered features.</p>
           </div>
 
-          <aside class="idcard mono" aria-label="Quick facts">
+          <aside class="idcard mono reveal" style="--d:140ms" aria-label="Quick facts">
             <p class="idcard-cmd">$ id moaaz</p>
             <dl>
               <div class="idrow"><dt>name</dt><dd>Moaaz Afifi</dd></div>
@@ -117,38 +129,38 @@
     <!-- ============================== work ============================== -->
     <section class="section" id="work">
       <div class="container">
-        <h2 class="section-title mono">what i do</h2>
+        <h2 class="section-title mono reveal">what i do</h2>
 
         <ol class="work-list">
-          <li class="work-row">
+          <li class="work-row reveal">
             <h3 class="work-name mono">web &amp; mobile<br>penetration testing</h3>
             <div class="work-body">
               <p>Scoped engagements against web applications, APIs, and Android builds. Every finding is verified by hand and documented so it can be fixed without a follow-up call.</p>
               <p class="work-tags mono">web / mobile / api / reporting</p>
             </div>
           </li>
-          <li class="work-row">
+          <li class="work-row reveal" style="--d:70ms">
             <h3 class="work-name mono">application<br>security</h3>
             <div class="work-body">
               <p>Security inside product teams: secure code review, threat-informed testing across the SDLC, and working with developers rather than around them.</p>
               <p class="work-tags mono">appsec / ssdlc / code review</p>
             </div>
           </li>
-          <li class="work-row">
+          <li class="work-row reveal" style="--d:140ms">
             <h3 class="work-name mono">devsecops</h3>
             <div class="work-body">
               <p>Security moved left, where it's cheap: automated checks in the pipeline, clear findings, low friction — so fast and secure stop being competing goals.</p>
               <p class="work-tags mono">automation / ci / secure defaults</p>
             </div>
           </li>
-          <li class="work-row">
+          <li class="work-row reveal" style="--d:210ms">
             <h3 class="work-name mono">security research<br>&amp; bug bounty</h3>
             <div class="work-body">
               <p>Hunting vulnerabilities in live targets and taking them through coordinated disclosure. One of these reports became <a href="#research">CVE-2024-36436</a>.</p>
               <p class="work-tags mono">recon / vulnerability research / disclosure</p>
             </div>
           </li>
-          <li class="work-row">
+          <li class="work-row reveal" style="--d:280ms">
             <h3 class="work-name mono">ai security</h3>
             <div class="work-body">
               <p>Testing AI-powered features the way they're attacked: prompt and injection abuse, weak authentication in front of model endpoints, and data exposure across the new surface.</p>
@@ -162,9 +174,9 @@
     <!-- ============================== research / CVE ============================== -->
     <section class="section" id="research">
       <div class="container">
-        <h2 class="section-title mono">research</h2>
+        <h2 class="section-title mono reveal">research</h2>
 
-        <article class="advisory">
+        <article class="advisory reveal">
           <header class="advisory-head">
             <p class="advisory-id mono">CVE-2024-36436</p>
             <p class="advisory-kind mono">exposure of sensitive information to an unauthorized actor</p>
@@ -204,34 +216,35 @@
     <!-- ============================== experience ============================== -->
     <section class="section" id="experience">
       <div class="container">
-        <h2 class="section-title mono">experience</h2>
+        <h2 class="section-title mono reveal">experience</h2>
 
-        <ol class="timeline">
-          <li class="tl-item">
+        <ol class="timeline reveal">
+          <div class="tl-rail" aria-hidden="true"></div>
+          <li class="tl-item reveal">
             <p class="tl-dates mono">2023 — present</p>
             <h3 class="tl-role">Cyber Security Researcher</h3>
             <p class="tl-org">HackerOne <span class="tl-type mono">part-time</span></p>
             <p class="tl-desc">Vulnerability research and bug bounty hunting across public and private programs — web application testing, vulnerability assessment, and coordinated disclosure.</p>
           </li>
-          <li class="tl-item">
+          <li class="tl-item reveal" style="--d:90ms">
             <p class="tl-dates mono">feb 2025 — present</p>
             <h3 class="tl-role">Cyber Security Consultant &amp; Penetration Tester</h3>
             <p class="tl-org">GCC <span class="tl-type mono">part-time</span></p>
             <p class="tl-desc">Penetration testing and security consulting for client engagements: vulnerability assessment, research, and the technical reports findings stand on.</p>
           </li>
-          <li class="tl-item">
+          <li class="tl-item reveal" style="--d:180ms">
             <p class="tl-dates mono">jun 2025 — aug 2025</p>
             <h3 class="tl-role">Application Security Engineer</h3>
             <p class="tl-org">Robusta Technology Group (RTG) <span class="tl-type mono">full-time</span></p>
             <p class="tl-desc">Application security within product teams — vulnerability assessment, DevSecOps, and secure development practice.</p>
           </li>
-          <li class="tl-item">
+          <li class="tl-item reveal" style="--d:270ms">
             <p class="tl-dates mono">oct 2023 — jan 2024</p>
             <h3 class="tl-role">Offensive Security Engineer</h3>
             <p class="tl-org">Cybrany <span class="tl-type mono">part-time</span></p>
             <p class="tl-desc">Offensive security engineering and vulnerability research.</p>
           </li>
-          <li class="tl-item">
+          <li class="tl-item reveal" style="--d:360ms">
             <p class="tl-dates mono">apr 2022 — sep 2022</p>
             <h3 class="tl-role">Software Engineer</h3>
             <p class="tl-org">كالبنيان المرصوص <span class="tl-type mono">internship</span></p>
@@ -239,7 +252,7 @@
           </li>
         </ol>
 
-        <div class="edu-grid">
+        <div class="edu-grid reveal">
           <div class="edu-block">
             <h3 class="edu-head mono">education</h3>
             <p>Computer Science &amp; Engineering<br>Faculty of Electronic Engineering, Menoufia University</p>
@@ -255,10 +268,10 @@
     <!-- ============================== skills ============================== -->
     <section class="section" id="skills">
       <div class="container">
-        <h2 class="section-title mono">skills</h2>
+        <h2 class="section-title mono reveal">skills</h2>
 
         <div class="skills-grid">
-          <div class="skill-col">
+          <div class="skill-col reveal">
             <h3 class="skill-head mono">offensive</h3>
             <ul class="skill-list">
               <li>web penetration testing</li>
@@ -269,7 +282,7 @@
               <li>bug bounty</li>
             </ul>
           </div>
-          <div class="skill-col">
+          <div class="skill-col reveal" style="--d:90ms">
             <h3 class="skill-head mono">defensive &amp; process</h3>
             <ul class="skill-list">
               <li>application security</li>
@@ -280,7 +293,7 @@
               <li>AI security</li>
             </ul>
           </div>
-          <div class="skill-col">
+          <div class="skill-col reveal" style="--d:180ms">
             <h3 class="skill-head mono">engineering</h3>
             <ul class="skill-list">
               <li>JavaScript / Node.js</li>
@@ -297,27 +310,27 @@
     <!-- ============================== certifications ============================== -->
     <section class="section" id="certs">
       <div class="container">
-        <h2 class="section-title mono">certifications</h2>
+        <h2 class="section-title mono reveal">certifications</h2>
 
         <div class="cert-grid">
-          <div class="cert">
+          <div class="cert reveal">
             <p class="cert-abbr mono">eCPPT</p>
             <p class="cert-name">Certified Professional Penetration Tester</p>
             <p class="cert-issuer mono">eLearnSecurity / INE</p>
           </div>
-          <div class="cert">
+          <div class="cert reveal" style="--d:90ms">
             <p class="cert-abbr mono">eWPTX</p>
             <p class="cert-name">Web Penetration Tester eXtreme</p>
             <p class="cert-issuer mono">eLearnSecurity / INE</p>
           </div>
-          <div class="cert">
+          <div class="cert reveal" style="--d:180ms">
             <p class="cert-abbr mono">eMAPT</p>
             <p class="cert-name">Mobile Application Penetration Tester</p>
             <p class="cert-issuer mono">eLearnSecurity / INE</p>
           </div>
         </div>
 
-        <p class="cert-more mono">
+        <p class="cert-more mono reveal">
           also: red hat system administration I (MaharaTech/ITI) / IBM — delivering
           quality work with agility / microsoft azure responsible AI /
           database fundamentals (Almdrasa) / full-stack node.js (Zero To Mastery)
@@ -328,21 +341,21 @@
     <!-- ============================== contact ============================== -->
     <section class="section" id="contact">
       <div class="container">
-        <h2 class="section-title mono">get in touch</h2>
+        <h2 class="section-title mono reveal">get in touch</h2>
 
-        <p class="contact-lede">
+        <p class="contact-lede reveal">
           Engagements, research collaboration, or a finding on something I run —
           I read everything.
         </p>
 
-        <div class="contact-email-wrap">
+        <div class="contact-email-wrap reveal" style="--d:80ms">
           <a class="contact-email mono" href="mailto:imooaaz@gmail.com">imooaaz@gmail.com</a>
           <button class="btn-copy mono" type="button" data-copy="imooaaz@gmail.com">
             <span class="btn-copy-label">copy</span>
           </button>
         </div>
 
-        <ul class="socials mono" aria-label="Elsewhere">
+        <ul class="socials mono reveal" style="--d:160ms" aria-label="Elsewhere">
           <li><a href="https://www.linkedin.com/in/imooaaz/" rel="noopener me">linkedin /in/imooaaz ↗</a></li>
           <li><a href="https://github.com/m0442" rel="noopener me">github /m0442 ↗</a></li>
           <li><a href="https://x.com/imooaaz" rel="noopener me">x @imooaaz ↗</a></li>
