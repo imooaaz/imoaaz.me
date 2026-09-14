@@ -166,7 +166,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 8.5rem 0 6.5rem;
+  padding: 7rem 0 4.5rem;
   background-image:
     repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(204, 212, 205, 0.011) 3px, rgba(204, 212, 205, 0.011) 4px);
 }
@@ -214,7 +214,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .hero-kicker {
   font-size: 0.86rem;
   color: var(--cyan);
-  margin: 0 0 1.1rem;
+  margin: 0 0 0.9rem;
 }
 
 .hero-name {
@@ -230,7 +230,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .hero-role {
   max-width: 32rem;
   font-size: 1.06rem;
-  margin: 0 0 2rem;
+  margin: 0 0 1.5rem;
 }
 
 .hero-creeds {
@@ -479,6 +479,9 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   border-top: 1px solid var(--line-soft);
   padding: 5.5rem 0;
 }
+/* writing leads the page — pull it up closer under the hero */
+#writing { padding-top: 4rem; }
+#writing .section-title { margin-bottom: 2rem; }
 
 .section-title {
   font-size: 1rem;
