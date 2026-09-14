@@ -715,8 +715,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   align-items: start;
 }
 .blog-side {
-  position: sticky;
-  top: 92px;
   background: var(--bg-raised);
   border: 1px solid var(--line-soft);
   border-radius: 2px;
@@ -731,24 +729,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 .side-head::before { content: "# "; color: var(--cyan); }
 .side-head + .side-head { margin-top: 1.5rem; }
-
-.side-posts { list-style: none; margin: 0 0 1.5rem; padding: 0; }
-.side-posts a {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 0.8rem;
-  padding: 0.55rem 0;
-  border-bottom: 1px dashed var(--line-soft);
-  color: var(--text);
-  line-height: 1.5;
-}
-.side-posts li:last-child a { border-bottom: 0; }
-.side-posts a::before { content: "› "; color: var(--amber-dark); }
-.side-posts a:hover { color: var(--amber); }
-.side-posts a:hover::before { color: var(--amber); }
-.side-date { color: var(--dim); font-size: 0.7rem; white-space: nowrap; }
-
 .side-link { margin: 0 0 1.5rem; }
 .side-tags {
   display: flex;
@@ -1133,7 +1113,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .cert-grid { grid-template-columns: 1fr; gap: 1.8rem; }
   .edu-grid { grid-template-columns: 1fr; gap: 1.8rem; }
   .writing-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .blog-side { position: static; }
   .post-row { grid-template-columns: 1fr; gap: 0.5rem; }
 }
 

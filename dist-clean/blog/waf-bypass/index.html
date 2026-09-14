@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>From Frustration to Exploitation: How a Link Shortener Helped Me Bypass WAF — Moaaz Afifi</title>
+  <meta name="description" content="A bug bounty writeup: when a WAF blocked every XSS payload in the search box, the platform's own link shortener became the bypass.">
+  <meta name="author" content="Moaaz Afifi">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0d0c">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="From Frustration to Exploitation: How a Link Shortener Helped Me Bypass WAF">
+  <meta property="og:description" content="When a WAF blocked every XSS payload in the search box, the platform's own link shortener became the bypass.">
+  <meta property="og:url" content="https://imoaaz.me/blog/waf-bypass/">
+  <meta property="article:published_time" content="2024-12-05">
+
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body class="blog">
+
+  <a class="skip-link" href="#main">skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary">
+      <a class="nav-prompt" href="/">moaaz@imoaaz:~<span class="cursor" aria-hidden="true"></span></a>
+      <ul class="nav-links">
+        <li><a href="/#whoami">whoami</a></li>
+        <li><a href="/#work">work</a></li>
+        <li><a href="/blog/" class="active">blog</a></li>
+        <li><a href="/#experience">experience</a></li>
+        <li><a href="/#contact">contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <article class="post">
+      <div class="container">
+        <header class="post-header">
+          <p class="post-meta mono"><a href="/blog/">blog</a> / dec 5, 2024 / 3 min read
+            <span class="origin">— <a href="https://medium.com/@imooaaz/from-frustration-to-exploitation-how-a-link-shortener-helped-me-bypass-waf-03724dca1592" target="_blank" rel="noopener">originally on medium ↗</a></span>
+          </p>
+          <h1 class="post-h1">From Frustration to Exploitation: How a Link Shortener Helped Me Bypass WAF</h1>
+          <ul class="post-tags mono"><li>waf bypass</li><li>xss</li><li>bug bounty</li></ul>
+        </header>
+
+        <div class="post-body">
+          <p class="rtl">بسم الله، ربِّ يَسِّر وأعِن وامْنُن بالإخلاص والتوفيق والقبول.</p>
+
+          <p>
+            While hunting on a target, I found myself stuck: every payload I threw at
+            the search box came back as <code>403 Forbidden</code>. A WAF was sitting
+            in front of the application, and it was good at its job. This is the story
+            of how the platform's own link shortener became the key to bypassing it.
+          </p>
+
+          <h2>The set-up: the perils of the search box</h2>
+
+          <p>
+            The target had a search feature — the classic entry point. I started
+            probing the query parameter with the usual suspects:
+          </p>
+
+          <pre><code>https://example.com/search?q=&lt;script&gt;alert(1)&lt;/script&gt;</code></pre>
+
+          <p>
+            Every single time: <code>403 Forbidden</code>. I tried encoding, case
+            variation, comments, junk payloads — the WAF was relentless. Frustration
+            started to creep in. And that's exactly when I remembered the first rule
+            of hunting: when a door is locked, stop pushing it and look for a window.
+          </p>
+
+          <h2>The twist: a wild link shortener appears!</h2>
+
+          <p>
+            While mapping the application, I noticed it had a built-in link shortener
+            used for sharing content. It turned long URLs into neat little links on
+            the platform's own short domain, for example:
+          </p>
+
+          <pre><code>https://example.com/share/very/long/link/with/parameters
+        ↓
+https://exomexo.io/abcd123</code></pre>
+
+          <p>
+            And that raised a question: what does the WAF see when it inspects a link
+            that redirects to my payload?
+          </p>
+
+          <h2>The eureka moment: redirecting around the WAF</h2>
+
+          <p>The attack path was simple once I saw it:</p>
+
+          <ol>
+            <li>I hosted my XSS payload at a URL of my own.</li>
+            <li>I fed that URL to the platform's link shortener, getting back a clean-looking short link on the platform's trusted short domain.</li>
+            <li>I submitted the shortened link through the search feature.</li>
+          </ol>
+
+          <p>
+            The WAF inspected the request, saw the platform's own shortener domain —
+            trusted, internal, harmless — and let it through. Then the redirect did
+            the rest: the browser followed the short link straight to my payload, and
+            my XSS fired.
+          </p>
+
+          <p>
+            All that frustration evaporated the moment that alert box popped. The WAF
+            never saw the payload — it only ever saw the wrapper.
+          </p>
+
+          <h2>Lessons learned</h2>
+
+          <ol>
+            <li>
+              <strong>The WAF inspects what it sees, not what eventually loads.</strong>
+              A redirect is a beautiful blind spot: the request looks innocent, and the
+              payload arrives one hop later.
+            </li>
+            <li>
+              <strong>Attack with the target's own features.</strong>
+              The shortener belonged to the platform, so its domain was trusted. The
+              best bypass tool was handed to me by the application itself.
+            </li>
+          </ol>
+
+          <h2>Final thoughts</h2>
+
+          <p>
+            A blocked payload isn't the end of the hunt — it's a hint to change your
+            angle. Understand exactly what the defense is inspecting, then find a way
+            to hand it something it trusts while the real payload travels behind it.
+            Happy hunting!
+          </p>
+
+          <p class="rtl">
+            اللهم علمنا ما ينفعنا وانفعنا بما علمتنا، وصلى الله على سيدنا محمد
+            وآله وصحبه وسلم.
+          </p>
+
+          <p>
+            <strong>Moaaz Afifi</strong> — <a href="https://www.linkedin.com/in/imooaaz/">Linkedin</a> ·
+            <a href="https://twitter.com/imooaaz">X</a>
+          </p>
+        </div>
+
+        <p class="post-back">
+          <a class="btn" href="/blog/">← all posts</a>
+        </p>
+      </div>
+    </article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner mono">
+      <p>© 2026 Moaaz Afifi</p>
+      <p class="footer-links">
+        <a href="/.well-known/security.txt">security.txt</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

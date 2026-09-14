@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fuzz the type, not just the value — Moaaz Afifi</title>
+  <meta name="description" content="A one-line habit that keeps finding authorization bugs: swap a parameter's type, not just its value. From a bug bounty hunter's notebook.">
+  <meta name="author" content="Moaaz Afifi">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0d0c">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Fuzz the type, not just the value">
+  <meta property="og:description" content="Swap the type, not just the payload — a one-line habit that keeps finding authorization bugs.">
+  <meta property="og:url" content="https://imoaaz.me/blog/fuzz-the-type/">
+  <meta property="article:published_time" content="2026-09-14">
+
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body class="blog">
+
+  <a class="skip-link" href="#main">skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary">
+      <a class="nav-prompt" href="/">moaaz@imoaaz:~<span class="cursor" aria-hidden="true"></span></a>
+      <ul class="nav-links">
+        <li><a href="/#whoami">whoami</a></li>
+        <li><a href="/#work">work</a></li>
+        <li><a href="/blog/" class="active">blog</a></li>
+        <li><a href="/#experience">experience</a></li>
+        <li><a href="/#contact">contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <article class="post">
+      <div class="container">
+        <header class="post-header">
+          <p class="post-meta mono"><a href="/blog/">blog</a> / sep 14, 2026 / 2 min read</p>
+          <h1 class="post-h1">Fuzz the type, not just the value</h1>
+          <ul class="post-tags mono"><li>bug bounty</li><li>appsec</li><li>tips</li></ul>
+        </header>
+
+        <div class="post-body">
+          <p>
+            Next time you hit an auth or permission check, don't just fuzz the
+            value — <strong>fuzz the type</strong>.
+          </p>
+
+          <p>
+            Swap a string parameter for an object, an array, or a boolean:
+          </p>
+
+          <pre><code>"id": "123"   →   "id": {"$ne": null}
+"id": "123"   →   "id": true</code></pre>
+
+          <p>
+            Backends often validate the <em>value</em> but forget to enforce the
+            expected <em>type</em>. The lookup or the permission check quietly
+            takes a different code path for anything that isn't a plain string,
+            and the authorization check gets skipped entirely.
+          </p>
+
+          <h2>Where this earns acceptances</h2>
+
+          <ul>
+            <li>
+              <strong>NoSQL lookups</strong> — Mongo-style operators
+              (<code>{"$ne": null}</code>, <code>{"$gt": ""}</code>) sail
+              through comparisons that were only ever tested against strings.
+            </li>
+            <li>
+              <strong>ORMs and loose comparisons</strong> — a boolean or an
+              array can bypass an equality or membership check written with
+              strings in mind.
+            </li>
+            <li>
+              <strong>Type juggling</strong> — PHP-style loose comparison
+              behavior is old news, but it's still alive and well behind JSON
+              APIs.
+            </li>
+          </ul>
+
+          <h2>How to run it</h2>
+
+          <p>
+            Keep a small type-swap list — <code>{}</code>,
+            <code>{"$ne": null}</code>, <code>[]</code>, <code>true</code>,
+            <code>false</code>, <code>null</code>, <code>0</code> — and fire it
+            at every ID-like parameter once the request is mapped. It takes
+            minutes to build the list and seconds per endpoint.
+          </p>
+
+          <p>
+            If the response differs between <code>"123"</code> and
+            <code>{"$ne": null}</code> in any way beyond the error message,
+            you have a lead.
+          </p>
+        </div>
+
+        <p class="post-back">
+          <a class="btn" href="/blog/">← all posts</a>
+        </p>
+      </div>
+    </article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner mono">
+      <p>© 2026 Moaaz Afifi</p>
+      <p class="footer-links">
+        <a href="/.well-known/security.txt">security.txt</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

@@ -218,7 +218,8 @@
       "2023—now   hackerone      cyber security researcher",
       "2025—now   gcc            security consultant & pentester",
       "2025       robusta (rtg)  application security engineer",
-      "2023—2024  cybrany        offensive security engineer"
+      "2023—2024  cybrany        offensive security engineer",
+      "2022       al-bunyan      software engineer (mern, intern)"
     ],
     "contact.md": [
       "email   : imooaaz@gmail.com",
