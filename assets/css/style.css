@@ -345,7 +345,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 15s linear infinite;
+  animation: marquee 26s linear infinite;
 }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 .marquee-set {
@@ -889,7 +889,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .tl-rail { transform: scaleY(1); }
   .tl-item::before { transform: scale(1) !important; }
   .marquee { -webkit-mask-image: none; mask-image: none; overflow-x: auto; }
-  .marquee-track { animation: none; width: auto; flex-wrap: wrap; }
+  .marquee-track { animation: none !important; width: auto; flex-wrap: wrap; }
 }
 
 /* ------------------------------------------------ layout ---- */

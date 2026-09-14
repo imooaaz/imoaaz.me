@@ -119,6 +119,30 @@
     });
   });
 
+  /* ================= logo marquee: seamless loop =================
+     the track must be two identical halves, each wider than the
+     viewport — otherwise a gap shows at the loop seam. */
+  var mTrack = document.querySelector(".marquee-track");
+  if (mTrack) {
+    var mSet = mTrack.querySelector(".marquee-set");
+    var PX_PER_SEC = 90;
+    var ensureSets = function () {
+      var S = mSet.getBoundingClientRect().width;
+      if (S < 40) return;
+      var half = Math.max(1, Math.ceil(window.innerWidth / S) + 1);
+      var total = half * 2;
+      while (mTrack.children.length < total) {
+        var c = mSet.cloneNode(true);
+        c.setAttribute("aria-hidden", "true");
+        mTrack.appendChild(c);
+      }
+      mTrack.style.animationDuration = ((S * half) / PX_PER_SEC).toFixed(2) + "s";
+    };
+    ensureSets();
+    window.addEventListener("load", ensureSets);
+    window.addEventListener("resize", ensureSets);
+  }
+
   /* ==================================================================
      interactive terminal — a small real-ish shell
      ================================================================== */
