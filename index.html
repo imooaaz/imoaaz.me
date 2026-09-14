@@ -36,7 +36,7 @@
       <ul class="nav-links">
         <li><a href="#whoami">whoami</a></li>
         <li><a href="#work">work</a></li>
-        <li><a href="#research">research</a></li>
+        <li><a href="/blog/">blog</a></li>
         <li><a href="#experience">experience</a></li>
         <li><a href="#contact">contact</a></li>
       </ul>
@@ -178,7 +178,7 @@
           <li class="work-row reveal" style="--d:210ms">
             <h3 class="work-name mono">security research<br>&amp; bug bounty</h3>
             <div class="work-body">
-              <p>Hunting vulnerabilities in live targets and taking them through coordinated disclosure. One of these reports became <a href="#research">CVE-2024-36436</a>.</p>
+              <p>Hunting vulnerabilities in live targets and taking them through coordinated disclosure. One of these reports became CVE-2024-36436.</p>
               <p class="work-tags mono">recon / vulnerability research / disclosure</p>
             </div>
           </li>
@@ -193,45 +193,25 @@
       </div>
     </section>
 
-    <!-- ============================== research / CVE ============================== -->
-    <section class="section" id="research">
+    <!-- ============================== writing ============================== -->
+    <section class="section" id="writing">
       <div class="container">
-        <h2 class="section-title mono reveal">research</h2>
+        <h2 class="section-title mono reveal">writing</h2>
 
-        <article class="advisory reveal">
-          <header class="advisory-head">
-            <p class="advisory-id mono">CVE-2024-36436</p>
-            <p class="advisory-kind mono">exposure of sensitive information to an unauthorized actor</p>
-          </header>
+        <div class="post-list">
+          <a class="post-row reveal" href="/blog/fuzz-the-type/">
+            <p class="post-date mono">sep 14, 2026</p>
+            <div class="post-main">
+              <h3 class="post-title">Fuzz the type, not just the value</h3>
+              <p class="post-excerpt">A one-line habit that keeps finding authorization bugs — swap the type, not just the payload.</p>
+              <p class="post-tags mono">bug bounty / appsec / tips</p>
+            </div>
+          </a>
+        </div>
 
-          <div class="advisory-body">
-            <p>
-              In <strong>WishList Member&nbsp;X</strong>, a WordPress membership
-              plugin, the plugin's rendered HTML — containing its REST API secret
-              key in plaintext — was returned directly to an unauthenticated
-              attacker in an AJAX JSON response. Anyone who asked could read the
-              key and use it against the plugin's REST interface.
-            </p>
-            <p>
-              I found it, reported it through coordinated disclosure, and the
-              vendor shipped a fix. The class is CWE-200; the lesson is the
-              usual one — the endpoint that "just renders the settings page"
-              is an endpoint.
-            </p>
-          </div>
-
-          <dl class="advisory-fields mono">
-            <div><dt>product</dt><dd>WishList Member X (WordPress plugin)</dd></div>
-            <div><dt>class</dt><dd>CWE-200 — information exposure</dd></div>
-            <div><dt>status</dt><dd class="ok">patched</dd></div>
-            <div><dt>credit</dt><dd>found &amp; reported by Moaaz Afifi</dd></div>
-          </dl>
-
-          <p class="advisory-links mono">
-            <a href="https://euvd.enisa.europa.eu/vulnerability/EUVD-2024-36436" rel="noopener">EUVD-2024-36436 ↗</a>
-            <a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/wishlist-member-x/wishlist-member-x-3290-missing-authorization" rel="noopener">wordfence advisory ↗</a>
-          </p>
-        </article>
+        <p class="all-posts reveal" style="--d:120ms">
+          <a class="btn" href="/blog/">all posts</a>
+        </p>
       </div>
     </section>
 

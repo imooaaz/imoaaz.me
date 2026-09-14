@@ -69,6 +69,7 @@
     document.querySelectorAll(".nav-links a")
   );
   var sections = navLinks
+    .filter(function (a) { return a.getAttribute("href").charAt(0) === "#"; })
     .map(function (a) { return document.querySelector(a.getAttribute("href")); })
     .filter(Boolean);
 
@@ -262,8 +263,11 @@
       line('<span class="t-cyan">files</span>       ls · cd · cat · pwd · echo');
       line('<span class="t-cyan">system</span>      date · uname · id · hostname · history · man');
       line('<span class="t-cyan">recon</span>       nmap · ping · whois');
-      line('<span class="t-cyan">misc</span>        help · clear · exit');
+      line('<span class="t-cyan">misc</span>        blog · help · clear · exit');
       line('<span class="t-dim">TAB completes · ↑ recalls history · try `cat about.txt`</span>');
+    },
+    blog: function () {
+      line('writeups, reports & resources → <a href="/blog/" style="color:var(--amber)">/blog</a>');
     },
     whoami: function () {
       line('moaaz afifi — cybersecurity engineer &amp; penetration tester');
