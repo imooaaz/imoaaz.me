@@ -32,6 +32,23 @@
     update();
   }
 
+  /* ================= header scrolled state ================= */
+  var header = document.querySelector(".site-header");
+  if (header) {
+    var headerTick = false;
+    var headerSync = function () {
+      header.classList.toggle("scrolled", window.scrollY > 12);
+      headerTick = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (!headerTick) {
+        headerTick = true;
+        window.requestAnimationFrame(headerSync);
+      }
+    }, { passive: true });
+    headerSync();
+  }
+
   /* ================= scroll reveals ================= */
   var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
   if (revealEls.length && "IntersectionObserver" in window && !reduced) {
