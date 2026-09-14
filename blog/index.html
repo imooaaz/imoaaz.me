@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-<body>
+<body class="blog">
 
   <a class="skip-link" href="#main">skip to content</a>
   <div class="scroll-progress" aria-hidden="true"></div>
@@ -63,7 +63,23 @@
             <div class="post-main">
               <h3 class="post-title">Fuzz the type, not just the value</h3>
               <p class="post-excerpt">A one-line habit that keeps finding authorization bugs — swap the type, not just the payload.</p>
-              <p class="post-tags mono">bug bounty / appsec / tips · 2 min read</p>
+              <ul class="post-tags mono"><li>bug bounty</li><li>appsec</li><li>tips</li></ul>
+            </div>
+          </a>
+          <a class="post-row reveal" style="--d:70ms" href="/blog/comments-to-rce/">
+            <p class="post-date mono">dec 20, 2024</p>
+            <div class="post-main">
+              <h3 class="post-title">From Comments to Command Execution: How an E-Book Platform Gave Me RCE</h3>
+              <p class="post-excerpt">Stored XSS in a comments feature became unrestricted file upload, and a PHP shell stitched into a PNG became remote code execution.</p>
+              <ul class="post-tags mono"><li>rce</li><li>xss</li><li>file upload</li></ul>
+            </div>
+          </a>
+          <a class="post-row reveal" style="--d:140ms" href="/blog/waf-bypass/">
+            <p class="post-date mono">dec 5, 2024</p>
+            <div class="post-main">
+              <h3 class="post-title">From Frustration to Exploitation: How a Link Shortener Helped Me Bypass WAF</h3>
+              <p class="post-excerpt">A 403 wall around a search box — and a built-in link shortener that turned out to be the road around it.</p>
+              <ul class="post-tags mono"><li>waf bypass</li><li>xss</li><li>bug bounty</li></ul>
             </div>
           </a>
         </div>

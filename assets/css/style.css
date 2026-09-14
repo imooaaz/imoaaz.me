@@ -683,8 +683,80 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 .post-row:hover .post-title { color: var(--amber); }
 .post-excerpt { margin: 0 0 0.6rem; color: var(--text); max-width: 56ch; font-size: 0.98rem; }
-.post-tags { margin: 0; font-size: 0.76rem; color: var(--dim); }
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.post-tags li {
+  font-size: 0.72rem;
+  color: var(--dim);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.16em 0.8em;
+  line-height: 1.7;
+}
+.post-src {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--dim);
+  margin-top: 0.35rem;
+}
 .all-posts { margin: 2.2rem 0 0; }
+
+/* writing section sidebar */
+.writing-grid {
+  display: grid;
+  grid-template-columns: 1.9fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+.blog-side {
+  background: var(--bg-raised);
+  border: 1px solid var(--line-soft);
+  border-radius: 2px;
+  padding: 1.4rem 1.5rem;
+  font-size: 0.84rem;
+}
+.side-head {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--dim);
+  margin: 0 0 0.7rem;
+}
+.side-head::before { content: "# "; color: var(--cyan); }
+.side-head + .side-head { margin-top: 1.5rem; }
+.side-link { margin: 0 0 1.5rem; }
+.side-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+.side-tags li {
+  font-size: 0.72rem;
+  color: var(--dim);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.16em 0.8em;
+}
+.side-note { margin: 0; color: var(--dim); font-size: 0.78rem; line-height: 1.8; }
+
+/* blog pages: softer accents */
+.blog a { color: var(--amber-soft); }
+.blog a:hover { color: var(--amber); }
+.blog .section-title::before { color: var(--amber-soft); }
+.blog .post-row:hover .post-title { color: var(--amber-soft); }
+.blog .post-body code { color: var(--amber-soft); }
+.blog .post-body pre code { color: var(--text); }
+.blog .btn { color: var(--text); }
+.blog .btn:hover { color: var(--amber); }
+.blog .hero-kicker { opacity: 0.85; }
 
 /* blog page hero (smaller than home) */
 .hero-page { padding: 8.5rem 0 4.5rem; }
@@ -731,7 +803,33 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   margin: 2.6rem 0 1.1rem;
 }
 .post-body ul { margin: 0 0 1.3rem; padding-left: 1.3rem; }
+.post-body ol { margin: 0 0 1.3rem; padding-left: 1.5rem; }
 .post-body li { margin-bottom: 0.7rem; }
+.post-body ol li::marker { color: var(--amber); font-family: var(--mono); font-size: 0.9em; }
+.post-body ul li::marker { color: var(--amber-dark); }
+
+.post-body blockquote {
+  margin: 0 0 1.5rem;
+  padding: 0.9rem 1.2rem;
+  border-left: 2px solid var(--amber-dark);
+  background: var(--bg-raised);
+  border-radius: 0 6px 6px 0;
+  color: var(--dim);
+  font-size: 0.95rem;
+}
+.post-body blockquote strong { color: var(--text); }
+
+.post-body .rtl {
+  direction: rtl;
+  text-align: right;
+  font-family: var(--sans);
+  color: var(--dim);
+  font-size: 1rem;
+}
+
+.post-meta .origin { margin-left: 0.5rem; }
+.post-meta .origin a { color: var(--cyan); }
+.post-meta .origin a:hover { color: var(--cyan-bright, var(--amber)); }
 
 .post-body code {
   font-family: var(--mono);
@@ -1014,6 +1112,8 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .skills-grid { grid-template-columns: 1fr; gap: 2.2rem; }
   .cert-grid { grid-template-columns: 1fr; gap: 1.8rem; }
   .edu-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+  .writing-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .post-row { grid-template-columns: 1fr; gap: 0.5rem; }
 }
 
 @media (max-width: 640px) {

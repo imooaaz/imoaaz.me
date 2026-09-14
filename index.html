@@ -198,20 +198,47 @@
       <div class="container">
         <h2 class="section-title mono reveal">writing</h2>
 
-        <div class="post-list">
-          <a class="post-row reveal" href="/blog/fuzz-the-type/">
-            <p class="post-date mono">sep 14, 2026</p>
-            <div class="post-main">
-              <h3 class="post-title">Fuzz the type, not just the value</h3>
-              <p class="post-excerpt">A one-line habit that keeps finding authorization bugs — swap the type, not just the payload.</p>
-              <p class="post-tags mono">bug bounty / appsec / tips</p>
-            </div>
-          </a>
-        </div>
+        <div class="writing-grid">
+          <div class="post-list">
+            <a class="post-row reveal" href="/blog/fuzz-the-type/">
+              <p class="post-date mono">sep 14, 2026</p>
+              <div class="post-main">
+                <h3 class="post-title">Fuzz the type, not just the value</h3>
+                <p class="post-excerpt">A one-line habit that keeps finding authorization bugs — swap the type, not just the payload.</p>
+                <ul class="post-tags mono"><li>bug bounty</li><li>appsec</li><li>tips</li></ul>
+              </div>
+            </a>
+            <a class="post-row reveal" style="--d:70ms" href="/blog/comments-to-rce/">
+              <p class="post-date mono">dec 20, 2024</p>
+              <div class="post-main">
+                <h3 class="post-title">From Comments to Command Execution: How an E-Book Platform Gave Me RCE</h3>
+                <p class="post-excerpt">Stored XSS in a comments feature became unrestricted file upload, and a PHP shell stitched into a PNG became remote code execution.</p>
+                <ul class="post-tags mono"><li>rce</li><li>xss</li><li>file upload</li></ul>
+              </div>
+            </a>
+            <a class="post-row reveal" style="--d:140ms" href="/blog/waf-bypass/">
+              <p class="post-date mono">dec 5, 2024</p>
+              <div class="post-main">
+                <h3 class="post-title">From Frustration to Exploitation: How a Link Shortener Helped Me Bypass WAF</h3>
+                <p class="post-excerpt">A 403 wall around a search box — and a built-in link shortener that turned out to be the road around it.</p>
+                <ul class="post-tags mono"><li>waf bypass</li><li>xss</li><li>bug bounty</li></ul>
+              </div>
+            </a>
+            <p class="all-posts reveal" style="--d:200ms">
+              <a class="btn" href="/blog/">all posts</a>
+            </p>
+          </div>
 
-        <p class="all-posts reveal" style="--d:120ms">
-          <a class="btn" href="/blog/">all posts</a>
-        </p>
+          <aside class="blog-side mono reveal" style="--d:120ms" aria-label="Blog sidebar">
+            <p class="side-head"># elsewhere</p>
+            <p class="side-link"><a href="https://imooaaz.medium.com/" target="_blank" rel="noopener me">medium — imooaaz ↗</a></p>
+            <p class="side-head"># topics</p>
+            <ul class="side-tags">
+              <li>bug bounty</li><li>xss</li><li>waf bypass</li><li>rce</li><li>appsec</li><li>file upload</li><li>tips</li>
+            </ul>
+            <p class="side-note">reports, resources, and things worth keeping — new writeups land here first.</p>
+          </aside>
+        </div>
       </div>
     </section>
 
