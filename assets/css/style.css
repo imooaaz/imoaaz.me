@@ -1004,8 +1004,8 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 /* -------------------------------------------------- certs ---- */
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.2rem;
   margin-bottom: 2.8rem;
 }
 .cert {
@@ -1014,8 +1014,18 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   transition: border-color 0.2s ease;
 }
 .cert:hover { border-top-color: var(--cyan); }
+.cert-badge {
+  display: block;
+  width: 128px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 0 1rem;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.45));
+  transition: transform 0.22s ease;
+}
+.cert:hover .cert-badge { transform: translateY(-4px) scale(1.04); }
 .cert-abbr {
-  font-size: 1.5rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--bright);
   margin: 0 0 0.5rem;
@@ -1133,7 +1143,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .whoami-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .work-row { grid-template-columns: 1fr; gap: 0.8rem; padding: 1.8rem 0.75rem; }
   .skills-grid { grid-template-columns: 1fr; gap: 2.2rem; }
-  .cert-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+  .cert-grid { grid-template-columns: repeat(2, 1fr); gap: 1.8rem; }
   .edu-grid { grid-template-columns: 1fr; gap: 1.8rem; }
   .writing-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .blog-side { position: static; }

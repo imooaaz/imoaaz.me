@@ -568,7 +568,7 @@
         line("web &amp; mobile pentest <span class=\"t-dim\">/</span> appsec <span class=\"t-dim\">/</span> devsecops <span class=\"t-dim\">/</span> ai security");
       } },
     { cmd: "ls cves/", out: function () {
-        line('<span class="t-amber">CVE-2024-36436</span>  eCPPT  eWPTX  eMAPT');
+        line('<span class="t-amber">CVE-2024-36436</span>  eCPPT  eWPTX  eMAPT  eAIS');
       } },
     { cmd: "./status.sh", out: function () {
         line('<span class="t-ok">[ok]</span> open for pentest &amp; research work');
