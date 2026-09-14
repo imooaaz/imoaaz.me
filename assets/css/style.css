@@ -358,9 +358,9 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 62px;
-  min-width: 118px;
-  padding: 0.55rem 1.15rem;
+  height: 78px;
+  min-width: 140px;
+  padding: 0.65rem 1.3rem;
   background: #eef1ef;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 8px;
@@ -371,11 +371,18 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
 }
 .logo-chip img {
-  max-height: 40px;
-  max-width: 118px;
+  max-height: 56px;
+  max-width: 140px;
   width: auto;
   height: auto;
   object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.85;
+  transition: filter 0.25s ease, opacity 0.25s ease;
+}
+.logo-chip:hover img {
+  filter: grayscale(0);
+  opacity: 1;
 }
 @keyframes marquee {
   from { transform: translateX(0); }
