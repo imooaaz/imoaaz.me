@@ -196,13 +196,11 @@
 
     dir(H + "/cves");
     file(H + "/cves/CVE-2024-36436.txt", [
-      "CVE-2024-36436: WishList Member X (WordPress plugin)",
+      "CVE-2024-36436",
       "",
-      "class    : Exposure of Sensitive Information (CWE-200)",
-      "impact   : the plugin's REST API secret key was returned in",
-      "           plaintext to unauthenticated users in an AJAX response",
-      "status   : patched",
-      "found by : Moaaz Afifi, via coordinated disclosure"
+      "found by : Moaaz Afifi",
+      "process  : found, verified, and reported via coordinated disclosure",
+      "details  : ask me about it at imooaaz@gmail.com"
     ].join("\n") + "\n");
 
     dir(H + "/blog");

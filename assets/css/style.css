@@ -794,6 +794,27 @@ strong { color: var(--bright); font-weight: 600; }
   transform: scale(1.9);
   transform-origin: 45% 24%;
 }
+.shield-swords {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.sw-blade { fill: url(#sw-steel); stroke: #4a5462; stroke-width: 0.6; }
+.sw-ridge { stroke: rgba(255, 255, 255, 0.55); stroke-width: 0.8; }
+.sw-guard { fill: #e5ac52; }
+.sw-grip { fill: #6b5530; }
+.sw-tip { fill: #ff6961; filter: drop-shadow(0 0 4px rgba(255, 105, 97, 0.9)); animation: tip-pulse 1.8s ease-in-out 2s infinite; }
+.sword { opacity: 0; animation: sword-in 0.7s cubic-bezier(.2, 1.3, .4, 1) forwards; }
+.sw-l { animation-delay: 1.1s; --sx: -14px; }
+.sw-r { animation-delay: 1.25s; --sx: 14px; }
+@keyframes sword-in {
+  from { opacity: 0; transform: translate(var(--sx), 12px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes tip-pulse { 50% { opacity: 0.35; } }
 .shield-deco {
   position: absolute;
   inset: 0;
@@ -865,15 +886,22 @@ strong { color: var(--bright); font-weight: 600; }
 .ha-i.i3 { animation-delay: 1.3s; }
 .ha-i.i4 { animation-delay: 1.5s; }
 .ha-i.i5 { animation-delay: 1.7s; }
+.ha-i.i6 { animation-delay: 1.9s; }
+.ha-i.i7 { animation-delay: 2.1s; }
+.ha-i.i8 { animation-delay: 2.3s; }
 .ha-f { animation: floaty 7s ease-in-out infinite; }
 .i2 .ha-f { animation-duration: 8s; animation-delay: -2s; }
 .i3 .ha-f { animation-duration: 6.5s; animation-delay: -4s; }
 .i4 .ha-f { animation-duration: 9s; animation-delay: -1s; }
 .i5 .ha-f { animation-duration: 7.5s; animation-delay: -3s; }
+.i6 .ha-f { animation-duration: 8.5s; animation-delay: -5s; }
+.i7 .ha-f { animation-duration: 6s; animation-delay: -2.5s; }
+.i8 .ha-f { animation-duration: 7s; animation-delay: -6s; }
 .hero-grid { z-index: 1; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-art *, .shield-deco * { animation: none !important; opacity: 1 !important; stroke-dashoffset: 0 !important; transform: none !important; }
+  .sword, .sw-tip { animation: none !important; opacity: 1 !important; }
   .sh-scanline { display: none; }
 }
 
@@ -1904,6 +1932,56 @@ abbr[title] { text-decoration: underline dotted rgba(185, 193, 204, 0.5); text-u
 .channel:hover .channel-handle { color: var(--amber); }
 .channel:hover .channel-arrow { opacity: 1; transform: translate(2px, -2px); }
 
+/* ---------- contact intents ---------- */
+.intents {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+}
+.intent {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 0.75rem;
+  row-gap: 0.1rem;
+  align-items: center;
+  text-align: left;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.16s ease, background 0.16s ease, transform 0.16s ease;
+}
+.intent svg {
+  grid-row: 1 / 3;
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: var(--amber);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.intent-title { font-weight: 600; color: var(--bright); font-size: 0.975rem; line-height: 1.3; }
+.intent-text { font-size: var(--fs-xs); color: var(--dim); line-height: 1.4; }
+.intent:hover { border-color: #3a424e; transform: translateY(-1px); }
+.intent[aria-pressed="true"] {
+  border-color: var(--amber);
+  background: rgba(229, 172, 82, 0.08);
+  box-shadow: 0 0 0 3px rgba(229, 172, 82, 0.12);
+}
+.intent[aria-pressed="true"] .intent-title { color: var(--amber-soft); }
+@media (max-width: 640px) {
+  .intents { gap: 0.6rem; }
+  .intent { grid-template-columns: 1fr; padding: 0.8rem; row-gap: 0.25rem; }
+  .intent svg { grid-row: auto; width: 22px; height: 22px; margin-bottom: 0.2rem; }
+  .intent-text { display: none; }
+}
+
 /* ---------- contact form ---------- */
 .contact-form {
   display: flex;
@@ -2192,7 +2270,7 @@ abbr[title] { text-decoration: underline dotted rgba(185, 193, 204, 0.5); text-u
   .hero-grid { gap: 2.25rem; }
   .hero-role { font-size: 1rem; margin-bottom: 1.4rem; }
   .ha-icons { opacity: 0.35; }
-  .ha-i.i2, .ha-i.i5 { display: none; }
+  .ha-i.i2, .ha-i.i5, .ha-i.i7, .ha-i.i8 { display: none; }
 
   /* terminal: shorter, swipeable command chips */
   .term-screen { height: 17rem; }

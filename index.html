@@ -84,28 +84,41 @@
             <circle r="7" fill="url(#ha-pk)"><animateMotion dur="6.5s" begin="2.6s" repeatCount="indefinite"><mpath href="#ha-p3"/></animateMotion></circle>
           </g>
 
-          <!-- floating icons -->
-          <g class="ha-icons" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <g class="ha-i i1" transform="translate(70 360)"><g class="ha-f">
-              <path d="M24 2 4 10v14c0 12 8.5 21 20 25 11.5-4 20-13 20-25V10z" stroke="#e5ac52" stroke-width="2.4"/>
-              <path d="m15 25 6 6 12-13" stroke="#e5ac52" stroke-width="2.4"/>
+          <!-- floating DevSecOps tool icons (generic glyphs: git, containers, orchestration, CI/CD loop, shell, secrets, cloud, bugs) -->
+          <g class="ha-icons" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4">
+            <g class="ha-i i1" transform="translate(36 300)"><g class="ha-f">
+              <circle cx="10" cy="8" r="5" stroke="#e5ac52"/><circle cx="10" cy="44" r="5" stroke="#e5ac52"/><circle cx="36" cy="18" r="5" stroke="#e5ac52"/>
+              <path d="M10 13v26M36 23c0 10-10 10-22 16" stroke="#e5ac52"/>
             </g></g>
-            <g class="ha-i i2" transform="translate(640 70)"><g class="ha-f">
-              <rect x="6" y="20" width="32" height="24" rx="5" stroke="#8bb4d4" stroke-width="2.4"/>
-              <path d="M13 20v-6a9 9 0 0 1 18 0v6" stroke="#8bb4d4" stroke-width="2.4"/>
-              <circle cx="22" cy="32" r="3" fill="#8bb4d4" stroke="none"/>
+            <g class="ha-i i2" transform="translate(650 64)"><g class="ha-f">
+              <rect x="2" y="22" width="12" height="10" rx="1.5" stroke="#8bb4d4"/><rect x="16" y="22" width="12" height="10" rx="1.5" stroke="#8bb4d4"/><rect x="30" y="22" width="12" height="10" rx="1.5" stroke="#8bb4d4"/>
+              <rect x="16" y="10" width="12" height="10" rx="1.5" stroke="#8bb4d4"/>
+              <path d="M0 36c6 10 34 12 46 0" stroke="#8bb4d4"/>
             </g></g>
-            <g class="ha-i i3" transform="translate(1340 330)"><g class="ha-f">
-              <path d="M14 10 2 24l12 14M38 10l12 14-12 14M30 4 22 44" stroke="#8bb4d4" stroke-width="2.4"/>
+            <g class="ha-i i3" transform="translate(1372 320)"><g class="ha-f">
+              <circle cx="24" cy="24" r="20" stroke="#8bb4d4"/><circle cx="24" cy="24" r="6" stroke="#8bb4d4"/>
+              <path d="M24 4v14M24 30v14M4 24h14M30 24h14M10 10l10 10M28 28l10 10M38 10 28 20M20 28 10 38" stroke="#8bb4d4" stroke-width="2"/>
             </g></g>
             <g class="ha-i i4" transform="translate(600 640)"><g class="ha-f">
-              <ellipse cx="22" cy="26" rx="10" ry="14" stroke="#ff8a84" stroke-width="2.4"/>
-              <circle cx="22" cy="9" r="5" stroke="#ff8a84" stroke-width="2.4"/>
-              <path d="M12 20H4M12 28H3M13 36l-7 5M32 20h8M32 28h9M31 36l7 5M22 14v26" stroke="#ff8a84" stroke-width="2.2"/>
+              <path d="M26 20c-8-10-24-10-24 4s16 14 24 4 16-14 24-4 24 14 24-4-16-14-24-4c-8 10-16 14-24 4z" stroke="#e5ac52"/>
             </g></g>
-            <g class="ha-i i5" transform="translate(1180 170)"><g class="ha-f">
-              <circle cx="14" cy="22" r="10" stroke="#e5ac52" stroke-width="2.4"/>
-              <path d="M24 22h22M38 22v8M44 22v6" stroke="#e5ac52" stroke-width="2.4"/>
+            <g class="ha-i i5" transform="translate(1190 690)"><g class="ha-f">
+              <rect x="2" y="4" width="46" height="36" rx="5" stroke="#8bb4d4"/>
+              <path d="m11 16 7 6-7 6M23 29h12" stroke="#8bb4d4"/>
+            </g></g>
+            <g class="ha-i i6" transform="translate(300 690)"><g class="ha-f">
+              <rect x="6" y="20" width="32" height="24" rx="5" stroke="#e5ac52"/>
+              <path d="M13 20v-6a9 9 0 0 1 18 0v6" stroke="#e5ac52"/>
+              <circle cx="22" cy="32" r="3" fill="#e5ac52" stroke="none"/>
+            </g></g>
+            <g class="ha-i i7" transform="translate(990 54)"><g class="ha-f">
+              <path d="M14 38h28a10 10 0 0 0 0-20 14 14 0 0 0-27-3A11 11 0 0 0 14 38z" stroke="#8bb4d4"/>
+              <path d="m22 28 5 5 9-10" stroke="#8bb4d4"/>
+            </g></g>
+            <g class="ha-i i8" transform="translate(44 560)"><g class="ha-f">
+              <ellipse cx="22" cy="26" rx="10" ry="14" stroke="#ff8a84"/>
+              <circle cx="22" cy="9" r="5" stroke="#ff8a84"/>
+              <path d="M12 20H4M12 28H3M13 36l-7 5M32 20h8M32 28h9M31 36l7 5M22 14v26" stroke="#ff8a84" stroke-width="2.2"/>
             </g></g>
           </g>
         </svg>
@@ -117,6 +130,17 @@
             <figure class="hero-photo">
               <svg class="shield-defs" width="0" height="0" aria-hidden="true" focusable="false">
                 <clipPath id="shield-clip" clipPathUnits="objectBoundingBox"><path d="M.5 0 L1 .15 V.5 C1 .76 .8 .93 .5 1 C.2 .93 0 .76 0 .5 V.15 Z"/></clipPath>
+              </svg>
+              <svg class="shield-swords" viewBox="0 0 140 160" aria-hidden="true">
+                <defs>
+                  <linearGradient id="sw-steel" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#9aa6b5"/>
+                    <stop offset="0.5" stop-color="#e8edf3"/>
+                    <stop offset="1" stop-color="#8592a2"/>
+                  </linearGradient>
+                </defs>
+                <g class="sword sw-l"><g transform="translate(70 80) rotate(-38)"><path d="M0 -112 L6 -99 V56 H-6 V-99 Z" class="sw-blade"/><path d="M0 -106 V54" class="sw-ridge"/><rect x="-18" y="56" width="36" height="7" rx="3.5" class="sw-guard"/><rect x="-3.2" y="63" width="6.4" height="19" rx="2.4" class="sw-grip"/><circle cy="86" r="5.5" class="sw-guard"/><circle cy="-106" r="3.4" class="sw-tip"/></g></g>
+                <g class="sword sw-r"><g transform="translate(70 80) rotate(38)"><path d="M0 -112 L6 -99 V56 H-6 V-99 Z" class="sw-blade"/><path d="M0 -106 V54" class="sw-ridge"/><rect x="-18" y="56" width="36" height="7" rx="3.5" class="sw-guard"/><rect x="-3.2" y="63" width="6.4" height="19" rx="2.4" class="sw-grip"/><circle cy="86" r="5.5" class="sw-guard"/><circle cy="-106" r="3.4" class="sw-tip"/></g></g>
               </svg>
               <span class="hero-photo-frame"><img src="https://avatars.githubusercontent.com/u/70091653?v=4&amp;s=460" onerror="this.onerror=null;this.src='/assets/img/moaaz.jpg'" alt="Moaaz Afifi" width="460" height="460" fetchpriority="high" referrerpolicy="no-referrer"></span>
               <svg class="shield-deco" viewBox="0 0 140 160" aria-hidden="true">
@@ -157,7 +181,7 @@
 
           <div class="hero-actions">
             <a class="btn btn-solid" href="#contact">Get in touch</a>
-            <a class="btn" href="#experience">View experience</a>
+            <a class="btn" href="#contact" data-intent="Job opportunity / hiring">Hire me</a>
           </div>
         </div>
 
@@ -231,7 +255,7 @@
             <p class="tl-desc">HackerOne is a platform where companies invite independent researchers to find security flaws in their products before criminals do. I test their live applications within published rules and report what I find.</p>
             <ul class="tl-points">
               <li><strong>Bug bounty:</strong> finding real vulnerabilities in production web applications across public and private programs.</li>
-              <li><strong>Coordinated disclosure:</strong> working with vendors until issues are fixed. One of these reports became <a href="#projects" class="nowrap">CVE-2024-36436</a>, a publicly tracked vulnerability.</li>
+              <li><strong>Coordinated disclosure:</strong> working with vendors until issues are fixed. One of these reports was assigned <a href="#projects" class="nowrap">CVE-2024-36436</a>.</li>
             </ul>
           </li>
 
@@ -391,13 +415,11 @@
               <span class="project-kind">Research · Coordinated disclosure</span>
             </div>
             <h3 class="project-title">CVE-2024-36436</h3>
-            <p class="project-desc">Sensitive information exposure (CWE-200) in the WishList Member X WordPress plugin: the plugin's REST API secret key was returned in plaintext to unauthenticated users. Reported and patched through coordinated disclosure.</p>
+            <p class="project-desc">A security vulnerability I found, verified, and reported through coordinated disclosure, which was assigned CVE-2024-36436.</p>
             <ul class="project-role">
               <li>Found, verified, and reported end to end</li>
-              <li>Fixed by the vendor</li>
             </ul>
-            <ul class="post-tags mono"><li>wordpress</li><li>cwe-200</li><li>disclosure</li></ul>
-            <p class="project-links"><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-36436" target="_blank" rel="noopener">Advisory ↗</a></p>
+            <ul class="post-tags mono"><li>vulnerability research</li><li>disclosure</li></ul>
           </article>
 
           <article class="project reveal" style="--d:80ms" data-kind="tool" data-tags="tool">
@@ -523,9 +545,32 @@
           <div class="contact-main reveal">
             <p class="contact-status"><span class="dot" aria-hidden="true"></span>Available for new engagements</p>
             <p class="contact-lede">
-              Whether it's a penetration test, a security review, a research
-              collaboration, or a vulnerability report — I read every message.
+              Hiring, a consultation, training, or a security engagement:
+              pick what fits and I'll get back to you. I read every message.
             </p>
+
+            <div class="intents" role="group" aria-label="What can I help with?">
+              <button type="button" class="intent" data-topic="Job opportunity / hiring" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>
+                <span class="intent-title">Hiring</span>
+                <span class="intent-text">Full-time, contract, or a job offer</span>
+              </button>
+              <button type="button" class="intent" data-topic="Consultation" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 14h3"/></svg>
+                <span class="intent-title">Consultation</span>
+                <span class="intent-text">Book a session on security or delivery</span>
+              </button>
+              <button type="button" class="intent" data-topic="Training / workshop" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5M22 9v6"/></svg>
+                <span class="intent-title">Training</span>
+                <span class="intent-text">Workshops and courses for your team</span>
+              </button>
+              <button type="button" class="intent" data-topic="Penetration test" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5.5V11c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5.5z"/><path d="m9 12 2 2 4-4"/></svg>
+                <span class="intent-title">Security project</span>
+                <span class="intent-text">Pentest, review, or DevSecOps work</span>
+              </button>
+            </div>
 
             <!-- Messages are delivered by Web3Forms (web3forms.com). Put your access key in
                  data-web3forms-key. While it's empty, Send opens the visitor's email app instead. -->
@@ -543,6 +588,9 @@
               <div class="field">
                 <label for="cf-topic">What's it about?</label>
                 <select id="cf-topic" name="topic">
+                  <option>Job opportunity / hiring</option>
+                  <option>Consultation</option>
+                  <option>Training / workshop</option>
                   <option>Penetration test</option>
                   <option>Security review</option>
                   <option>Product security / DevSecOps</option>
@@ -602,13 +650,6 @@
                   <span class="channel-name">Medium</span>
                   <span class="channel-handle mono">@imooaaz</span>
                   <span class="channel-arrow" aria-hidden="true">↗</span>
-                </a>
-              </li>
-              <li>
-                <a class="channel" href="/.well-known/security.txt">
-                  <span class="channel-name">Disclosure</span>
-                  <span class="channel-handle mono">security.txt</span>
-                  <span class="channel-arrow" aria-hidden="true">→</span>
                 </a>
               </li>
             </ul>

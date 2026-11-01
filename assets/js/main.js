@@ -390,4 +390,40 @@
       });
     });
   }
+
+  /* ================= contact intents (hiring, consultation, training, project) ================= */
+  var topicSel = document.getElementById("cf-topic");
+  var msgBox = document.getElementById("cf-message");
+  var intentBtns = Array.prototype.slice.call(document.querySelectorAll(".intent"));
+  if (topicSel && msgBox) {
+    var HINTS = {
+      "Job opportunity / hiring": "The role, team, location or remote, and how you found me.",
+      "Consultation": "What you'd like to discuss, and a few times that work for you.",
+      "Training / workshop": "Audience, topics, format (online or on-site), and preferred dates.",
+      "Penetration test": "Scope (web, API, mobile), environment, and timeline."
+    };
+    var DEFAULT_HINT = msgBox.getAttribute("placeholder");
+    var syncIntent = function () {
+      var v = topicSel.value;
+      intentBtns.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-topic") === v ? "true" : "false"); });
+      msgBox.setAttribute("placeholder", HINTS[v] || DEFAULT_HINT);
+    };
+    var chooseIntent = function (topic) {
+      topicSel.value = topic;
+      syncIntent();
+    };
+    intentBtns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        chooseIntent(b.getAttribute("data-topic"));
+        document.getElementById("cf-name").focus({ preventScroll: true });
+        document.getElementById("contact-form").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+      });
+    });
+    topicSel.addEventListener("change", syncIntent);
+    topicSel.form.addEventListener("reset", function () { setTimeout(syncIntent, 0); });
+    document.querySelectorAll("[data-intent]").forEach(function (a) {
+      a.addEventListener("click", function () { chooseIntent(a.getAttribute("data-intent")); });
+    });
+    syncIntent();
+  }
 })();
