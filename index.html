@@ -35,10 +35,10 @@
       <a class="brand" href="#top"><span class="brand-mark mono" aria-hidden="true">MA</span>Moaaz Afifi</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <ul class="nav-links" id="nav-links">
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
         <li><a href="/blog/">Blog</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
@@ -120,60 +120,80 @@
       </div>
     </section>
 
-    <!-- ============================== writing ============================== -->
-    <section class="section" id="writing">
+    <!-- ============================== experience ============================== -->
+    <section class="section" id="experience">
       <div class="container">
-        <h2 class="section-title reveal" data-eyebrow="Writing">Research &amp; write-ups</h2>
+        <h2 class="section-title reveal" data-eyebrow="Experience">Where I've worked</h2>
+        <p class="section-lede reveal">What each role involved, in plain engineering terms. In short: I make sure software is built, shipped, and tested so attackers can't break it.</p>
 
-        <div class="writing-grid">
-          <div class="post-list">
-            <a class="post-row reveal" href="/blog/fuzz-the-type/">
-              <div class="post-thumb"><img src="/assets/img/blog/fuzz-the-type.svg" alt="" width="1200" height="630" loading="lazy"></div>
-              <div class="post-main">
-                <p class="post-date mono">Sep 14, 2026</p>
-                <h3 class="post-title">Fuzz the type, not just the value</h3>
-                <p class="post-excerpt">A one-line habit that keeps uncovering authorization bugs: change the parameter's type, not just its payload.</p>
-                <ul class="post-tags mono"><li>bug bounty</li><li>appsec</li><li>tips</li></ul>
-              </div>
-            </a>
-            <a class="post-row reveal" style="--d:70ms" href="/blog/comments-to-rce/">
-              <div class="post-thumb"><img src="/assets/img/blog/comments-to-rce.svg" alt="" width="1200" height="630" loading="lazy"></div>
-              <div class="post-main">
-                <p class="post-date mono">Dec 20, 2024</p>
-                <h3 class="post-title">From Comments to Command Execution: How an E-Book Platform Gave Me RCE</h3>
-                <p class="post-excerpt">Stored XSS in a comments feature led to unrestricted file upload, and a PHP shell embedded in a PNG led to remote code execution.</p>
-                <ul class="post-tags mono"><li>rce</li><li>xss</li><li>file upload</li></ul>
-              </div>
-            </a>
-            <a class="post-row reveal" style="--d:140ms" href="/blog/waf-bypass/">
-              <div class="post-thumb"><img src="/assets/img/blog/waf-bypass.svg" alt="" width="1200" height="630" loading="lazy"></div>
-              <div class="post-main">
-                <p class="post-date mono">Dec 5, 2024</p>
-                <h3 class="post-title">From Frustration to Exploitation: How a Link Shortener Helped Me Bypass WAF</h3>
-                <p class="post-excerpt">A search box blocked by a WAF, and the platform's own link shortener that turned out to be the way around it.</p>
-                <ul class="post-tags mono"><li>waf bypass</li><li>xss</li><li>bug bounty</li></ul>
-              </div>
-            </a>
-            <p class="all-posts reveal" style="--d:200ms">
-              <a class="btn" href="/blog/">View all posts</a>
-            </p>
+        <ol class="timeline exp reveal">
+          <li class="tl-item reveal">
+            <p class="tl-dates mono">Present</p>
+            <h3 class="tl-role">Co-Founder &amp; Product Engineer</h3>
+            <p class="tl-org">Raqyan <span class="tl-type mono">Co-founder</span></p>
+            <p class="tl-desc">I co-founded Raqyan and run how our software goes from code to production, with security built in from the start instead of added at the end.</p>
+            <ul class="tl-points">
+              <li><strong>Product delivery:</strong> own the release process that takes features from development to users.</li>
+              <li><strong>Product security:</strong> make sure what we ship is safe to put in front of customers.</li>
+              <li><strong>DevOps &amp; DevSecOps:</strong> build and maintain the automated build, test, and deploy pipeline (<abbr title="Continuous Integration / Continuous Delivery">CI/CD</abbr>), including the automated security checks that run on every release.</li>
+            </ul>
+            <ul class="tl-skills mono"><li>Release management</li><li>CI/CD</li><li>Product security</li></ul>
+          </li>
+
+          <li class="tl-item reveal" style="--d:60ms">
+            <p class="tl-dates mono">Feb 2025 — Present</p>
+            <h3 class="tl-role">Cyber Security Consultant &amp; Penetration Tester</h3>
+            <p class="tl-org">GCC <span class="tl-type mono">Part-time</span></p>
+            <p class="tl-desc">Companies hire me to test their applications the way a real attacker would, with permission, and tell their developers exactly what's broken and how to fix it.</p>
+            <ul class="tl-points">
+              <li><strong>Penetration testing:</strong> authorized, hands-on attacks against client web and mobile applications to find weaknesses.</li>
+              <li><strong>Reporting:</strong> each finding is written up with how to reproduce it, its business impact, and the fix.</li>
+            </ul>
+            <ul class="tl-skills mono"><li>Web &amp; mobile testing</li><li>Vulnerability assessment</li><li>Technical reporting</li></ul>
+          </li>
+
+          <li class="tl-item reveal" style="--d:90ms">
+            <p class="tl-dates mono">2023 — Present</p>
+            <h3 class="tl-role">Cyber Security Researcher</h3>
+            <p class="tl-org">HackerOne <span class="tl-type mono">Part-time</span></p>
+            <p class="tl-desc">HackerOne is a platform where companies invite independent researchers to find security flaws in their products before criminals do. I test their live applications within published rules and report what I find.</p>
+            <ul class="tl-points">
+              <li><strong>Bug bounty:</strong> finding real vulnerabilities in production web applications across public and private programs.</li>
+              <li><strong>Coordinated disclosure:</strong> working with vendors until issues are fixed. One of these reports became <span class="nowrap">CVE-2024-36436</span>, a publicly tracked vulnerability.</li>
+            </ul>
+            <ul class="tl-skills mono"><li>Vulnerability research</li><li>Web applications</li><li>Disclosure</li></ul>
+          </li>
+
+          <li class="tl-item reveal" style="--d:120ms">
+            <p class="tl-dates mono">Jun 2025 — Aug 2025</p>
+            <h3 class="tl-role">Application Security Engineer</h3>
+            <p class="tl-org">Robusta Technology Group (RTG) <span class="tl-type mono">Full-time</span></p>
+            <p class="tl-desc">The security engineer inside the product teams: helping developers ship features without security holes, rather than auditing them after the fact.</p>
+            <ul class="tl-points">
+              <li><strong>Vulnerability assessment:</strong> reviewing applications and features for security issues before and after release.</li>
+              <li><strong>DevSecOps &amp; secure development:</strong> automated security checks in the delivery pipeline and practical guidance for developers.</li>
+            </ul>
+            <ul class="tl-skills mono"><li>Application security</li><li>Secure SDLC</li><li>DevSecOps</li></ul>
+          </li>
+
+          <li class="tl-item reveal" style="--d:150ms">
+            <p class="tl-dates mono">Oct 2023 — Jan 2024</p>
+            <h3 class="tl-role">Offensive Security Engineer</h3>
+            <p class="tl-org">Cybrany <span class="tl-type mono">Part-time</span></p>
+            <p class="tl-desc">"Offensive" security means thinking like the attacker: simulating attacks on systems to find weaknesses first, and researching new kinds of vulnerabilities.</p>
+            <ul class="tl-skills mono"><li>Attack simulation</li><li>Vulnerability research</li></ul>
+          </li>
+        </ol>
+
+        <div class="edu-grid reveal">
+          <div class="edu-block">
+            <h3 class="edu-head">Education</h3>
+            <p>Computer Science &amp; Engineering<br>Faculty of Electronic Engineering, Menoufia University</p>
           </div>
-
-          <aside class="blog-side reveal" style="--d:120ms" aria-label="Blog sidebar">
-            <p class="side-head">Latest</p>
-            <ul class="side-posts">
-              <li><a href="/blog/fuzz-the-type/">Fuzz the type, not just the value<span class="side-date mono">Sep 14</span></a></li>
-              <li><a href="/blog/comments-to-rce/">From comments to command execution<span class="side-date mono">Dec 20</span></a></li>
-              <li><a href="/blog/waf-bypass/">A link shortener vs. a WAF<span class="side-date mono">Dec 5</span></a></li>
-            </ul>
-            <p class="side-head">Topics</p>
-            <ul class="side-tags mono">
-              <li>bug bounty</li><li>xss</li><li>waf bypass</li><li>rce</li><li>appsec</li><li>file upload</li><li>tips</li>
-            </ul>
-            <p class="side-head">Elsewhere</p>
-            <p class="side-link"><a href="https://imooaaz.medium.com/" target="_blank" rel="noopener me">Read on Medium ↗</a></p>
-            <p class="side-note">Write-ups, disclosure reports, and practical notes from the field.</p>
-          </aside>
+          <div class="edu-block">
+            <h3 class="edu-head">Volunteering</h3>
+            <p>Cyber Security Core Member, IEEE Menoufia University Student Branch<br>Arts Committee Member, FEE Student Union</p>
+          </div>
         </div>
       </div>
     </section>
@@ -363,53 +383,60 @@
       </div>
     </section>
 
-    <!-- ============================== experience ============================== -->
-    <section class="section" id="experience">
+    <!-- ============================== writing ============================== -->
+    <section class="section" id="writing">
       <div class="container">
-        <h2 class="section-title reveal" data-eyebrow="Experience">Where I've worked</h2>
+        <h2 class="section-title reveal" data-eyebrow="Writing">Research &amp; write-ups</h2>
 
-        <ol class="timeline reveal">
-          <li class="tl-item reveal">
-            <p class="tl-dates mono">Present</p>
-            <h3 class="tl-role">Co-Founder &amp; Product Engineer</h3>
-            <p class="tl-org">Raqyan <span class="tl-type mono">Co-founder</span></p>
-            <p class="tl-desc">Leading how Raqyan's software products are built and shipped: product delivery, product security, and the DevOps &amp; DevSecOps pipeline behind every release.</p>
-          </li>
-          <li class="tl-item reveal" style="--d:60ms">
-            <p class="tl-dates mono">2023 — Present</p>
-            <h3 class="tl-role">Cyber Security Researcher</h3>
-            <p class="tl-org">HackerOne <span class="tl-type mono">Part-time</span></p>
-            <p class="tl-desc">Vulnerability research and bug bounty hunting across public and private programs, covering web application testing, vulnerability assessment, and coordinated disclosure.</p>
-          </li>
-          <li class="tl-item reveal" style="--d:90ms">
-            <p class="tl-dates mono">Feb 2025 — Present</p>
-            <h3 class="tl-role">Cyber Security Consultant &amp; Penetration Tester</h3>
-            <p class="tl-org">GCC <span class="tl-type mono">Part-time</span></p>
-            <p class="tl-desc">Penetration testing and security consulting for client engagements, including vulnerability assessment, research, and detailed technical reporting.</p>
-          </li>
-          <li class="tl-item reveal" style="--d:180ms">
-            <p class="tl-dates mono">Jun 2025 — Aug 2025</p>
-            <h3 class="tl-role">Application Security Engineer</h3>
-            <p class="tl-org">Robusta Technology Group (RTG) <span class="tl-type mono">Full-time</span></p>
-            <p class="tl-desc">Application security within product teams: vulnerability assessment, DevSecOps, and secure development practices.</p>
-          </li>
-          <li class="tl-item reveal" style="--d:270ms">
-            <p class="tl-dates mono">Oct 2023 — Jan 2024</p>
-            <h3 class="tl-role">Offensive Security Engineer</h3>
-            <p class="tl-org">Cybrany <span class="tl-type mono">Part-time</span></p>
-            <p class="tl-desc">Offensive security engineering and vulnerability research.</p>
-          </li>
-        </ol>
+        <div class="writing-grid">
+          <div class="post-list">
+            <a class="post-row reveal" href="/blog/fuzz-the-type/">
+              <div class="post-thumb"><img src="/assets/img/blog/fuzz-the-type.svg" alt="" width="1200" height="630" loading="lazy"></div>
+              <div class="post-main">
+                <p class="post-date mono">Sep 14, 2026</p>
+                <h3 class="post-title">Fuzz the type, not just the value</h3>
+                <p class="post-excerpt">A one-line habit that keeps uncovering authorization bugs: change the parameter's type, not just its payload.</p>
+                <ul class="post-tags mono"><li>bug bounty</li><li>appsec</li><li>tips</li></ul>
+              </div>
+            </a>
+            <a class="post-row reveal" style="--d:70ms" href="/blog/comments-to-rce/">
+              <div class="post-thumb"><img src="/assets/img/blog/comments-to-rce.svg" alt="" width="1200" height="630" loading="lazy"></div>
+              <div class="post-main">
+                <p class="post-date mono">Dec 20, 2024</p>
+                <h3 class="post-title">From Comments to Command Execution: How an E-Book Platform Gave Me RCE</h3>
+                <p class="post-excerpt">Stored XSS in a comments feature led to unrestricted file upload, and a PHP shell embedded in a PNG led to remote code execution.</p>
+                <ul class="post-tags mono"><li>rce</li><li>xss</li><li>file upload</li></ul>
+              </div>
+            </a>
+            <a class="post-row reveal" style="--d:140ms" href="/blog/waf-bypass/">
+              <div class="post-thumb"><img src="/assets/img/blog/waf-bypass.svg" alt="" width="1200" height="630" loading="lazy"></div>
+              <div class="post-main">
+                <p class="post-date mono">Dec 5, 2024</p>
+                <h3 class="post-title">From Frustration to Exploitation: How a Link Shortener Helped Me Bypass WAF</h3>
+                <p class="post-excerpt">A search box blocked by a WAF, and the platform's own link shortener that turned out to be the way around it.</p>
+                <ul class="post-tags mono"><li>waf bypass</li><li>xss</li><li>bug bounty</li></ul>
+              </div>
+            </a>
+            <p class="all-posts reveal" style="--d:200ms">
+              <a class="btn" href="/blog/">View all posts</a>
+            </p>
+          </div>
 
-        <div class="edu-grid reveal">
-          <div class="edu-block">
-            <h3 class="edu-head">Education</h3>
-            <p>Computer Science &amp; Engineering<br>Faculty of Electronic Engineering, Menoufia University</p>
-          </div>
-          <div class="edu-block">
-            <h3 class="edu-head">Volunteering</h3>
-            <p>Cyber Security Core Member, IEEE Menoufia University Student Branch<br>Arts Committee Member, FEE Student Union</p>
-          </div>
+          <aside class="blog-side reveal" style="--d:120ms" aria-label="Blog sidebar">
+            <p class="side-head">Latest</p>
+            <ul class="side-posts">
+              <li><a href="/blog/fuzz-the-type/">Fuzz the type, not just the value<span class="side-date mono">Sep 14</span></a></li>
+              <li><a href="/blog/comments-to-rce/">From comments to command execution<span class="side-date mono">Dec 20</span></a></li>
+              <li><a href="/blog/waf-bypass/">A link shortener vs. a WAF<span class="side-date mono">Dec 5</span></a></li>
+            </ul>
+            <p class="side-head">Topics</p>
+            <ul class="side-tags mono">
+              <li>bug bounty</li><li>xss</li><li>waf bypass</li><li>rce</li><li>appsec</li><li>file upload</li><li>tips</li>
+            </ul>
+            <p class="side-head">Elsewhere</p>
+            <p class="side-link"><a href="https://imooaaz.medium.com/" target="_blank" rel="noopener me">Read on Medium ↗</a></p>
+            <p class="side-note">Write-ups, disclosure reports, and practical notes from the field.</p>
+          </aside>
         </div>
       </div>
     </section>
@@ -577,11 +604,11 @@
         <nav class="footer-col" aria-label="Footer">
           <p class="footer-head">Site</p>
           <ul>
-            <li><a href="/#about">About</a></li>
+            <li><a href="/#experience">Experience</a></li>
+        <li><a href="/#about">About</a></li>
             <li><a href="/#services">Services</a></li>
             <li><a href="/#projects">Projects</a></li>
-            <li><a href="/#experience">Experience</a></li>
-            <li><a href="/blog/">Blog</a></li>
+                <li><a href="/blog/">Blog</a></li>
             <li><a href="/#contact">Contact</a></li>
           </ul>
         </nav>

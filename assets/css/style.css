@@ -765,7 +765,7 @@ strong { color: var(--bright); font-weight: 600; }
   border-top: 1px solid var(--line-soft);
   padding: 6rem 0;
 }
-#writing { padding-top: 4.5rem; }
+#experience { padding-top: 4.5rem; }
 
 .section-title {
   font-family: var(--sans);
@@ -1723,6 +1723,44 @@ strong { color: var(--bright); font-weight: 600; }
   white-space: nowrap;
 }
 .tl-desc { margin: 0; max-width: 62ch; }
+.exp .tl-desc { color: var(--bright); margin-bottom: 0.9rem; }
+.tl-points { list-style: none; margin: 0 0 1rem; padding: 0; max-width: 64ch; }
+.tl-points li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.975rem;
+  color: var(--text);
+}
+.tl-points li::before {
+  content: "";
+  position: absolute;
+  left: 0.1rem;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--amber);
+  opacity: 0.75;
+}
+.tl-points strong { color: var(--bright); font-weight: 600; }
+.tl-skills { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; margin: 0; padding: 0; }
+.tl-skills li {
+  font-size: 0.75rem;
+  color: var(--cyan);
+  background: rgba(139, 180, 212, 0.06);
+  border: 1px solid rgba(139, 180, 212, 0.22);
+  border-radius: 6px;
+  padding: 0.15em 0.65em;
+}
+abbr[title] { text-decoration: underline dotted rgba(185, 193, 204, 0.5); text-underline-offset: 3px; cursor: help; }
+.section-lede {
+  max-width: 44rem;
+  margin: -1.75rem 0 3rem;
+  font-size: var(--fs-md);
+  line-height: 1.65;
+  color: var(--text);
+}
 
 .edu-grid {
   display: grid;
