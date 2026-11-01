@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="t">
+  <title id="t">An e-book platform, a comment bubble, and a bug found inside it</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#151a22"/>
+      <stop offset="1" stop-color="#0b0d10"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1d232c" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.5" cy="0.45" r="0.5">
+      <stop offset="0" stop-color="#e5ac52" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#e5ac52" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="page" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d232c"/>
+      <stop offset="1" stop-color="#151a21"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- open book -->
+  <g transform="translate(330 170)">
+    <path d="M270 40 C 200 10, 90 10, 20 30 V 330 C 90 310, 200 310, 270 340 Z" fill="url(#page)" stroke="#2f3743" stroke-width="2"/>
+    <path d="M270 40 C 340 10, 450 10, 520 30 V 330 C 450 310, 340 310, 270 340 Z" fill="url(#page)" stroke="#2f3743" stroke-width="2"/>
+    <line x1="270" y1="40" x2="270" y2="340" stroke="#3a4350" stroke-width="2"/>
+    <g stroke="#3a4350" stroke-width="6" stroke-linecap="round">
+      <line x1="60" y1="90" x2="230" y2="80"/>
+      <line x1="60" y1="130" x2="210" y2="122"/>
+      <line x1="60" y1="170" x2="230" y2="162"/>
+      <line x1="60" y1="210" x2="180" y2="204"/>
+      <line x1="60" y1="250" x2="220" y2="244"/>
+      <line x1="310" y1="80" x2="480" y2="90"/>
+      <line x1="310" y1="122" x2="460" y2="130"/>
+      <line x1="310" y1="162" x2="480" y2="170"/>
+    </g>
+  </g>
+
+  <!-- comment bubble -->
+  <g transform="translate(150 120)">
+    <path d="M0 24 a24 24 0 0 1 24 -24 h170 a24 24 0 0 1 24 24 v70 a24 24 0 0 1 -24 24 h-120 l-34 30 v-30 h-16 a24 24 0 0 1 -24 -24 z" fill="#1b2029" stroke="#8bb4d4" stroke-width="2"/>
+    <g fill="#8bb4d4">
+      <circle cx="70" cy="59" r="8"/><circle cx="109" cy="59" r="8"/><circle cx="148" cy="59" r="8"/>
+    </g>
+  </g>
+
+  <!-- magnifier over the right page with a bug -->
+  <g transform="translate(720 300)">
+    <circle cx="90" cy="90" r="88" fill="#12161c" fill-opacity="0.85" stroke="#e5ac52" stroke-width="8"/>
+    <line x1="152" y1="152" x2="230" y2="230" stroke="#e5ac52" stroke-width="16" stroke-linecap="round"/>
+    <!-- bug -->
+    <g transform="translate(90 92)" fill="none" stroke="#ff6961" stroke-width="5" stroke-linecap="round">
+      <ellipse cx="0" cy="6" rx="22" ry="30" fill="#2a1416"/>
+      <circle cx="0" cy="-30" r="12" fill="#2a1416"/>
+      <line x1="0" y1="-20" x2="0" y2="34"/>
+      <path d="M-22 -4 h-18 M-22 10 h-20 M-20 24 l-16 12 M22 -4 h18 M22 10 h20 M20 24 l16 12"/>
+      <path d="M-6 -40 l-8 -12 M6 -40 l8 -12"/>
+    </g>
+  </g>
+
+  <!-- severity chip -->
+  <g transform="translate(860 140)" font-family="ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace">
+    <rect width="200" height="52" rx="26" fill="#2a1416" stroke="#7a2e2c"/>
+    <circle cx="30" cy="26" r="8" fill="#ff6961"/>
+    <text x="50" y="33" fill="#ff8a84" font-size="19">severity: critical</text>
+  </g>
+</svg>

@@ -37,6 +37,7 @@
       <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="/blog/">Blog</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
@@ -120,24 +121,27 @@
         <div class="writing-grid">
           <div class="post-list">
             <a class="post-row reveal" href="/blog/fuzz-the-type/">
-              <p class="post-date mono">Sep 14, 2026</p>
+              <div class="post-thumb"><img src="/assets/img/blog/fuzz-the-type.svg" alt="" width="1200" height="630" loading="lazy"></div>
               <div class="post-main">
+                <p class="post-date mono">Sep 14, 2026</p>
                 <h3 class="post-title">Fuzz the type, not just the value</h3>
                 <p class="post-excerpt">A one-line habit that keeps uncovering authorization bugs: change the parameter's type, not just its payload.</p>
                 <ul class="post-tags mono"><li>bug bounty</li><li>appsec</li><li>tips</li></ul>
               </div>
             </a>
             <a class="post-row reveal" style="--d:70ms" href="/blog/comments-to-rce/">
-              <p class="post-date mono">Dec 20, 2024</p>
+              <div class="post-thumb"><img src="/assets/img/blog/comments-to-rce.svg" alt="" width="1200" height="630" loading="lazy"></div>
               <div class="post-main">
+                <p class="post-date mono">Dec 20, 2024</p>
                 <h3 class="post-title">From Comments to Command Execution: How an E-Book Platform Gave Me RCE</h3>
                 <p class="post-excerpt">Stored XSS in a comments feature led to unrestricted file upload, and a PHP shell embedded in a PNG led to remote code execution.</p>
                 <ul class="post-tags mono"><li>rce</li><li>xss</li><li>file upload</li></ul>
               </div>
             </a>
             <a class="post-row reveal" style="--d:140ms" href="/blog/waf-bypass/">
-              <p class="post-date mono">Dec 5, 2024</p>
+              <div class="post-thumb"><img src="/assets/img/blog/waf-bypass.svg" alt="" width="1200" height="630" loading="lazy"></div>
               <div class="post-main">
+                <p class="post-date mono">Dec 5, 2024</p>
                 <h3 class="post-title">From Frustration to Exploitation: How a Link Shortener Helped Me Bypass WAF</h3>
                 <p class="post-excerpt">A search box blocked by a WAF, and the platform's own link shortener that turned out to be the way around it.</p>
                 <ul class="post-tags mono"><li>waf bypass</li><li>xss</li><li>bug bounty</li></ul>
@@ -201,6 +205,10 @@
           </div>
 
           <aside class="idcard reveal" style="--d:140ms" aria-label="At a glance">
+            <figure class="idcard-photo">
+              <img src="https://avatars.githubusercontent.com/u/70091653?v=4&amp;s=460" onerror="this.onerror=null;this.src='/assets/img/moaaz.jpg'" alt="Moaaz Afifi" width="460" height="460" loading="lazy" referrerpolicy="no-referrer">
+              <figcaption><span class="idcard-name">Moaaz Afifi</span><span class="idcard-role">Penetration Tester · Co-Founder at Raqyan</span></figcaption>
+            </figure>
             <p class="idcard-head">At a glance</p>
             <dl>
               <div class="idrow"><dt>Role</dt><dd>Co-Founder &amp; Product Engineer, Raqyan</dd></div>
@@ -256,6 +264,99 @@
             </div>
           </li>
         </ol>
+      </div>
+    </section>
+
+    <!-- ============================== projects ============================== -->
+    <!--
+      Add a project: copy one <article class="project"> block below and edit it.
+        data-kind   : product | tool | research   (drives the filter + icon colour)
+        .project-links: keep only the links that exist (Code, Live, Case study, Advisory).
+      Keep entries real: what you built, your role, and the outcome.
+    -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="posts-head">
+          <h2 class="section-title reveal" data-eyebrow="Projects &amp; Tools">Things I've built and shipped</h2>
+          <div class="filter-chips reveal" role="group" aria-label="Filter projects" data-target="#project-grid">
+            <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">All</button>
+            <button type="button" class="chip" data-filter="product" aria-pressed="false">Products</button>
+            <button type="button" class="chip" data-filter="tool" aria-pressed="false">Tools</button>
+            <button type="button" class="chip" data-filter="research" aria-pressed="false">Research</button>
+          </div>
+        </div>
+
+        <div class="project-grid" id="project-grid">
+
+          <article class="project reveal" data-kind="product" data-tags="product">
+            <div class="project-top">
+              <span class="project-icon kind-product" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 7l9 5 9-5M12 12v10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="project-kind">Product · Co-founder</span>
+            </div>
+            <h3 class="project-title">Raqyan</h3>
+            <p class="project-desc">Co-founded Raqyan and lead how its software ships: product delivery, product security, and the DevOps &amp; DevSecOps pipeline behind every release.</p>
+            <ul class="project-role">
+              <li>Own the path from code to production</li>
+              <li>Security built into the delivery pipeline</li>
+            </ul>
+            <ul class="post-tags mono"><li>product security</li><li>devsecops</li><li>ci/cd</li></ul>
+          </article>
+
+          <article class="project reveal" style="--d:80ms" data-kind="tool" data-tags="tool">
+            <div class="project-top">
+              <span class="project-icon kind-tool" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m15.5 15.5 5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 10.5h5M10.5 8v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              <span class="project-kind">Tool · Open source</span>
+            </div>
+            <h3 class="project-title">bookmark-path-finder</h3>
+            <p class="project-desc">A client-side bookmarklet for web application assessments: it parses loaded resources and page markup to discover referenced paths and API routes, then deduplicates and categorises them in a searchable view.</p>
+            <ul class="project-role">
+              <li>Speeds up manual recon during testing</li>
+              <li>Runs entirely in the browser, no install</li>
+            </ul>
+            <ul class="post-tags mono"><li>javascript</li><li>recon</li><li>web appsec</li></ul>
+            <p class="project-links"><a href="https://github.com/m0442/bookmark-path-finder" target="_blank" rel="noopener">Code ↗</a></p>
+          </article>
+
+          <article class="project reveal" data-kind="research" data-tags="research">
+            <div class="project-top">
+              <span class="project-icon kind-research" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 2 4 5.5V11c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 8v5M12 16.5v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+              <span class="project-kind">Research · Coordinated disclosure</span>
+            </div>
+            <h3 class="project-title">CVE-2024-36436</h3>
+            <p class="project-desc">Sensitive information exposure (CWE-200) in the WishList Member X WordPress plugin: the plugin's REST API secret key was returned in plaintext to unauthenticated users. Reported and patched through coordinated disclosure.</p>
+            <ul class="project-role">
+              <li>Found, verified, and reported end to end</li>
+              <li>Fixed by the vendor</li>
+            </ul>
+            <ul class="post-tags mono"><li>wordpress</li><li>cwe-200</li><li>disclosure</li></ul>
+            <p class="project-links"><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-36436" target="_blank" rel="noopener">Advisory ↗</a></p>
+          </article>
+
+          <article class="project reveal" style="--d:80ms" data-kind="tool" data-tags="tool">
+            <div class="project-top">
+              <span class="project-icon kind-tool" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m6.5 10 3 2.5-3 2.5M12 15.5h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="project-kind">Tool · Open source</span>
+            </div>
+            <h3 class="project-title">In-browser Linux shell</h3>
+            <p class="project-desc">The terminal at the top of this site: a zsh-style shell in dependency-free JavaScript with a virtual filesystem, pipes, redirects, tab completion, and around 90 commands, including live DNS lookups over DNS-over-HTTPS.</p>
+            <ul class="project-role">
+              <li>Parser, filesystem, and command set built from scratch</li>
+              <li>No frameworks, no dependencies</li>
+            </ul>
+            <ul class="post-tags mono"><li>javascript</li><li>shell</li><li>dns-over-https</li></ul>
+            <p class="project-links"><a href="#top">Try it</a><a href="https://github.com/imooaaz/imoaaz.me" target="_blank" rel="noopener">Code ↗</a></p>
+          </article>
+
+        </div>
+        <p class="filter-empty" hidden>Nothing here yet.</p>
       </div>
     </section>
 
@@ -475,6 +576,7 @@
           <ul>
             <li><a href="/#about">About</a></li>
             <li><a href="/#services">Services</a></li>
+        <li><a href="/#projects">Projects</a></li>
             <li><a href="/#experience">Experience</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="/#contact">Contact</a></li>

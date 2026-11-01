@@ -10,6 +10,8 @@
   <meta name="theme-color" content="#0b0d10">
 
   <meta property="og:type" content="article">
+  <meta property="og:image" content="https://imoaaz.pages.dev/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
   <meta property="og:title" content="Fuzz the type, not just the value">
   <meta property="og:description" content="Swap the type, not just the payload — a one-line habit that keeps finding authorization bugs.">
   <meta property="og:url" content="https://imoaaz.pages.dev/blog/fuzz-the-type/">
@@ -33,6 +35,7 @@
       <ul class="nav-links" id="nav-links">
         <li><a href="/#about">About</a></li>
         <li><a href="/#services">Services</a></li>
+        <li><a href="/#projects">Projects</a></li>
         <li><a href="/#experience">Experience</a></li>
         <li><a href="/blog/" class="active" aria-current="page">Blog</a></li>
         <li><a href="/#contact" class="nav-cta">Contact</a></li>
@@ -45,12 +48,24 @@
     <article class="post">
       <div class="container">
         <header class="post-header">
-          <p class="post-meta mono"><a href="/blog/">Blog</a> / Sep 14, 2026 / 2 min read</p>
+          <p class="post-meta mono"><a href="/blog/">Blog</a> <span aria-hidden="true">/</span> Bug bounty tips</p>
           <h1 class="post-h1">Fuzz the type, not just the value</h1>
-          <ul class="post-tags mono"><li>bug bounty</li><li>appsec</li><li>tips</li></ul>
+          <p class="post-dek">A one-line habit that keeps uncovering authorization bugs: change the parameter&#x27;s type, not just its payload.</p>
+          <div class="byline">
+            <span class="avatar-face face-sm"><img src="https://avatars.githubusercontent.com/u/70091653?v=4&amp;s=460" onerror="this.onerror=null;this.src='/assets/img/moaaz.jpg'" alt="Moaaz Afifi" width="460" height="460" loading="lazy" referrerpolicy="no-referrer"></span>
+            <div>
+              <p class="byline-name">Moaaz Afifi</p>
+              <p class="byline-meta mono">Sep 14, 2026 · 2 min read</p>
+            </div>
+          </div>
         </header>
 
-        <div class="post-body">
+        <figure class="post-cover">
+          <img src="/assets/img/blog/fuzz-the-type.svg" alt="" width="1200" height="630">
+        </figure>
+
+        <div class="post-layout">
+          <div class="post-body">
           <p>
             Next time you hit an auth or permission check, don't just fuzz the
             value — <strong>fuzz the type</strong>.
@@ -107,9 +122,58 @@
           </p>
         </div>
 
-        <p class="post-back">
-          <a class="btn" href="/blog/">← All posts</a>
-        </p>
+          <aside class="post-aside" aria-label="Article tools">
+            <nav class="toc" aria-label="On this page" hidden>
+              <p class="aside-head mono">On this page</p>
+              <ol class="toc-list"></ol>
+            </nav>
+            <div class="share">
+              <p class="aside-head mono">Share</p>
+              <div class="share-row">
+                <button class="btn-copy share-btn" type="button" data-copy="https://imoaaz.pages.dev/blog/fuzz-the-type/" aria-label="Copy link to this article"><span class="btn-copy-label" aria-live="polite">Copy link</span></button>
+                <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://imoaaz.pages.dev/blog/fuzz-the-type/" target="_blank" rel="noopener">LinkedIn</a>
+                <a class="share-btn" href="https://x.com/intent/post?url=https://imoaaz.pages.dev/blog/fuzz-the-type/&amp;text=Fuzz%20the%20type,%20not%20just%20the%20value" target="_blank" rel="noopener">X</a>
+              </div>
+            </div>
+            <ul class="post-tags mono aside-tags"><li>bug bounty</li><li>appsec</li><li>tips</li></ul>
+          </aside>
+        </div>
+
+        <section class="post-end">
+          <div class="author-card">
+            <span class="avatar-face face-lg"><img src="https://avatars.githubusercontent.com/u/70091653?v=4&amp;s=460" onerror="this.onerror=null;this.src='/assets/img/moaaz.jpg'" alt="Moaaz Afifi" width="460" height="460" loading="lazy" referrerpolicy="no-referrer"></span>
+            <div>
+              <p class="author-name">Written by Moaaz Afifi</p>
+              <p class="author-bio">Cybersecurity engineer, penetration tester, and co-founder of Raqyan. CVE-2024-36436 · eCPPT · eWPTX · eMAPT · eAIS.</p>
+              <p class="author-links"><a href="/#contact">Work with me</a><a href="https://www.linkedin.com/in/imooaaz/" target="_blank" rel="noopener me">LinkedIn ↗</a><a href="https://imooaaz.medium.com/" target="_blank" rel="noopener me">Medium ↗</a></p>
+            </div>
+          </div>
+
+          <div class="more-posts">
+            <div class="more-head">
+              <h2 class="more-title">More write-ups</h2>
+              <a class="more-all" href="/blog/">All posts →</a>
+            </div>
+            <div class="card-grid card-grid-2">
+            <a class="post-card" href="/blog/comments-to-rce/">
+              <div class="post-card-media"><img src="/assets/img/blog/comments-to-rce.svg" alt="" width="1200" height="630" loading="lazy"></div>
+              <div class="post-card-body">
+                <p class="post-card-kicker mono">Dec 20, 2024 · 6 min read</p>
+                <h3 class="post-card-title">From Comments to Command Execution: How an E-Book Platform Gave Me RCE</h3>
+                <span class="read-more">Read article <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+            <a class="post-card" href="/blog/waf-bypass/">
+              <div class="post-card-media"><img src="/assets/img/blog/waf-bypass.svg" alt="" width="1200" height="630" loading="lazy"></div>
+              <div class="post-card-body">
+                <p class="post-card-kicker mono">Dec 5, 2024 · 3 min read</p>
+                <h3 class="post-card-title">From Frustration to Exploitation: How a Link Shortener Helped Me Bypass WAF</h3>
+                <span class="read-more">Read article <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+            </div>
+          </div>
+        </section>
       </div>
     </article>
 
@@ -128,6 +192,7 @@
           <ul>
             <li><a href="/#about">About</a></li>
             <li><a href="/#services">Services</a></li>
+        <li><a href="/#projects">Projects</a></li>
             <li><a href="/#experience">Experience</a></li>
             <li><a href="/blog/">Blog</a></li>
             <li><a href="/#contact">Contact</a></li>

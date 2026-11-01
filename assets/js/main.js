@@ -207,4 +207,61 @@
     window.addEventListener("load", ensureSets);
     window.addEventListener("resize", ensureSets);
   }
+
+  /* ================= filters (blog topics, project kinds) ================= */
+  document.querySelectorAll(".filter-chips").forEach(function (group) {
+    var grid = document.querySelector(group.getAttribute("data-target") || "#post-grid");
+    if (!grid) return;
+    var chips = Array.prototype.slice.call(group.querySelectorAll(".chip"));
+    var items = Array.prototype.slice.call(grid.querySelectorAll("[data-tags]"));
+    var empty = grid.parentNode.querySelector(".filter-empty");
+    chips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        var f = chip.getAttribute("data-filter");
+        chips.forEach(function (c) {
+          var on = c === chip;
+          c.classList.toggle("is-active", on);
+          c.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        var shown = 0;
+        items.forEach(function (it) {
+          var match = f === "all" || it.getAttribute("data-tags").split(",").indexOf(f) !== -1;
+          it.hidden = !match;
+          if (match) { shown++; it.classList.add("in"); }
+        });
+        if (empty) empty.hidden = shown > 0;
+      });
+    });
+  });
+
+  /* ================= article: table of contents ================= */
+  var toc = document.querySelector(".toc");
+  var heads = Array.prototype.slice.call(document.querySelectorAll(".post-body h2"));
+  if (toc && heads.length >= 2) {
+    var list = toc.querySelector(".toc-list");
+    var links = heads.map(function (h, i) {
+      if (!h.id) {
+        h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "section-" + (i + 1);
+      }
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.textContent = h.textContent;
+      li.appendChild(a);
+      list.appendChild(li);
+      return a;
+    });
+    toc.hidden = false;
+    var tocTick = false;
+    var tocSync = function () {
+      tocTick = false;
+      var mark = window.innerHeight * 0.3, idx = -1;
+      heads.forEach(function (h, i) { if (h.getBoundingClientRect().top <= mark) idx = i; });
+      links.forEach(function (a, i) { a.classList.toggle("active", i === idx); });
+    };
+    window.addEventListener("scroll", function () {
+      if (!tocTick) { tocTick = true; window.requestAnimationFrame(tocSync); }
+    }, { passive: true });
+    tocSync();
+  }
 })();

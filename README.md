@@ -45,6 +45,18 @@ Pushing to GitHub does **not** auto-deploy (direct-upload project). After editin
 2. Cloudflare Pages dashboard → the `imoaaz` project → **Custom domains** → set `imoaaz.me`.
 3. Update the `og:url` / `og:image` absolute URLs in `index.html` if they still point at the pages.dev subdomain.
 
+## Profile photo
+
+The photo loads from the GitHub avatar (`avatars.githubusercontent.com/u/70091653`), so changing your GitHub profile picture updates the site automatically (allow a few hours for caching). If GitHub is unreachable it falls back to `assets/img/moaaz.jpg`; replace that file too when you change the photo. LinkedIn photo URLs are signed and expire, so they can't be used as a permanent source.
+
+## Adding a project
+
+Projects live in the `#projects` section of `index.html`. Copy one `<article class="project">` block, set `data-kind` / `data-tags` to `product`, `tool`, or `research`, and keep only the links that exist (Code, Live, Advisory, Case study).
+
+## Adding a blog post
+
+Copy an existing folder under `blog/`, add a cover SVG in `assets/img/blog/` (1200×630), and add a card to `blog/index.html`, the home "Writing" list, and the "More write-ups" block of the other posts.
+
 ## Content notes
 
 - All experience, certifications, skills, and the CVE-2024-36436 record reflect the real LinkedIn profile — don't pad them with anything unverified, and keep personal details (country, dates beyond job history) off the page.

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="t">
+  <title id="t">A firewall shield blocks the direct path; a link-shortener route goes around it</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#151a22"/>
+      <stop offset="1" stop-color="#0b0d10"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#1d232c" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.45">
+      <stop offset="0" stop-color="#8bb4d4" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#8bb4d4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22303d"/>
+      <stop offset="1" stop-color="#151b23"/>
+    </linearGradient>
+    <marker id="arrA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#e5ac52"/>
+    </marker>
+    <marker id="arrR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#ff6961"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <g font-family="ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace">
+    <!-- client node -->
+    <g transform="translate(110 280)">
+      <rect width="150" height="100" rx="16" fill="#1b2029" stroke="#2f3743" stroke-width="2"/>
+      <rect x="18" y="18" width="114" height="54" rx="6" fill="#12161c"/>
+      <text x="75" y="52" fill="#8b95a3" font-size="17" text-anchor="middle">client</text>
+    </g>
+
+    <!-- target node -->
+    <g transform="translate(940 280)">
+      <rect width="150" height="100" rx="16" fill="#1b2029" stroke="#2f3743" stroke-width="2"/>
+      <g fill="#3a4350"><rect x="20" y="22" width="110" height="12" rx="4"/><rect x="20" y="44" width="110" height="12" rx="4"/><rect x="20" y="66" width="110" height="12" rx="4"/></g>
+      <circle cx="116" cy="28" r="4" fill="#4ade80"/>
+      <text x="75" y="130" fill="#8b95a3" font-size="17" text-anchor="middle">target</text>
+    </g>
+
+    <!-- direct path, blocked -->
+    <path d="M270 330 H 520" stroke="#ff6961" stroke-width="4" stroke-dasharray="10 10" marker-end="url(#arrR)"/>
+
+    <!-- shield / WAF -->
+    <g transform="translate(540 220)">
+      <path d="M60 0 L120 22 V 104 C 120 160, 92 196, 60 216 C 28 196, 0 160, 0 104 V 22 Z" fill="url(#shield)" stroke="#8bb4d4" stroke-width="3"/>
+      <text x="60" y="104" fill="#8bb4d4" font-size="22" text-anchor="middle">WAF</text>
+      <text x="60" y="134" fill="#ff6961" font-size="17" text-anchor="middle">403</text>
+    </g>
+
+    <!-- route around: via the link shortener -->
+    <path d="M200 270 C 220 130, 420 100, 600 110 C 780 120, 980 130, 1010 270" fill="none" stroke="#e5ac52" stroke-width="4" marker-end="url(#arrA)"/>
+    <g transform="translate(560 72)">
+      <rect width="84" height="64" rx="16" fill="#2a2214" stroke="#e5ac52" stroke-width="2"/>
+      <g fill="none" stroke="#e5ac52" stroke-width="5" stroke-linecap="round" transform="translate(42 32) rotate(-35)">
+        <rect x="-26" y="-9" width="28" height="18" rx="9"/>
+        <rect x="-2" y="-9" width="28" height="18" rx="9"/>
+      </g>
+    </g>
+    <text x="602" y="165" fill="#e5ac52" font-size="16" text-anchor="middle">built-in link shortener</text>
+
+    <text x="600" y="520" fill="#6d7785" font-size="17" text-anchor="middle">the fastest way through is sometimes around</text>
+  </g>
+</svg>
