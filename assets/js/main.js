@@ -61,7 +61,7 @@
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0, rootMargin: "0px 0px -6% 0px" }
     );
     revealEls.forEach(function (el) { ro.observe(el); });
   } else {
@@ -81,36 +81,113 @@
     }, { passive: true });
   }
 
-  /* ================= nav scroll-spy ================= */
-  var navLinks = Array.prototype.slice.call(
-    document.querySelectorAll(".nav-links a")
-  );
-  var sections = navLinks
-    .filter(function (a) { return a.getAttribute("href").charAt(0) === "#"; })
-    .map(function (a) { return document.querySelector(a.getAttribute("href")); })
-    .filter(Boolean);
-
-  if ("IntersectionObserver" in window && sections.length) {
-    var spy = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          navLinks.forEach(function (a) {
-            a.classList.toggle(
-              "active",
-              a.getAttribute("href") === "#" + entry.target.id
-            );
-          });
-        });
-      },
-      { rootMargin: "-40% 0px -55% 0px" }
-    );
-    sections.forEach(function (s) { spy.observe(s); });
+  /* ================= mobile nav toggle ================= */
+  var navToggle = document.querySelector(".nav-toggle");
+  if (header && navToggle) {
+    var setNav = function (open) {
+      header.classList.toggle("nav-open", open);
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      navToggle.textContent = open ? "close" : "menu";
+    };
+    navToggle.addEventListener("click", function () {
+      setNav(!header.classList.contains("nav-open"));
+    });
+    header.querySelectorAll(".nav-links a").forEach(function (a) {
+      a.addEventListener("click", function () { setNav(false); });
+    });
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape" && header.classList.contains("nav-open")) {
+        setNav(false);
+        navToggle.focus();
+      }
+    });
+    document.addEventListener("click", function (ev) {
+      if (!header.contains(ev.target)) setNav(false);
+    });
   }
+
+  /* ================= nav scroll-spy ================= */
+  /* tracks every top-level section, so sections without a nav link
+     (writing, skills, certs) clear the highlight instead of leaving a stale one */
+  var navLinks = Array.prototype.slice.call(
+    document.querySelectorAll('.nav-links a[href^="#"]')
+  );
+  var spySections = Array.prototype.slice.call(
+    document.querySelectorAll("main > section[id]")
+  );
+  if (navLinks.length && spySections.length) {
+    var spyTick = false;
+    var spySync = function () {
+      spyTick = false;
+      var h = document.documentElement;
+      var mark = window.innerHeight * 0.35;
+      var current = null;
+      if (window.innerHeight + window.scrollY >= h.scrollHeight - 4) {
+        current = spySections[spySections.length - 1];
+      } else {
+        spySections.forEach(function (s) {
+          if (s.getBoundingClientRect().top <= mark) current = s;
+        });
+      }
+      var id = current ? "#" + current.id : "";
+      navLinks.forEach(function (a) {
+        var on = a.getAttribute("href") === id;
+        a.classList.toggle("active", on);
+        if (on) a.setAttribute("aria-current", "true");
+        else a.removeAttribute("aria-current");
+      });
+    };
+    window.addEventListener("scroll", function () {
+      if (!spyTick) {
+        spyTick = true;
+        window.requestAnimationFrame(spySync);
+      }
+    }, { passive: true });
+    window.addEventListener("resize", spySync);
+    spySync();
+  }
+
+  /* ================= copy email ================= */
+  document.querySelectorAll("[data-copy]").forEach(function (btn) {
+    var label = btn.querySelector(".btn-copy-label") || btn;
+    var original = label.textContent;
+    var timer;
+    var fallbackCopy = function (text) {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      return ok ? Promise.resolve() : Promise.reject();
+    };
+    btn.addEventListener("click", function () {
+      var text = btn.getAttribute("data-copy");
+      var p = navigator.clipboard && window.isSecureContext
+        ? navigator.clipboard.writeText(text).catch(function () { return fallbackCopy(text); })
+        : fallbackCopy(text);
+      p.then(function () {
+        btn.classList.add("copied");
+        label.textContent = "copied ✓";
+      }, function () {
+        label.textContent = "copy failed";
+      }).then(function () {
+        window.clearTimeout(timer);
+        timer = window.setTimeout(function () {
+          btn.classList.remove("copied");
+          label.textContent = original;
+        }, 1800);
+      });
+    });
+  });
 
   /* ================= logo marquee: seamless loop ================= */
   var mTrack = document.querySelector(".marquee-track");
-  if (mTrack) {
+  if (mTrack && !reduced) {
     var mSet = mTrack.querySelector(".marquee-set");
     var PX_PER_SEC = 90;
     var ensureSets = function () {
@@ -592,45 +669,41 @@
       } }
   ];
 
+  /* a chip click mid-boot fast-forwards the rest instead of interleaving */
+  var fastBoot = reduced;
+  function pause(ms) { return fastBoot ? Promise.resolve() : wait(ms); }
+
   async function typeCmd(cmd) {
     var p = line('<span class="p">$ </span><span class="c"></span>', "cmd");
     var target = p.querySelector(".c");
-    if (reduced) {
-      target.textContent = cmd;
-      return;
-    }
     for (var i = 0; i <= cmd.length; i++) {
+      if (fastBoot) { target.textContent = cmd; break; }
       target.textContent = cmd.slice(0, i);
       body.scrollTop = body.scrollHeight;
       await wait(55);
     }
   }
 
-  var booted = false;
-  async function bootSequence() {
-    if (booted) return;
-    booted = true;
-    if (reduced) {
-      boot.forEach(function (s) {
-        line('<span class="p">$ </span>' + s.cmd, "cmd");
-        s.out();
-      });
-      finishBoot();
-      return;
-    }
+  var bootPromise = null;
+  function bootSequence() {
+    if (!bootPromise) bootPromise = runBoot();
+    return bootPromise;
+  }
+  async function runBoot() {
     for (var i = 0; i < boot.length; i++) {
       await typeCmd(boot[i].cmd);
-      await wait(160);
+      await pause(160);
       boot[i].out();
-      await wait(340);
+      await pause(340);
     }
-    await wait(200);
+    await pause(200);
     finishBoot();
   }
 
   function finishBoot() {
     line('<span class="t-dim">[~] type help — TAB completes paths, ↑ recalls · this shell is real-ish</span>');
     inputRow.hidden = false;
+    realInput.tabIndex = 0;
     setPrompt();
   }
 
@@ -653,7 +726,10 @@
 
   /* ---------------- input handling ---------------- */
   term.addEventListener("click", function () {
-    if (!inputRow.hidden) realInput.focus();
+    /* don't steal the click while the visitor is selecting output */
+    var sel = window.getSelection && String(window.getSelection());
+    if (sel) return;
+    if (!inputRow.hidden) realInput.focus({ preventScroll: true });
   });
 
   realInput.addEventListener("input", function () {
@@ -748,9 +824,11 @@
   /* chip shortcuts */
   document.querySelectorAll("#term-chips button").forEach(function (b) {
     b.addEventListener("click", function () {
-      bootSequence();
-      run(b.getAttribute("data-cmd"));
-      realInput.focus({ preventScroll: true });
+      fastBoot = true;
+      bootSequence().then(function () {
+        run(b.getAttribute("data-cmd"));
+        realInput.focus({ preventScroll: true });
+      });
     });
   });
 })();

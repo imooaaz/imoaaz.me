@@ -33,7 +33,8 @@
   <header class="site-header">
     <nav class="nav container" aria-label="Primary">
       <a class="nav-prompt" href="#top">moaaz@imoaaz:~<span class="cursor" aria-hidden="true"></span></a>
-      <ul class="nav-links">
+      <button class="nav-toggle mono" type="button" aria-expanded="false" aria-controls="nav-links">menu</button>
+      <ul class="nav-links" id="nav-links">
         <li><a href="#whoami">whoami</a></li>
         <li><a href="#work">work</a></li>
         <li><a href="/blog/">blog</a></li>
@@ -78,17 +79,17 @@
         </div>
 
         <div class="hero-right">
-          <div class="term" id="term" aria-label="Interactive terminal — type help">
+          <div class="term" id="term" role="region" aria-label="Interactive terminal — type help">
             <div class="term-bar" aria-hidden="true">
               <span class="tdot td-r"></span><span class="tdot td-a"></span><span class="tdot td-g"></span>
               <span class="term-title mono">moaaz@imoaaz: ~/portfolio</span>
             </div>
-            <div class="term-body mono" id="term-body"></div>
+            <div class="term-body mono" id="term-body" aria-live="polite"></div>
             <div class="term-input mono" id="term-input-row" hidden>
               <span class="ti-prompt">$</span>
               <span class="ti-text" id="ti-text"></span><span class="cursor" aria-hidden="true"></span>
             </div>
-            <input id="term-real-input" class="term-real-input" autocomplete="off" autocapitalize="off" spellcheck="false" tabindex="-1" aria-hidden="true">
+            <input id="term-real-input" class="term-real-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" tabindex="-1" aria-label="Terminal command">
           </div>
           <div class="term-chips mono" id="term-chips">
             <button type="button" data-cmd="help">help</button>
@@ -159,7 +160,7 @@
     <!-- ============================== logo marquee ============================== -->
     <section class="logo-strip" aria-label="Brands through client work">
       <div class="container">
-        <p class="logo-strip-cap mono">// brands through client work</p>
+        <p class="logo-strip-cap mono">brands through client work</p>
       </div>
       <div class="marquee">
         <div class="marquee-track">
@@ -254,7 +255,6 @@
         <h2 class="section-title mono reveal">experience</h2>
 
         <ol class="timeline reveal">
-          <div class="tl-rail" aria-hidden="true"></div>
           <li class="tl-item reveal">
             <p class="tl-dates mono">2023 — present</p>
             <h3 class="tl-role">Cyber Security Researcher</h3>
@@ -382,15 +382,16 @@
 
         <div class="contact-email-wrap reveal" style="--d:80ms">
           <a class="contact-email mono" href="mailto:imooaaz@gmail.com">imooaaz@gmail.com</a>
-          <button class="btn-copy mono" type="button" data-copy="imooaaz@gmail.com">
-            <span class="btn-copy-label">copy</span>
+          <button class="btn-copy mono" type="button" data-copy="imooaaz@gmail.com" aria-label="Copy email address">
+            <span class="btn-copy-label" aria-live="polite">copy</span>
           </button>
         </div>
 
         <ul class="socials mono reveal" style="--d:160ms" aria-label="Elsewhere">
-          <li><a href="https://www.linkedin.com/in/imooaaz/" rel="noopener me">linkedin /in/imooaaz ↗</a></li>
-          <li><a href="https://github.com/m0442" rel="noopener me">github /m0442 ↗</a></li>
-          <li><a href="https://x.com/imooaaz" rel="noopener me">x @imooaaz ↗</a></li>
+          <li><a href="https://www.linkedin.com/in/imooaaz/" target="_blank" rel="noopener me">linkedin /in/imooaaz ↗</a></li>
+          <li><a href="https://github.com/m0442" target="_blank" rel="noopener me">github /m0442 ↗</a></li>
+          <li><a href="https://x.com/imooaaz" target="_blank" rel="noopener me">x @imooaaz ↗</a></li>
+          <li><a href="https://imooaaz.medium.com/" target="_blank" rel="noopener me">medium @imooaaz ↗</a></li>
         </ul>
       </div>
     </section>
@@ -401,6 +402,9 @@
     <div class="container footer-inner mono">
       <p>© 2026 Moaaz Afifi</p>
       <p class="footer-links">
+        <a href="https://www.linkedin.com/in/imooaaz/" target="_blank" rel="noopener me">linkedin</a>
+        <a href="https://github.com/m0442" target="_blank" rel="noopener me">github</a>
+        <a href="https://x.com/imooaaz" target="_blank" rel="noopener me">x</a>
         <a href="/.well-known/security.txt">security.txt</a>
       </p>
     </div>
