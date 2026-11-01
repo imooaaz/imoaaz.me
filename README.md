@@ -9,11 +9,12 @@ Live: **https://imoaaz.me** (custom domain, when purchased) · currently served 
 Hand-built static site. One HTML page, one stylesheet, one script — no framework, no build step, no dependencies.
 
 - `index.html` — all content. Edit this to change anything (email, links, experience entries).
-- `assets/css/style.css` — amber-phosphor terminal theme. Design tokens live in `:root` at the top.
-- `assets/js/main.js` — typed hero prompt, nav highlighting, copy-email button.
+- `assets/css/style.css` — design system (Inter + JetBrains Mono, one amber accent, fixed type scale). Tokens live in `:root` at the top.
+- `assets/js/main.js` — header, mobile menu, nav highlighting, scroll reveals, copy-email button.
+- `assets/js/terminal.js` — the macOS-style interactive shell in the hero (virtual filesystem, pipes/redirects, ~90 commands; `dig`/`nslookup`/`host` hit real DNS-over-HTTPS, `curl`/`ping` hit this site).
 - `.well-known/security.txt` — vulnerability disclosure contact (RFC 9116).
 
-Fonts (IBM Plex Mono / IBM Plex Sans) load from Google Fonts.
+Fonts (Inter / JetBrains Mono) load from Google Fonts.
 
 ## Run locally
 

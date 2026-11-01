@@ -6,28 +6,28 @@
   <title>404 — Moaaz Afifi</title>
   <meta name="robots" content="noindex">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#0a0d0c">
+  <meta name="theme-color" content="#0b0d10">
 
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-<body>
+<body id="top">
 
-  <a class="skip-link" href="#main">skip to content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <nav class="nav container" aria-label="Primary">
-      <a class="nav-prompt" href="/">moaaz@imoaaz:~<span class="cursor" aria-hidden="true"></span></a>
-      <button class="nav-toggle mono" type="button" aria-expanded="false" aria-controls="nav-links">menu</button>
+      <a class="brand" href="/"><span class="brand-mark mono" aria-hidden="true">MA</span>Moaaz Afifi</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <ul class="nav-links" id="nav-links">
-        <li><a href="/#whoami">whoami</a></li>
-        <li><a href="/#work">work</a></li>
-        <li><a href="/blog/">blog</a></li>
-        <li><a href="/#experience">experience</a></li>
-        <li><a href="/#contact">contact</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#experience">Experience</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact" class="nav-cta">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -37,16 +37,54 @@
       <div class="glow glow-a" aria-hidden="true"></div>
       <div class="glow glow-b" aria-hidden="true"></div>
       <div class="container">
-        <p class="hero-kicker mono">// http 404</p>
-        <h1 class="hero-name">Not found</h1>
-        <p class="hero-role mono">cat: this page: No such file or directory</p>
+        <p class="hero-kicker mono">Error 404</p>
+        <h1 class="hero-name">Page not found</h1>
+        <p class="hero-role">The page you're looking for doesn't exist or has been moved.</p>
         <div class="hero-actions">
-          <a class="btn btn-solid" href="/">home</a>
-          <a class="btn" href="/blog/">blog</a>
+          <a class="btn btn-solid" href="/">Back to home</a>
+          <a class="btn" href="/blog/">Read the blog</a>
         </div>
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand" href="/"><span class="brand-mark mono" aria-hidden="true">MA</span>Moaaz Afifi</a>
+          <p class="footer-tag">Cybersecurity engineer, penetration tester, and co-founder of Raqyan.</p>
+          <a class="footer-mail" href="mailto:imooaaz@gmail.com">imooaaz@gmail.com</a>
+        </div>
+        <nav class="footer-col" aria-label="Footer">
+          <p class="footer-head">Site</p>
+          <ul>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#experience">Experience</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="footer-col">
+          <p class="footer-head">Elsewhere</p>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/imooaaz/" target="_blank" rel="noopener me">LinkedIn ↗</a></li>
+            <li><a href="https://github.com/m0442" target="_blank" rel="noopener me">GitHub ↗</a></li>
+            <li><a href="https://x.com/imooaaz" target="_blank" rel="noopener me">X ↗</a></li>
+            <li><a href="https://imooaaz.medium.com/" target="_blank" rel="noopener me">Medium ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Moaaz Afifi. All rights reserved.</p>
+        <p class="footer-links">
+          <a href="/.well-known/security.txt">security.txt</a>
+          <a href="#top" class="to-top">Back to top ↑</a>
+        </p>
+      </div>
+    </div>
+  </footer>
 
   <script src="/assets/js/main.js" defer></script>
 </body>
