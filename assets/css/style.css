@@ -2030,6 +2030,8 @@ abbr[title] { text-decoration: underline dotted rgba(185, 193, 204, 0.5); text-u
 .field.invalid input,
 .field.invalid textarea { border-color: rgba(248, 113, 113, 0.6); }
 .field-error { font-size: var(--fs-xs); color: var(--red); margin: 0; }
+.captcha-field { min-height: 78px; }
+.captcha-field .h-captcha { max-width: 100%; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .form-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 0.9rem 1.2rem; margin-top: 0.25rem; }
 .form-submit[disabled] { opacity: 0.65; cursor: progress; transform: none; }

@@ -270,6 +270,26 @@
      otherwise opens the visitor's email app with the message filled in. */
   var form = document.getElementById("contact-form");
   if (form) {
+    var captchaBox = form.querySelector(".h-captcha");
+    var loadCaptcha = function () {
+      if (!captchaBox || window.hcaptcha || document.getElementById("hcaptcha-api")) return;
+      if (window.innerWidth < 400) captchaBox.setAttribute("data-size", "compact");
+      var sc = document.createElement("script");
+      sc.id = "hcaptcha-api";
+      sc.src = "https://js.hcaptcha.com/1/api.js";
+      sc.async = true;
+      sc.defer = true;
+      document.head.appendChild(sc);
+    };
+    if (captchaBox) {
+      if ("IntersectionObserver" in window) {
+        var cio = new IntersectionObserver(function (entries) {
+          if (entries.some(function (e) { return e.isIntersecting; })) { cio.disconnect(); loadCaptcha(); }
+        }, { rootMargin: "600px 0px" });
+        cio.observe(form);
+      } else loadCaptcha();
+      form.addEventListener("focusin", loadCaptcha, { once: true });
+    }
     var statusEl = form.querySelector(".form-status");
     var submitBtn = form.querySelector(".form-submit");
     var submitLabel = form.querySelector(".form-submit-label");
@@ -345,6 +365,13 @@
         message: form.elements.message.value.trim()
       };
       var key = (form.getAttribute("data-web3forms-key") || "").trim();
+      var tokenEl = form.querySelector("[name='h-captcha-response']");
+      var captchaToken = tokenEl ? tokenEl.value : "";
+      if (captchaBox && key && !captchaToken) {
+        setStatus(window.hcaptcha ? "Please complete the captcha." : "Loading the captcha, one moment.", "err");
+        loadCaptcha();
+        return;
+      }
 
       if (!key) {
         var to = form.getAttribute("data-to");
@@ -369,12 +396,14 @@
           replyto: data.email,
           topic: data.topic,
           message: data.message,
+          "h-captcha-response": captchaToken,
           botcheck: false
         })
       }).then(function (r) {
         return r.json().catch(function () { return { success: false }; });
       }).then(function (res) {
         busy(false);
+        if (window.hcaptcha) { try { window.hcaptcha.reset(); } catch (e) {} }
         if (res && res.success) {
           form.classList.add("sent");
           form.reset();

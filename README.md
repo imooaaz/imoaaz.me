@@ -56,6 +56,8 @@ The form in `#contact` sends through [Web3Forms](https://web3forms.com) (free, n
 1. Go to web3forms.com, enter `imooaaz@gmail.com`, and copy the Access Key they email you.
 2. Paste it into `data-web3forms-key=""` on `<form id="contact-form">` in `index.html`, commit, deploy.
 
+The form includes hCaptcha (Web3Forms' free-plan sitekey, loaded lazily near the form) because Web3Forms has no per-visitor rate limit, only a monthly quota. **Also enable hCaptcha for this form in the Web3Forms dashboard** (app.web3forms.com → your form → Spam protection) so the server rejects submissions without a solved captcha, not just the browser.
+
 The key is meant to be public (it only lets people send messages *to* you). Until it is set, the Send button opens the visitor's email app with the message pre-filled, so nothing is lost.
 
 ## Adding a project
