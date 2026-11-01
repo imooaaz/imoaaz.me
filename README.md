@@ -49,6 +49,15 @@ Pushing to GitHub does **not** auto-deploy (direct-upload project). After editin
 
 The photo loads from the GitHub avatar (`avatars.githubusercontent.com/u/70091653`), so changing your GitHub profile picture updates the site automatically (allow a few hours for caching). If GitHub is unreachable it falls back to `assets/img/moaaz.jpg`; replace that file too when you change the photo. LinkedIn photo URLs are signed and expire, so they can't be used as a permanent source.
 
+## Contact form
+
+The form in `#contact` sends through [Web3Forms](https://web3forms.com) (free, no backend). To turn it on:
+
+1. Go to web3forms.com, enter `imooaaz@gmail.com`, and copy the Access Key they email you.
+2. Paste it into `data-web3forms-key=""` on `<form id="contact-form">` in `index.html`, commit, deploy.
+
+The key is meant to be public (it only lets people send messages *to* you). Until it is set, the Send button opens the visitor's email app with the message pre-filled, so nothing is lost.
+
 ## Adding a project
 
 Projects live in the `#projects` section of `index.html`. Copy one `<article class="project">` block, set `data-kind` / `data-tags` to `product`, `tool`, or `research`, and keep only the links that exist (Code, Live, Advisory, Case study).

@@ -264,4 +264,130 @@
     }, { passive: true });
     tocSync();
   }
+
+  /* ================= contact form =================
+     Sends through Web3Forms when data-web3forms-key is set;
+     otherwise opens the visitor's email app with the message filled in. */
+  var form = document.getElementById("contact-form");
+  if (form) {
+    var statusEl = form.querySelector(".form-status");
+    var submitBtn = form.querySelector(".form-submit");
+    var submitLabel = form.querySelector(".form-submit-label");
+    var MESSAGES = {
+      name: "Please enter your name.",
+      email: "Please enter a valid email address.",
+      message: "Please write at least 20 characters."
+    };
+
+    var setError = function (input, msg) {
+      var field = input.closest(".field");
+      var err = field.querySelector(".field-error");
+      if (msg) {
+        if (!err) {
+          err = document.createElement("p");
+          err.className = "field-error";
+          err.id = input.id + "-error";
+          field.appendChild(err);
+        }
+        err.textContent = msg;
+        field.classList.add("invalid");
+        input.setAttribute("aria-invalid", "true");
+        input.setAttribute("aria-describedby", err.id);
+      } else {
+        if (err) err.remove();
+        field.classList.remove("invalid");
+        input.removeAttribute("aria-invalid");
+        input.removeAttribute("aria-describedby");
+      }
+    };
+    var validate = function () {
+      var firstBad = null;
+      ["name", "email", "message"].forEach(function (n) {
+        var el = form.elements[n];
+        el.value = el.value.trim() === "" ? "" : el.value;
+        var min = parseInt(el.getAttribute("minlength") || "1", 10);
+        var ok = el.checkValidity() && el.value.trim().length >= min;
+        setError(el, ok ? "" : MESSAGES[n]);
+        if (!ok && !firstBad) firstBad = el;
+      });
+      if (firstBad) firstBad.focus();
+      return !firstBad;
+    };
+    ["name", "email", "message"].forEach(function (n) {
+      form.elements[n].addEventListener("blur", function () {
+        var min = parseInt(this.getAttribute("minlength") || "1", 10);
+        if (this.value) setError(this, this.checkValidity() && this.value.trim().length >= min ? "" : MESSAGES[n]);
+      });
+      form.elements[n].addEventListener("input", function () {
+        if (this.closest(".field").classList.contains("invalid") && this.checkValidity()) setError(this, "");
+      });
+    });
+
+    var setStatus = function (msg, kind) {
+      statusEl.textContent = msg;
+      statusEl.className = "form-status" + (kind ? " " + kind : "");
+    };
+    var busy = function (on) {
+      submitBtn.disabled = on;
+      submitBtn.classList.toggle("is-loading", on);
+      submitLabel.textContent = on ? "Sending" : "Send message";
+    };
+
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      if (form.elements.botcheck.checked) return; /* bot */
+      if (!validate()) { setStatus("Please fix the highlighted fields.", "err"); return; }
+
+      var data = {
+        name: form.elements.name.value.trim(),
+        email: form.elements.email.value.trim(),
+        topic: form.elements.topic.value,
+        message: form.elements.message.value.trim()
+      };
+      var key = (form.getAttribute("data-web3forms-key") || "").trim();
+
+      if (!key) {
+        var to = form.getAttribute("data-to");
+        var subject = "[" + data.topic + "] from " + data.name;
+        var body = data.message + "\n\n— " + data.name + " <" + data.email + ">";
+        window.location.href = "mailto:" + to + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        setStatus("Your email app should open with the message ready to send.", "ok");
+        return;
+      }
+
+      busy(true);
+      setStatus("");
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: key,
+          subject: "New message from the site: " + data.topic,
+          from_name: "imoaaz.pages.dev",
+          name: data.name,
+          email: data.email,
+          replyto: data.email,
+          topic: data.topic,
+          message: data.message,
+          botcheck: false
+        })
+      }).then(function (r) {
+        return r.json().catch(function () { return { success: false }; });
+      }).then(function (res) {
+        busy(false);
+        if (res && res.success) {
+          form.classList.add("sent");
+          form.reset();
+          setStatus("Thanks, your message is on its way. I'll reply by email.", "ok");
+          submitBtn.disabled = true;
+          submitLabel.textContent = "Sent ✓";
+        } else {
+          setStatus("Couldn't send right now. Please email imooaaz@gmail.com directly.", "err");
+        }
+      }).catch(function () {
+        busy(false);
+        setStatus("Network error. Please try again, or email imooaaz@gmail.com directly.", "err");
+      });
+    });
+  }
 })();

@@ -527,56 +527,92 @@
               collaboration, or a vulnerability report — I read every message.
             </p>
 
+            <!-- Messages are delivered by Web3Forms (web3forms.com). Put your access key in
+                 data-web3forms-key. While it's empty, Send opens the visitor's email app instead. -->
+            <form class="contact-form" id="contact-form" data-web3forms-key="" data-to="imooaaz@gmail.com" novalidate>
+              <div class="form-row">
+                <div class="field">
+                  <label for="cf-name">Name</label>
+                  <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="80" placeholder="Your name">
+                </div>
+                <div class="field">
+                  <label for="cf-email">Email</label>
+                  <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="120" placeholder="you@company.com">
+                </div>
+              </div>
+              <div class="field">
+                <label for="cf-topic">What's it about?</label>
+                <select id="cf-topic" name="topic">
+                  <option>Penetration test</option>
+                  <option>Security review</option>
+                  <option>Product security / DevSecOps</option>
+                  <option>Research collaboration</option>
+                  <option>Vulnerability report</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="cf-message">Message</label>
+                <textarea id="cf-message" name="message" rows="5" required minlength="20" maxlength="4000" placeholder="A few lines about what you need, scope, and timeline."></textarea>
+              </div>
+              <!-- spam trap: real visitors never see or fill this -->
+              <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <div class="form-foot">
+                <button class="btn btn-solid form-submit" type="submit"><span class="form-submit-label">Send message</span></button>
+                <p class="form-status" role="status" aria-live="polite"></p>
+              </div>
+            </form>
+          </div>
 
+          <div class="contact-side reveal" style="--d:120ms">
             <div class="contact-card">
-              <p class="contact-card-label">Email</p>
+              <p class="contact-card-label">Or email directly</p>
               <div class="contact-email-wrap">
                 <a class="contact-email" href="mailto:imooaaz@gmail.com">imooaaz@gmail.com</a>
                 <button class="btn-copy" type="button" data-copy="imooaaz@gmail.com" aria-label="Copy email address">
                   <span class="btn-copy-label" aria-live="polite">Copy</span>
                 </button>
               </div>
-              <a class="btn btn-solid contact-cta" href="mailto:imooaaz@gmail.com">Send an email</a>
             </div>
-          </div>
 
-          <ul class="channels reveal" style="--d:120ms" aria-label="Elsewhere">
-            <li>
-              <a class="channel" href="https://www.linkedin.com/in/imooaaz/" target="_blank" rel="noopener me">
-                <span class="channel-name">LinkedIn</span>
-                <span class="channel-handle mono">/in/imooaaz</span>
-                <span class="channel-arrow" aria-hidden="true">↗</span>
-              </a>
-            </li>
-            <li>
-              <a class="channel" href="https://github.com/m0442" target="_blank" rel="noopener me">
-                <span class="channel-name">GitHub</span>
-                <span class="channel-handle mono">/m0442</span>
-                <span class="channel-arrow" aria-hidden="true">↗</span>
-              </a>
-            </li>
-            <li>
-              <a class="channel" href="https://x.com/imooaaz" target="_blank" rel="noopener me">
-                <span class="channel-name">X</span>
-                <span class="channel-handle mono">@imooaaz</span>
-                <span class="channel-arrow" aria-hidden="true">↗</span>
-              </a>
-            </li>
-            <li>
-              <a class="channel" href="https://imooaaz.medium.com/" target="_blank" rel="noopener me">
-                <span class="channel-name">Medium</span>
-                <span class="channel-handle mono">@imooaaz</span>
-                <span class="channel-arrow" aria-hidden="true">↗</span>
-              </a>
-            </li>
-            <li>
-              <a class="channel" href="/.well-known/security.txt">
-                <span class="channel-name">Disclosure</span>
-                <span class="channel-handle mono">security.txt</span>
-                <span class="channel-arrow" aria-hidden="true">→</span>
-              </a>
-            </li>
-          </ul>
+            <ul class="channels" aria-label="Elsewhere">
+              <li>
+                <a class="channel" href="https://www.linkedin.com/in/imooaaz/" target="_blank" rel="noopener me">
+                  <span class="channel-name">LinkedIn</span>
+                  <span class="channel-handle mono">/in/imooaaz</span>
+                  <span class="channel-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
+              <li>
+                <a class="channel" href="https://github.com/m0442" target="_blank" rel="noopener me">
+                  <span class="channel-name">GitHub</span>
+                  <span class="channel-handle mono">/m0442</span>
+                  <span class="channel-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
+              <li>
+                <a class="channel" href="https://x.com/imooaaz" target="_blank" rel="noopener me">
+                  <span class="channel-name">X</span>
+                  <span class="channel-handle mono">@imooaaz</span>
+                  <span class="channel-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
+              <li>
+                <a class="channel" href="https://imooaaz.medium.com/" target="_blank" rel="noopener me">
+                  <span class="channel-name">Medium</span>
+                  <span class="channel-handle mono">@imooaaz</span>
+                  <span class="channel-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
+              <li>
+                <a class="channel" href="/.well-known/security.txt">
+                  <span class="channel-name">Disclosure</span>
+                  <span class="channel-handle mono">security.txt</span>
+                  <span class="channel-arrow" aria-hidden="true">→</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
