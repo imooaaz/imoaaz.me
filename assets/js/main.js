@@ -111,7 +111,7 @@
   /* tracks every top-level section, so sections without a nav link
      (writing, skills, certs) clear the highlight instead of leaving a stale one */
   var navLinks = Array.prototype.slice.call(
-    document.querySelectorAll('.nav-links a[href^="#"]')
+    document.querySelectorAll('.nav-links a[href^="#"], .tabbar a[href^="#"]')
   );
   var spySections = Array.prototype.slice.call(
     document.querySelectorAll("main > section[id]")
