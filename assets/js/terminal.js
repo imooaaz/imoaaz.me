@@ -134,7 +134,7 @@
     file(H + "/README.md", [
       "# Moaaz Afifi",
       "",
-      "Cybersecurity engineer, penetration tester, and co-founder of Raqyan.",
+      "Cyber & Product Security Engineer and co-founder of Raqyan.",
       "",
       "Start here:",
       "  cat about.txt          who I am",
@@ -146,7 +146,7 @@
       "Some files are hidden. ls -a might help."
     ].join("\n") + "\n");
     file(H + "/about.txt", [
-      "Moaaz Afifi: cybersecurity engineer, penetration tester, and",
+      "Moaaz Afifi: cyber & product security engineer and",
       "co-founder of Raqyan, where I lead product delivery, product",
       "security, and DevOps & DevSecOps.",
       "",
@@ -1321,7 +1321,7 @@
       return [
         L("Name:           Moaaz Afifi"),
         L("Role:           Co-Founder & Product Engineer, Raqyan"),
-        L("                Cybersecurity Engineer & Penetration Tester"),
+        L("                Cyber & Product Security Engineer"),
         L("Credentials:    eCPPT, eWPTX, eMAPT, eAIS"),
         L("Disclosures:    CVE-2024-36436"),
         L("Status:         available for engagements", 'Status:         <span class="t-green">available for engagements</span>'),

@@ -1762,7 +1762,8 @@ strong { color: var(--bright); font-weight: 600; }
 
 /* ---------- terminal toggle (phones) ---------- */
 .term-toggle { display: none; }
-.kick-sep { display: inline; }
+.hero-intro .hero-kicker { display: flex; flex-direction: column; gap: 0.15rem; }
+.kick-sep { display: none; }
 
 @media (max-width: 900px) {
   .cv-card { grid-template-columns: auto 1fr; }

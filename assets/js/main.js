@@ -517,7 +517,7 @@
 
     shareBtn.addEventListener("click", function () {
       var url = cvReady ? cvUrl : sectionUrl;
-      var data = { title: "Moaaz Afifi — CV", text: "Moaaz Afifi, Penetration Tester and Co-Founder at Raqyan", url: url };
+      var data = { title: "Moaaz Afifi — CV", text: "Moaaz Afifi, Cyber & Product Security Engineer and Co-Founder at Raqyan", url: url };
       var done = function (msg) {
         shareLabel.textContent = msg;
         setTimeout(function () { shareLabel.textContent = "Share"; }, 1800);
