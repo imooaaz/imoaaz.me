@@ -49,6 +49,14 @@ Pushing to GitHub does **not** auto-deploy (direct-upload project). After editin
 
 The photo loads from the GitHub avatar (`avatars.githubusercontent.com/u/70091653`), so changing your GitHub profile picture updates the site automatically (allow a few hours for caching). If GitHub is unreachable it falls back to `assets/img/moaaz.jpg`; replace that file too when you change the photo. LinkedIn photo URLs are signed and expire, so they can't be used as a permanent source.
 
+## Link-preview image
+
+`assets/img/og.png` (1200×630) is rendered from `tools/og.html`. After editing that file:
+
+```bash
+"/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --window-size=1200,630 --virtual-time-budget=8000 --screenshot="G:\imoaaz.me\assets\img\og.png" "file:///G:/imoaaz.me/tools/og.html"
+```
+
 ## CV
 
 Put the PDF at `assets/cv/Moaaz-Afifi-CV.pdf`, commit, deploy. The CV page (`/cv/`) checks for the file on load: when it exists, **View** and **Download** switch on and the size / date appear; until then they show "coming soon" with a link to request it. **Share** uses the phone's share sheet (or copies the link), and the QR code (`assets/img/cv-qr.svg`) points to `https://imoaaz.pages.dev/cv/`. If the domain changes, regenerate it:
