@@ -39,11 +39,10 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <ul class="nav-links" id="nav-links">
         <li><a href="#experience">Experience</a></li>
-        <li><a href="/cv/">CV</a></li>
-        <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="/blog/">Blog</a></li>
+        <li><a href="/cv/">CV</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
     </nav>
@@ -331,7 +330,7 @@
         <p class="biz-lede reveal">Attackers don't care how big you are. I look at your product the way they do, find what could cost you money or customers, and fix it before it becomes a crisis.</p>
 
         <p class="biz-sub mono reveal">What's at stake</p>
-        <ul class="risk-grid">
+        <ul class="risk-grid swipe">
             <li class="risk reveal" style="--d:0ms">
               <span class="risk-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3 1.2 0 2.3-.1 3.3-.3"/><path d="m17 16 4 4m0-4-4 4"/></svg></span>
               <h3 class="risk-title">Customer data leak</h3>
@@ -398,12 +397,14 @@
     <!-- ============================== about ============================== -->
     <section class="section" id="about">
       <div class="container">
+        <div class="about-grid">
         <h2 class="section-title reveal" data-eyebrow="About">A product security engineer with a developer's background</h2>
 
         <div class="about-text">
           <p class="reveal">I came to security from software development, so I read code, not just responses, and understand what the developer intended.</p>
           <p class="reveal" style="--d:90ms">I work on both sides: shipping software and attacking it.</p>
           <p class="about-meta mono reveal" style="--d:160ms">Languages: Arabic · English</p>
+        </div>
         </div>
       </div>
     </section>
@@ -487,7 +488,7 @@
           </div>
         </div>
 
-        <div class="project-grid" id="project-grid">
+        <div class="project-grid swipe" id="project-grid">
 
           <article class="project reveal" style="--d:80ms" data-kind="tool" data-tags="tool">
             <div class="project-top">
@@ -535,57 +536,41 @@
     <!-- ============================== writing ============================== -->
     <section class="section" id="writing">
       <div class="container">
-        <h2 class="section-title reveal" data-eyebrow="Writing">Research &amp; write-ups</h2>
-
-        <div class="writing-grid">
-          <div class="post-list">
-            <a class="post-row reveal" href="/blog/fuzz-the-type/">
-              <div class="post-thumb"><img src="/assets/img/blog/fuzz-the-type.svg" alt="" width="1200" height="630" loading="lazy"></div>
-              <div class="post-main">
-                <p class="post-date mono">Sep 14, 2026</p>
-                <h3 class="post-title">Fuzz the type, not just the value</h3>
-                <p class="post-excerpt">Change a parameter's type, not just its value, to find authorization bugs.</p>
+        <div class="posts-head">
+          <h2 class="section-title reveal" data-eyebrow="Writing">Research &amp; write-ups</h2>
+          <a class="btn reveal" href="/blog/">View all posts</a>
+        </div>
+        <div class="card-grid card-grid-3 swipe reveal">
+            <a class="post-card" href="/blog/fuzz-the-type/">
+              <div class="post-card-media"><img loading="lazy" src="/assets/img/blog/fuzz-the-type.svg" alt="" width="1200" height="630"></div>
+              <div class="post-card-body">
+                <p class="post-card-kicker mono"><span class="cat cat-eng">Engineering</span><span class="cat cat-sec">Security</span>Sep 14, 2026 · 2 min read</p>
+                <h3 class="post-card-title">Fuzz the type, not just the value</h3>
+                <p class="post-card-excerpt">Change a parameter's type, not just its value, to find authorization bugs.</p>
                 <ul class="post-tags mono"><li>bug bounty</li><li>appsec</li><li>tips</li></ul>
+                <span class="read-more">Read article <span aria-hidden="true">→</span></span>
               </div>
             </a>
-            <a class="post-row reveal" style="--d:70ms" href="/blog/comments-to-rce/">
-              <div class="post-thumb"><img src="/assets/img/blog/comments-to-rce.svg" alt="" width="1200" height="630" loading="lazy"></div>
-              <div class="post-main">
-                <p class="post-date mono">Dec 20, 2024</p>
-                <h3 class="post-title">From Comments to Command Execution: How an E-Book Platform Gave Me RCE</h3>
-                <p class="post-excerpt">From stored XSS in comments to file upload to remote code execution.</p>
+            <a class="post-card" href="/blog/comments-to-rce/">
+              <div class="post-card-media"><img loading="lazy" src="/assets/img/blog/comments-to-rce.svg" alt="" width="1200" height="630"></div>
+              <div class="post-card-body">
+                <p class="post-card-kicker mono"><span class="cat cat-sec">Security</span>Dec 20, 2024 · 6 min read</p>
+                <h3 class="post-card-title">From Comments to Command Execution: How an E-Book Platform Gave Me RCE</h3>
+                <p class="post-card-excerpt">From stored XSS in comments to file upload to remote code execution.</p>
                 <ul class="post-tags mono"><li>rce</li><li>xss</li><li>file upload</li></ul>
+                <span class="read-more">Read article <span aria-hidden="true">→</span></span>
               </div>
             </a>
-            <a class="post-row reveal" style="--d:140ms" href="/blog/waf-bypass/">
-              <div class="post-thumb"><img src="/assets/img/blog/waf-bypass.svg" alt="" width="1200" height="630" loading="lazy"></div>
-              <div class="post-main">
-                <p class="post-date mono">Dec 5, 2024</p>
-                <h3 class="post-title">From Frustration to Exploitation: How a Link Shortener Helped Me Bypass WAF</h3>
-                <p class="post-excerpt">Getting past a WAF through the site's own link shortener.</p>
+            <a class="post-card" href="/blog/waf-bypass/">
+              <div class="post-card-media"><img loading="lazy" src="/assets/img/blog/waf-bypass.svg" alt="" width="1200" height="630"></div>
+              <div class="post-card-body">
+                <p class="post-card-kicker mono"><span class="cat cat-sec">Security</span>Dec 5, 2024 · 3 min read</p>
+                <h3 class="post-card-title">From Frustration to Exploitation: How a Link Shortener Helped Me Bypass WAF</h3>
+                <p class="post-card-excerpt">Getting past a WAF through the site's own link shortener.</p>
                 <ul class="post-tags mono"><li>waf bypass</li><li>xss</li><li>bug bounty</li></ul>
+                <span class="read-more">Read article <span aria-hidden="true">→</span></span>
               </div>
             </a>
-            <p class="all-posts reveal" style="--d:200ms">
-              <a class="btn" href="/blog/">View all posts</a>
-            </p>
-          </div>
-
-          <aside class="blog-side reveal" style="--d:120ms" aria-label="Blog sidebar">
-            <p class="side-head">Latest</p>
-            <ul class="side-posts">
-              <li><a href="/blog/fuzz-the-type/">Fuzz the type, not just the value<span class="side-date mono">Sep 14</span></a></li>
-              <li><a href="/blog/comments-to-rce/">From comments to command execution<span class="side-date mono">Dec 20</span></a></li>
-              <li><a href="/blog/waf-bypass/">A link shortener vs. a WAF<span class="side-date mono">Dec 5</span></a></li>
-            </ul>
-            <p class="side-head">Topics</p>
-            <ul class="side-tags mono">
-              <li>bug bounty</li><li>xss</li><li>waf bypass</li><li>rce</li><li>appsec</li><li>file upload</li><li>tips</li>
-            </ul>
-            <p class="side-head">Elsewhere</p>
-            <p class="side-link"><a href="https://imooaaz.medium.com/" target="_blank" rel="noopener me">Read on Medium ↗</a></p>
-            <p class="side-note">Notes from the field.</p>
-          </aside>
         </div>
       </div>
     </section>
@@ -743,6 +728,7 @@
             <li><a href="/#services">Services</a></li>
             <li><a href="/#projects">Projects</a></li>
                 <li><a href="/blog/">Blog</a></li>
+            <li><a href="/cv/">CV</a></li>
             <li><a href="/#contact">Contact</a></li>
           </ul>
         </nav>
