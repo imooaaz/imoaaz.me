@@ -455,4 +455,16 @@
     });
     syncIntent();
   }
+
+  /* ================= cursor glow on cards ================= */
+  if (finePointer && !reduced) {
+    document.querySelectorAll(".project, .post-card, .cert, .work-row, .contact-form, .intent, .blog-side, .pillar, .author-card").forEach(function (el) {
+      el.classList.add("glow-card");
+      el.addEventListener("pointermove", function (ev) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty("--gx", ev.clientX - r.left + "px");
+        el.style.setProperty("--gy", ev.clientY - r.top + "px");
+      }, { passive: true });
+    });
+  }
 })();
