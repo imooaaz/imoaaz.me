@@ -1,0 +1,78 @@
+---
+import Ambient from '../components/Ambient.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import TabBar from '../components/TabBar.astro';
+import { OG_IMAGE, SITE_URL, type Page } from '../data/site';
+
+interface Props {
+  title: string;
+  page: Page;
+  description?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  /** Path of this page, e.g. "/blog/"; pages without one get no og:url. */
+  path?: string;
+  ogType?: 'website' | 'article';
+  publishedTime?: string;
+  bodyClass?: string;
+  noindex?: boolean;
+  /** Emit twitter:title / twitter:description (the home page sets them explicitly). */
+  twitter?: boolean;
+}
+
+const {
+  title, page, description, ogTitle, ogDescription, path, ogType,
+  publishedTime, bodyClass, noindex = false, twitter = false,
+} = Astro.props;
+const isHome = page === 'home';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{title}</title>
+  {description && <meta name="description" content={description}>}
+  {description && <meta name="author" content="Moaaz Afifi">}
+  {noindex && <meta name="robots" content="noindex">}
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f6f7f9">
+
+  {ogType && <meta property="og:type" content={ogType}>}
+  {ogTitle && <meta property="og:title" content={ogTitle}>}
+  {ogDescription && <meta property="og:description" content={ogDescription}>}
+  {path && <meta property="og:url" content={SITE_URL + path}>}
+  <meta property="og:image" content={OG_IMAGE}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  {publishedTime && <meta property="article:published_time" content={publishedTime}>}
+  <meta name="twitter:card" content="summary_large_image">
+  {twitter && ogTitle && <meta name="twitter:title" content={ogTitle}>}
+  {twitter && ogDescription && <meta name="twitter:description" content={ogDescription}>}
+  <meta name="twitter:image" content={OG_IMAGE}>
+
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body id={isHome ? undefined : 'top'} class={bodyClass}>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <Ambient />
+  {page !== '404' && <div class="scroll-progress" aria-hidden="true"></div>}
+
+  <Header page={page} />
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <Footer page={page} />
+  <TabBar page={page} />
+
+  <script is:inline src="/assets/js/main.js" defer></script>
+</body>
+</html>

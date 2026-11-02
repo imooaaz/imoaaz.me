@@ -1,0 +1,22 @@
+---
+import SectionTitle from '../SectionTitle.astro';
+import ProjectCard from '../ProjectCard.astro';
+import { projects, projectFilters } from '../../data/projects';
+---
+<section class="section" id="projects">
+  <div class="container">
+    <div class="posts-head">
+      <SectionTitle eyebrow="Projects & Tools">Things I've built and shipped</SectionTitle>
+      <div class="filter-chips reveal" role="group" aria-label="Filter projects" data-target="#project-grid">
+        {projectFilters.map((f, i) => (
+          <button type="button" class:list={['chip', { 'is-active': i === 0 }]} data-filter={f.key} aria-pressed={i === 0 ? 'true' : 'false'}>{f.label}</button>
+        ))}
+      </div>
+    </div>
+
+    <div class="project-grid swipe" id="project-grid">
+      {projects.map((p, i) => <ProjectCard project={p} delay={i * 80} />)}
+    </div>
+    <p class="filter-empty" hidden>Nothing here yet.</p>
+  </div>
+</section>

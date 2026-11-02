@@ -1,0 +1,18 @@
+---
+import SectionTitle from '../SectionTitle.astro';
+import PostCard from '../PostCard.astro';
+import { getPosts } from '../../lib/posts';
+
+const latest = (await getPosts()).slice(0, 3);
+---
+<section class="section" id="writing">
+  <div class="container">
+    <div class="posts-head">
+      <SectionTitle eyebrow="Writing">Research &amp; write-ups</SectionTitle>
+      <a class="btn reveal" href="/blog/">View all posts</a>
+    </div>
+    <div class="card-grid card-grid-3 swipe reveal">
+      {latest.map((post) => <PostCard post={post} />)}
+    </div>
+  </div>
+</section>

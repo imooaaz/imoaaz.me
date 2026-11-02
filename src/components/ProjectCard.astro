@@ -1,0 +1,19 @@
+---
+import { KIND_ICONS, type Project } from '../data/projects';
+interface Props { project: Project; delay?: number }
+const { project: p, delay } = Astro.props;
+---
+<article class="project reveal" style={delay ? `--d:${delay}ms` : undefined} data-kind={p.kind} data-tags={p.kind}>
+  <div class="project-top">
+    <span class={`project-icon kind-${p.kind}`} aria-hidden="true">
+      <svg viewBox="0 0 24 24" set:html={p.icon ?? KIND_ICONS[p.kind]} />
+    </span>
+    <span class="project-kind">{p.kindLabel}</span>
+  </div>
+  <h3 class="project-title">{p.title}</h3>
+  <p class="project-desc">{p.desc}</p>
+  <ul class="post-tags mono">{p.tags.map((t) => <li>{t}</li>)}</ul>
+  {p.links && p.links.length > 0 && (
+    <p class="project-links">{p.links.map((l) => <a href={l.href} target="_blank" rel="noopener">{l.label} ↗</a>)}</p>
+  )}
+</article>

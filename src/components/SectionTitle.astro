@@ -1,0 +1,6 @@
+---
+/** Section heading; CSS draws the mono eyebrow label from data-eyebrow. */
+interface Props { eyebrow: string }
+const { eyebrow } = Astro.props;
+---
+<h2 class="section-title reveal" data-eyebrow={eyebrow}><slot /></h2>

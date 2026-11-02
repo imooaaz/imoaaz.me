@@ -1,0 +1,29 @@
+---
+import type { Page } from '../data/site';
+interface Props { page: Page }
+const { page } = Astro.props;
+// On the home page links are in-page anchors (main.js scroll-spies them); elsewhere they point home.
+const home = page === 'home';
+const base = home ? '' : '/';
+const links = [
+  { href: `${base}#experience`, label: 'Experience' },
+  { href: `${base}#services`, label: 'Services' },
+  { href: `${base}#projects`, label: 'Projects' },
+  { href: '/blog/', label: 'Blog', page: 'blog' },
+  { href: '/cv/', label: 'CV', page: 'cv' },
+];
+---
+<header class="site-header">
+  <nav class="nav container" aria-label="Primary">
+    <a class="brand" href={home ? '#top' : '/'}><span class="brand-mark mono" aria-hidden="true">MA</span>Moaaz Afifi</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      {links.map((l) => (
+        <li>{l.page === page
+          ? <a href={l.href} class="active" aria-current="page">{l.label}</a>
+          : <a href={l.href}>{l.label}</a>}</li>
+      ))}
+      <li><a href={`${base}#contact`} class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+</header>

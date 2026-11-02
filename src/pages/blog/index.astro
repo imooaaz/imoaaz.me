@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import BlogHero from '../../components/blog/BlogHero.astro';
+import Pillars from '../../components/blog/Pillars.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getPosts } from '../../lib/posts';
+import { SOCIALS } from '../../data/site';
+
+const posts = await getPosts();
+const filters = [
+  { key: 'all', label: 'All' },
+  { key: 'security', label: 'Security' },
+  { key: 'engineering', label: 'Engineering' },
+  { key: 'bug bounty', label: 'Bug bounty' },
+];
+---
+<Base
+  page="blog"
+  bodyClass="blog"
+  title="Engineering & Security Blog — Moaaz Afifi"
+  description="Engineering and security write-ups by Moaaz Afifi: product security, DevSecOps, and vulnerabilities found in real systems."
+  ogType="website"
+  ogTitle="Engineering & Security Blog — Moaaz Afifi"
+  ogDescription="Bug bounty write-ups, disclosure reports, and practical security techniques from real engagements."
+  path="/blog/"
+>
+  <BlogHero />
+
+  <section class="section" id="posts">
+    <div class="container">
+      <Pillars />
+
+      <div class="posts-head">
+        <SectionTitle eyebrow="All posts">Latest articles</SectionTitle>
+        <div class="filter-chips reveal" role="group" aria-label="Filter by topic">
+          {filters.map((f, i) => (
+            <button type="button" class:list={['chip', { 'is-active': i === 0 }]} data-filter={f.key} aria-pressed={i === 0 ? 'true' : 'false'}>{f.label}</button>
+          ))}
+        </div>
+      </div>
+
+      <div class="card-grid" id="post-grid">
+        {posts.map((post, i) => (
+          <PostCard post={post} featured={i === 0} lazy={i > 0} reveal delay={i * 80} filterable />
+        ))}
+      </div>
+      <p class="filter-empty" id="filter-empty" hidden>No articles on that topic yet.</p>
+
+      <aside class="medium-cta reveal">
+        <div>
+          <p class="medium-cta-title">More on Medium</p>
+          <p class="medium-cta-text">More write-ups on Medium.</p>
+        </div>
+        <a class="btn" href={SOCIALS.medium} target="_blank" rel="noopener me">Follow on Medium ↗</a>
+      </aside>
+    </div>
+  </section>
+</Base>

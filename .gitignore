@@ -19,3 +19,8 @@ Desktop.ini
 dist-clean/
 deploy-tmp/
 stage/
+
+# astro
+node_modules/
+dist/
+.astro/

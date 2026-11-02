@@ -1,0 +1,102 @@
+---
+import SectionTitle from '../SectionTitle.astro';
+---
+<section class="section" id="contact">
+  <div class="container">
+    <SectionTitle eyebrow="Contact">Let's work together</SectionTitle>
+
+    <div class="contact-grid">
+      <div class="contact-main reveal">
+        <p class="contact-status"><span class="dot" aria-hidden="true"></span>Available for new engagements</p>
+        <p class="contact-lede">Hiring, consulting, training, or a security project. I read every message.</p>
+
+        <div class="intents" role="group" aria-label="What can I help with?">
+          <button type="button" class="intent" data-topic="Job opportunity / hiring" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>
+            <span class="intent-title">Hiring</span>
+            <span class="intent-text">Full-time or contract</span>
+          </button>
+          <button type="button" class="intent" data-topic="Consultation" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 14h3"/></svg>
+            <span class="intent-title">Consultation</span>
+            <span class="intent-text">Book a session</span>
+          </button>
+          <button type="button" class="intent" data-topic="Training / workshop" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5M22 9v6"/></svg>
+            <span class="intent-title">Training</span>
+            <span class="intent-text">Workshops for teams</span>
+          </button>
+          <button type="button" class="intent" data-topic="Penetration test" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5.5V11c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5.5z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span class="intent-title">Security project</span>
+            <span class="intent-text">Pentest or review</span>
+          </button>
+        </div>
+
+        <!-- Messages are delivered by Web3Forms (web3forms.com). Put your access key in
+             data-web3forms-key. While it's empty, Send opens the visitor's email app instead. -->
+        <form class="contact-form" id="contact-form" data-web3forms-key="4b5cc494-6767-4366-a9d6-3297383a35fe" data-to="imooaaz@gmail.com" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="cf-name">Name</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="80" placeholder="Your name">
+            </div>
+            <div class="field">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="120" placeholder="you@company.com">
+            </div>
+          </div>
+          <div class="field">
+            <label for="cf-topic">What's it about?</label>
+            <select id="cf-topic" name="topic">
+              <option>Job opportunity / hiring</option>
+              <option>Consultation</option>
+              <option>Training / workshop</option>
+              <option>Penetration test</option>
+              <option>Security review</option>
+              <option>Product security / DevSecOps</option>
+              <option>Research collaboration</option>
+              <option>Vulnerability report</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" required minlength="20" maxlength="4000" placeholder="A few lines about what you need, scope, and timeline."></textarea>
+          </div>
+          <!-- hCaptcha (Web3Forms free-plan sitekey); the script is loaded lazily by main.js -->
+          <div class="field captcha-field">
+            <div class="h-captcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" data-theme="light"></div>
+          </div>
+          <!-- spam trap: real visitors never see or fill this -->
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="form-foot">
+            <button class="btn btn-solid form-submit" type="submit"><span class="form-submit-label">Send message</span></button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+
+      <div class="contact-side reveal" style="--d:120ms">
+        <div class="mail-card">
+          <span class="mail-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></span>
+          <div class="mail-info">
+            <p class="mail-label">Email me directly</p>
+            <a class="mail-addr" href="mailto:imooaaz@gmail.com">imooaaz@gmail.com</a>
+          </div>
+          <div class="mail-actions">
+            <a class="btn btn-solid mail-send" href="mailto:imooaaz@gmail.com?subject=Hello%20Moaaz"><svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>Send email</a>
+            <button class="btn mail-copy" type="button" data-copy="imooaaz@gmail.com" aria-label="Copy email address"><svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span class="btn-copy-label" aria-live="polite">Copy</span></button>
+          </div>
+        </div>
+
+        <ul class="socials-grid" aria-label="Elsewhere">
+          <li><a class="social" href="https://www.linkedin.com/in/imooaaz/" target="_blank" rel="noopener me"><span class="social-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg></span><span class="social-txt"><span class="social-name">LinkedIn</span><span class="social-handle mono">/in/imooaaz</span></span><span class="social-arrow" aria-hidden="true">↗</span></a></li>
+          <li><a class="social" href="https://github.com/m0442" target="_blank" rel="noopener me"><span class="social-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg></span><span class="social-txt"><span class="social-name">GitHub</span><span class="social-handle mono">/m0442</span></span><span class="social-arrow" aria-hidden="true">↗</span></a></li>
+          <li><a class="social" href="https://x.com/imooaaz" target="_blank" rel="noopener me"><span class="social-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.78zm-1.08 16.17h1.7L7.4 4.74H5.58z"/></svg></span><span class="social-txt"><span class="social-name">X</span><span class="social-handle mono">@imooaaz</span></span><span class="social-arrow" aria-hidden="true">↗</span></a></li>
+          <li><a class="social" href="https://imooaaz.medium.com/" target="_blank" rel="noopener me"><span class="social-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M13.54 12a6.8 6.8 0 1 1-6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.52-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg></span><span class="social-txt"><span class="social-name">Medium</span><span class="social-handle mono">@imooaaz</span></span><span class="social-arrow" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

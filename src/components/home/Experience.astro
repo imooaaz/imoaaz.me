@@ -1,0 +1,37 @@
+---
+import SectionTitle from '../SectionTitle.astro';
+import { experience, education, volunteering } from '../../data/experience';
+---
+<section class="section" id="experience">
+  <div class="container">
+    <SectionTitle eyebrow="Experience">Where I've worked</SectionTitle>
+    <p class="section-lede reveal">I make sure software is built, shipped, and tested so attackers can't break it.</p>
+
+    <ol class="timeline exp reveal">
+      {experience.map((e, i) => (
+        <li class:list={['tl-item', 'reveal', { current: e.current }]} style={i ? `--d:${30 * (i + 1)}ms` : undefined}>
+          <p class="tl-dates mono">{e.dates}</p>
+          <h3 class="tl-role">{e.role}</h3>
+          <p class="tl-org">{e.org} <span class="tl-type mono">{e.type}</span></p>
+          <p class="tl-desc">{e.desc}</p>
+          {e.points && (
+            <ul class="tl-points">
+              {e.points.map((p) => <li><strong>{p.label}:</strong> <Fragment set:html={p.text} /></li>)}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ol>
+
+    <div class="edu-grid reveal">
+      <div class="edu-block">
+        <h3 class="edu-head">Education</h3>
+        <p>{education.title}<br>{education.place}</p>
+      </div>
+      <div class="edu-block">
+        <h3 class="edu-head">Volunteering</h3>
+        <p>{volunteering.map((v, i) => <>{i > 0 && <br>}{v}</>)}</p>
+      </div>
+    </div>
+  </div>
+</section>

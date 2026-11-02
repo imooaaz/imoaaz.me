@@ -1,0 +1,72 @@
+---
+import SectionTitle from '../SectionTitle.astro';
+---
+<section class="section biz theme-dark" id="business">
+  <div class="container">
+    <SectionTitle eyebrow="For business owners">Protect your revenue and your customers' trust</SectionTitle>
+    <p class="biz-lede reveal">Attackers don't care how big you are. I look at your product the way they do, find what could cost you money or customers, and fix it before it becomes a crisis.</p>
+
+    <p class="biz-sub mono reveal">What's at stake</p>
+    <ul class="risk-grid swipe">
+        <li class="risk reveal" style="--d:0ms">
+          <span class="risk-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3 1.2 0 2.3-.1 3.3-.3"/><path d="m17 16 4 4m0-4-4 4"/></svg></span>
+          <h3 class="risk-title">Customer data leak</h3>
+          <p class="risk-text">Exposed records cost you customers, legal trouble, and your reputation.</p>
+        </li>
+        <li class="risk reveal" style="--d:60ms">
+          <span class="risk-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7"/><path d="M16 15l5 5m0-5-5 5"/></svg></span>
+          <h3 class="risk-title">Account takeover</h3>
+          <p class="risk-text">Attackers log in as your users and drain balances, points, or data.</p>
+        </li>
+        <li class="risk reveal" style="--d:120ms">
+          <span class="risk-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/><path d="m15 14 3 3 3-5"/></svg></span>
+          <h3 class="risk-title">Payment &amp; logic fraud</h3>
+          <p class="risk-text">Flaws in checkout, coupons, or limits become direct financial losses.</p>
+        </li>
+        <li class="risk reveal" style="--d:180ms">
+          <span class="risk-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/><path d="M4 4l16 16"/></svg></span>
+          <h3 class="risk-title">Downtime &amp; ransomware</h3>
+          <p class="risk-text">Every hour offline means lost sales and broken promises to customers.</p>
+        </li>
+        <li class="risk reveal" style="--d:240ms">
+          <span class="risk-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg></span>
+          <h3 class="risk-title">Third-party &amp; supply chain</h3>
+          <p class="risk-text">One vulnerable library or vendor can become your breach.</p>
+        </li>
+        <li class="risk reveal" style="--d:300ms">
+          <span class="risk-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/><path d="m15 15 4 4m0-4-4 4"/></svg></span>
+          <h3 class="risk-title">Failed security reviews</h3>
+          <p class="risk-text">Enterprise customers ask for proof. Without it, the deal stalls.</p>
+        </li>
+    </ul>
+
+    <div class="biz-split">
+      <div class="biz-col reveal">
+        <p class="biz-sub mono">What you get</p>
+        <ul class="out-list">
+        <li><span class="out-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span><div><p class="out-title">Fewer surprises</p><p class="out-text">Risks found and fixed before attackers find them.</p></div></li>
+        <li><span class="out-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span><div><p class="out-title">Clear decisions</p><p class="out-text">Findings ranked by business impact, in plain language for your team and leadership.</p></div></li>
+        <li><span class="out-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span><div><p class="out-title">Faster deals</p><p class="out-text">Evidence that helps you pass customer security reviews.</p></div></li>
+        <li><span class="out-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span><div><p class="out-title">Full confidentiality</p><p class="out-text">NDA-friendly. Findings are shared only with you.</p></div></li>
+        </ul>
+      </div>
+      <div class="biz-col reveal" style="--d:100ms">
+        <p class="biz-sub mono">How it works</p>
+        <ol class="steps">
+        <li class="step"><span class="step-n mono">01</span><p class="step-title">Understand your business</p><p class="step-text">What you sell, what you store, and what would hurt most.</p></li>
+        <li class="step"><span class="step-n mono">02</span><p class="step-title">Map the attack surface</p><p class="step-text">Apps, APIs, cloud, and the people and vendors around them.</p></li>
+        <li class="step"><span class="step-n mono">03</span><p class="step-title">Test like an attacker</p><p class="step-text">Real attack paths against what matters, not a generic checklist.</p></li>
+        <li class="step"><span class="step-n mono">04</span><p class="step-title">Fix, verify, retest</p><p class="step-text">Clear fixes with your developers, then proof they hold.</p></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="biz-cta reveal">
+      <div>
+        <p class="biz-cta-title">Not sure where you're exposed?</p>
+        <p class="biz-cta-text">Tell me about your product and I'll point out where the real risks are.</p>
+      </div>
+      <a class="btn btn-solid" href="#contact" data-intent="Consultation">Talk about your risks</a>
+    </div>
+  </div>
+</section>

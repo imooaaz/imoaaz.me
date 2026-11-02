@@ -1,0 +1,41 @@
+---
+import { CATEGORY_CLASS, filterKeys, formatDate, postUrl, type Post } from '../lib/posts';
+
+interface Props {
+  post: Post;
+  /** "compact" = date + title only (the "More write-ups" row at the end of a post). */
+  variant?: 'full' | 'compact';
+  /** Big first card on the blog index, with the "Latest" badge. */
+  featured?: boolean;
+  /** Animate in on scroll (blog index); `delay` staggers it. */
+  reveal?: boolean;
+  delay?: number;
+  /** Add data-tags so the blog filter chips can match the card. */
+  filterable?: boolean;
+  lazy?: boolean;
+}
+
+const { post, variant = 'full', featured = false, reveal = false, delay, filterable = false, lazy = true } = Astro.props;
+const d = post.data;
+const meta = `${formatDate(d.date)} · ${d.readTime} min read`;
+---
+<a
+  class:list={['post-card', { featured, reveal }]}
+  style={delay ? `--d:${delay}ms` : undefined}
+  href={postUrl(post)}
+  data-tags={filterable ? filterKeys(post) : undefined}
+>
+  <div class="post-card-media"><img src={d.cover} alt="" width="1200" height="630" loading={lazy ? 'lazy' : undefined}></div>
+  <div class="post-card-body">
+    {variant === 'compact' ? (<>
+      <p class="post-card-kicker mono">{meta}</p>
+      <h3 class="post-card-title">{d.title}</h3>
+    </>) : (<>
+      <p class="post-card-kicker mono">{featured && <span class="badge">Latest</span>}{d.categories.map((c) => <span class={`cat ${CATEGORY_CLASS[c]}`}>{c}</span>)}{meta}</p>
+      <h3 class="post-card-title">{d.title}</h3>
+      <p class="post-card-excerpt">{d.dek}</p>
+      <ul class="post-tags mono">{d.tags.map((t) => <li>{t}</li>)}</ul>
+    </>)}
+    <span class="read-more">Read article <span aria-hidden="true">→</span></span>
+  </div>
+</a>

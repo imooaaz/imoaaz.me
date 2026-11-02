@@ -1,0 +1,100 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import { formatDate, getPosts, isoDate, postUrl, type Post } from '../../lib/posts';
+import { AVATAR, SITE_URL, SOCIALS } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    // "More write-ups": the two newest other posts.
+    props: { post, more: posts.filter((p) => p.id !== post.id).slice(0, 2) },
+  }));
+}
+
+interface Props { post: Post; more: Post[] }
+const { post, more } = Astro.props;
+const d = post.data;
+const { Content } = await render(post);
+const url = SITE_URL + postUrl(post);
+const avatarFallback = "this.onerror=null;this.src='/assets/img/moaaz.jpg'";
+---
+<Base
+  page="blog"
+  bodyClass="blog"
+  title={`${d.title} — Moaaz Afifi`}
+  description={d.description}
+  ogType="article"
+  ogTitle={d.title}
+  ogDescription={d.ogDescription ?? d.description}
+  path={postUrl(post)}
+  publishedTime={isoDate(d.date)}
+>
+  <article class="post">
+    <div class="container">
+      <header class="post-header">
+        <p class="post-meta mono"><a href="/blog/">Blog</a> <span aria-hidden="true">/</span> {d.section}</p>
+        <h1 class="post-h1">{d.title}</h1>
+        <p class="post-dek">{d.dek}</p>
+        <div class="byline">
+          <span class="avatar-face face-sm"><img src={AVATAR} onerror={avatarFallback} alt="Moaaz Afifi" width="460" height="460" fetchpriority="high" referrerpolicy="no-referrer"></span>
+          <div>
+            <p class="byline-name">Moaaz Afifi</p>
+            <p class="byline-meta mono">{formatDate(d.date)} · {d.readTime} min read{d.medium && <> · <a href={d.medium} target="_blank" rel="noopener">Originally on Medium ↗</a></>}</p>
+          </div>
+        </div>
+      </header>
+
+      <figure class="post-cover">
+        <img src={d.cover} alt="" width="1200" height="630">
+      </figure>
+
+      <div class="post-layout">
+        <div class="post-body">
+          <Content />
+        </div>
+
+        <aside class="post-aside" aria-label="Article tools">
+          <nav class="toc" aria-label="On this page" hidden>
+            <p class="aside-head mono">On this page</p>
+            <ol class="toc-list"></ol>
+          </nav>
+          <div class="share">
+            <p class="aside-head mono">Share</p>
+            <div class="share-row">
+              <button class="btn-copy share-btn" type="button" data-copy={url} aria-label="Copy link to this article"><span class="btn-copy-label" aria-live="polite">Copy link</span></button>
+              <a class="share-btn" href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`} target="_blank" rel="noopener">LinkedIn</a>
+              <a class="share-btn" href={`https://x.com/intent/post?url=${url}&text=${encodeURI(d.title)}`} target="_blank" rel="noopener">X</a>
+            </div>
+          </div>
+          <ul class="post-tags mono aside-tags">{d.tags.map((t) => <li>{t}</li>)}</ul>
+        </aside>
+      </div>
+
+      <section class="post-end">
+        <div class="author-card">
+          <span class="avatar-face face-lg"><img src={AVATAR} onerror={avatarFallback} alt="Moaaz Afifi" width="460" height="460" loading="lazy" referrerpolicy="no-referrer"></span>
+          <div>
+            <p class="author-name">Written by Moaaz Afifi</p>
+            <p class="author-bio">Cyber &amp; product security engineer and co-founder of Raqyan. <span class="nowrap">CVE-2024-36436</span> · eCPPT · eWPTX · eMAPT · eAIS.</p>
+            <p class="author-links"><a href="/#contact">Work with me</a><a href={SOCIALS.linkedin} target="_blank" rel="noopener me">LinkedIn ↗</a><a href={SOCIALS.medium} target="_blank" rel="noopener me">Medium ↗</a></p>
+          </div>
+        </div>
+
+        {more.length > 0 && (
+          <div class="more-posts">
+            <div class="more-head">
+              <h2 class="more-title">More write-ups</h2>
+              <a class="more-all" href="/blog/">All posts →</a>
+            </div>
+            <div class="card-grid card-grid-2">
+              {more.map((p) => <PostCard post={p} variant="compact" />)}
+            </div>
+          </div>
+        )}
+      </section>
+    </div>
+  </article>
+</Base>

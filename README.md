@@ -1,94 +1,120 @@
-# imoaz.me
+# imoaaz.me
 
-Personal portfolio of **Moaaz Afifi** — cybersecurity engineer & penetration tester.
+Personal site of **Moaaz Afifi**, Cyber & Product Security Engineer and co-founder of Raqyan.
 
-Live: **https://imoaaz.me** (custom domain, when purchased) · currently served from Cloudflare Pages at the `*.pages.dev` URL.
+Live: **https://imoaaz.pages.dev** (Cloudflare Pages project `imoaaz`).
 
 ## Stack
 
-Hand-built static site. One HTML page, one stylesheet, one script — no framework, no build step, no dependencies.
+[Astro](https://astro.build) with static output only: every page is pre-rendered HTML in `dist/`, with no server and no framework runtime in the browser.
 
-- `index.html` — all content. Edit this to change anything (email, links, experience entries).
-- `assets/css/style.css` — light design system (Inter + JetBrains Mono, one deep-gold accent, fixed type scale). Tokens live in `:root` at the top.
-- `assets/js/main.js` — header, mobile menu, nav highlighting, scroll reveals, copy-email button.
-- `.well-known/security.txt` — vulnerability disclosure contact (RFC 9116).
+- One global stylesheet: `public/assets/css/style.css` (Inter + JetBrains Mono, deep-gold accent; tokens in `:root`). Components use its class names directly; there are no scoped styles.
+- One script: `public/assets/js/main.js` handles the header, mobile menu, scroll-spy, reveals, filters, article TOC, copy buttons, contact form (Web3Forms + lazy hCaptcha), CV availability/share/QR, and the experience "Show details" toggle. It is plain JS with no dependencies, so no React islands are needed.
 
-Fonts (Inter / JetBrains Mono) load from Google Fonts.
+```
+src/
+  layouts/Base.astro          <head>/meta, header, footer, tab bar, main.js
+  components/
+    Header.astro              top nav + mobile menu
+    Footer.astro              site footer
+    TabBar.astro              bottom tab bar (phones)
+    Ambient.astro             fixed background glow
+    SectionTitle.astro        section heading with the eyebrow label
+    PostCard.astro            blog card (full / compact / featured)
+    ProjectCard.astro         project card
+    home/*.astro              home page sections (hero, experience, business, ...)
+    blog/*.astro              blog hero scene + pillars
+  content/blog/*.md           blog posts (one Markdown file each)
+  data/
+    experience.ts             experience timeline, education, volunteering
+    projects.ts               projects & tools
+    site.ts                   URLs, email, socials
+  lib/posts.ts                post sorting, dates, filter keys
+  pages/                      index, blog/index, blog/[slug], cv/index, 404
+public/                       copied as-is: assets/, .well-known/security.txt, robots.txt
+tools/og.html                 source of assets/img/og.png (not deployed)
+```
 
 ## Run locally
 
 ```bash
-# from the repo root, any static server works:
-npx serve .
-# or
-python -m http.server 8080
+npm install
+npm run dev        # http://localhost:4321 with live reload
+npm run build      # writes dist/
+npm run preview    # serves dist/ exactly as it will be deployed
 ```
 
-## Deploy
+Requires Node 22.12+.
 
-The site is deployed on Cloudflare Pages via direct upload (no build command).
+## Add a blog post
 
-**Important:** `wrangler pages deploy .` uploads everything in the folder — including local tool state (`.claude/`, `.zcode/`, `.mimosa/`, `skills-lock.json`) that is git-ignored but NOT ignored by wrangler. Always deploy from a clean snapshot of the tracked files:
+Create `src/content/blog/<slug>.md`. The file name becomes the URL (`/blog/<slug>/`).
 
-```bash
-rm -rf dist-clean && mkdir dist-clean && git archive HEAD | tar -x -C dist-clean
-wrangler pages deploy dist-clean --project-name imoaaz --branch main
-rm -rf dist-clean
-```
-
-Pushing to GitHub does **not** auto-deploy (direct-upload project). After editing, commit, then run the deploy above, or reconnect the repo in the Cloudflare dashboard for git-based deploys.
-
-## Attaching the imoaz.me domain (when you buy it)
-
-1. Buy `imoaaz.me` and add it as a zone in your Cloudflare account (or buy it directly inside Cloudflare Registrar — zero config).
-2. Cloudflare Pages dashboard → the `imoaaz` project → **Custom domains** → set `imoaaz.me`.
-3. Update the `og:url` / `og:image` absolute URLs in `index.html` if they still point at the pages.dev subdomain.
-
-## Profile photo
-
-The photo loads from the GitHub avatar (`avatars.githubusercontent.com/u/70091653`), so changing your GitHub profile picture updates the site automatically (allow a few hours for caching). If GitHub is unreachable it falls back to `assets/img/moaaz.jpg`; replace that file too when you change the photo. LinkedIn photo URLs are signed and expire, so they can't be used as a permanent source.
-
-## Link-preview image
-
-`assets/img/og.png` (1200×630) is rendered from `tools/og.html`. After editing that file:
-
-```bash
-"/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --window-size=1200,630 --virtual-time-budget=8000 --screenshot="G:\imoaaz.me\assets\img\og.png" "file:///G:/imoaaz.me/tools/og.html"
-```
-
-## CV
-
-Put the PDF at `assets/cv/Moaaz-Afifi-CV.pdf`, commit, deploy. The CV page (`/cv/`) checks for the file on load: when it exists, **View** and **Download** switch on and the size / date appear; until then they show "coming soon" with a link to request it. **Share** uses the phone's share sheet (or copies the link), and the QR code (`assets/img/cv-qr.svg`) points to `https://imoaaz.pages.dev/cv/`. If the domain changes, regenerate it:
-
-```bash
-python -m pip install --user segno
-python -c "import segno; segno.make('https://NEW-DOMAIN/cv/', error='m').save('assets/img/cv-qr.svg', scale=8, border=2, dark='#0b0d10', light='#ffffff', xmldecl=False)"
-```
-
-## Contact form
-
-The form in `#contact` sends through [Web3Forms](https://web3forms.com) (free, no backend). To turn it on:
-
-1. Go to web3forms.com, enter `imooaaz@gmail.com`, and copy the Access Key they email you.
-2. Paste it into `data-web3forms-key=""` on `<form id="contact-form">` in `index.html`, commit, deploy.
-
-The form includes hCaptcha (Web3Forms' free-plan sitekey, loaded lazily near the form) because Web3Forms has no per-visitor rate limit, only a monthly quota. **Also enable hCaptcha for this form in the Web3Forms dashboard** (app.web3forms.com → your form → Spam protection) so the server rejects submissions without a solved captcha, not just the browser.
-
-The key is meant to be public (it only lets people send messages *to* you). Until it is set, the Send button opens the visitor's email app with the message pre-filled, so nothing is lost.
-
-## Adding a project
-
-Projects live in the `#projects` section of `index.html`. Copy one `<article class="project">` block, set `data-kind` / `data-tags` to `product`, `tool`, or `research`, and keep only the links that exist (Code, Live, Advisory, Case study).
-
-## Adding a blog post
-
-Copy an existing folder under `blog/`, add a cover SVG in `assets/img/blog/` (1200×630), and add a card to `blog/index.html`, the home "Writing" list, and the "More write-ups" block of the other posts.
-
-## Content notes
-
-- All experience, certifications, skills, and the CVE-2024-36436 record reflect the real LinkedIn profile — don't pad them with anything unverified, and keep personal details (country, dates beyond job history) off the page.
-- Email on the site: `imooaaz@gmail.com` (also in `security.txt` and the copy button's `data-copy` attribute — change all three together).
-
+```md
+---
+title: "Your post title"
+description: "Meta description for search engines (one or two sentences)."
+ogDescription: "Optional shorter text for link previews (defaults to description)."
+dek: "One-line summary under the title; also used as the card excerpt."
+date: 2026-11-02
+readTime: 4                 # minutes
+section: Write-up           # breadcrumb label: "Blog / Write-up"
+categories: [Security]      # Security and/or Engineering (card badges + filters)
+tags: [xss, bug bounty]     # shown on cards and in the article sidebar
+topics: [bug bounty]        # optional extra filter keys not already in tags
+cover: /assets/img/blog/<slug>.svg   # put the image in public/assets/img/blog/
+medium: https://medium.com/...       # optional "Originally on Medium" link
 ---
 
-© Moaaz Afifi
+Body in Markdown. `## Headings` feed the "On this page" table of contents.
+Code blocks render as plain <pre><code> (no syntax highlighting, by design).
+Arabic lines: <p class="rtl">...</p>
+```
+
+That's it. The blog index (newest first, featured "Latest" card), the three "Writing" cards on the home page, and the "More write-ups" row under every post are all generated from this folder.
+
+## Add a project
+
+Add an object to `projects` in `src/data/projects.ts`:
+
+```ts
+{
+  title: 'my-tool',
+  kind: 'tool',                       // tool | research | product (filter + icon colour)
+  kindLabel: 'Tool · Open source',
+  desc: 'What it does, in one line.',
+  tags: ['javascript', 'recon'],
+  links: [{ label: 'Code', href: 'https://github.com/...' }],  // optional
+}
+```
+
+If you add the first `product`, also add `{ key: 'product', label: 'Products' }` to `projectFilters`.
+
+## Add an experience entry
+
+Add an object to `experience` in `src/data/experience.ts` (newest first):
+
+```ts
+{
+  dates: 'Jan 2027 — Present',
+  role: 'Security Engineer',
+  org: 'Company',
+  type: 'Full-time',
+  desc: 'One line on what the role is about.',
+  current: true,                      // highlights the dot while ongoing
+  points: [{ label: 'Focus', text: 'short detail (inline HTML allowed).' }],
+}
+```
+
+Keep everything factual: real roles, real projects, real outcomes.
+
+## Deploy (Cloudflare Pages, direct upload)
+
+```bash
+npm run build
+npx wrangler pages deploy dist --project-name imoaaz --branch main
+```
+
+`dist/` contains only the built site, so there is no need for the old `git archive` clean-snapshot step. To get a preview URL instead of production, pass any other branch name, e.g. `--branch astro`.
+
+The contact form posts to Web3Forms with the access key in `src/components/home/Contact.astro` (`data-web3forms-key`). The CV page enables its buttons once `public/assets/cv/Moaaz-Afifi-CV.pdf` exists.

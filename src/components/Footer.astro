@@ -1,0 +1,54 @@
+---
+import { EMAIL, SOCIALS, type Page } from '../data/site';
+interface Props { page: Page }
+const { page } = Astro.props;
+const site = [
+  { href: '/#experience', label: 'Experience' },
+  { href: '/#about', label: 'About' },
+  { href: '/#services', label: 'Services' },
+  { href: '/#projects', label: 'Projects' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/cv/', label: 'CV', page: 'cv' },
+  { href: '/#contact', label: 'Contact' },
+];
+const elsewhere = [
+  { href: SOCIALS.linkedin, label: 'LinkedIn' },
+  { href: SOCIALS.github, label: 'GitHub' },
+  { href: SOCIALS.x, label: 'X' },
+  { href: SOCIALS.medium, label: 'Medium' },
+];
+---
+<footer class="site-footer theme-dark">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="/"><span class="brand-mark mono" aria-hidden="true">MA</span>Moaaz Afifi</a>
+        <p class="footer-tag">Securing products from code to production.</p>
+        <a class="footer-mail" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+      </div>
+      <nav class="footer-col" aria-label="Footer">
+        <p class="footer-head">Site</p>
+        <ul>
+          {site.map((l) => (
+            <li>{l.page === page
+              ? <a href={l.href} class="active" aria-current="page">{l.label}</a>
+              : <a href={l.href}>{l.label}</a>}</li>
+          ))}
+        </ul>
+      </nav>
+      <div class="footer-col">
+        <p class="footer-head">Elsewhere</p>
+        <ul>
+          {elsewhere.map((l) => <li><a href={l.href} target="_blank" rel="noopener me">{l.label} ↗</a></li>)}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Moaaz Afifi. All rights reserved.</p>
+      <p class="footer-links">
+        <a href="/.well-known/security.txt">security.txt</a>
+        <a href="#top" class="to-top">Back to top ↑</a>
+      </p>
+    </div>
+  </div>
+</footer>

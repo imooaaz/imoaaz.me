@@ -1,0 +1,63 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base
+  page="cv"
+  bodyClass="blog cv-page"
+  title="CV — Moaaz Afifi"
+  description="Download, view, or share the CV of Moaaz Afifi, Cyber & Product Security Engineer and co-founder of Raqyan."
+  ogType="website"
+  ogTitle="CV — Moaaz Afifi"
+  ogDescription="Cyber & Product Security Engineer and co-founder of Raqyan. Download or share my CV."
+  path="/cv/"
+>
+  <section class="hero hero-page cv-hero">
+    <div class="glow glow-a" aria-hidden="true"></div>
+    <div class="glow glow-b" aria-hidden="true"></div>
+    <div class="container">
+      <p class="hero-kicker mono">Résumé</p>
+      <h1 class="hero-name">Download my CV</h1>
+      <p class="hero-role">Experience, skills, and certifications in one PDF.</p>
+    </div>
+  </section>
+
+  <section class="section cv-section">
+    <div class="container">
+      <div class="cv-card" data-cv="/assets/cv/Moaaz-Afifi-CV.pdf">
+        <div class="cv-doc" aria-hidden="true">
+          <span class="cv-doc-mark mono">MA</span>
+          <span class="cv-doc-name">Moaaz Afifi</span>
+          <span class="cv-doc-role mono">Product Security Engineer</span>
+          <span class="cv-doc-lines"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="cv-doc-tag mono">PDF</span>
+        </div>
+
+        <div class="cv-body">
+          <p class="cv-title">Moaaz Afifi — CV</p>
+          <p class="cv-meta mono" id="cv-meta">PDF</p>
+          <div class="cv-actions">
+            <a class="btn btn-solid" id="cv-download" href="/assets/cv/Moaaz-Afifi-CV.pdf" download="Moaaz-Afifi-CV.pdf"><svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg>Download PDF</a>
+            <a class="btn" id="cv-view" href="/assets/cv/Moaaz-Afifi-CV.pdf" target="_blank" rel="noopener"><svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
+            <button class="btn" id="cv-share" type="button"><svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg><span class="cv-share-label">Share</span></button>
+          </div>
+          <p class="cv-note" id="cv-note" hidden>The PDF is being finalised. <a href="#contact" data-intent="Job opportunity / hiring">Request it</a> and I'll send it to you directly.</p>
+        </div>
+
+        <button class="cv-qr" id="cv-qr" type="button" aria-haspopup="dialog" aria-controls="qr-dialog">
+          <img src="/assets/img/cv-qr.svg" alt="QR code that opens this page" width="132" height="132">
+          <span>Scan or tap to enlarge</span>
+        </button>
+      </div>
+
+      <p class="cv-alt">Prefer to talk first? <a href="/#contact" data-intent="Job opportunity / hiring">Get in touch</a> or see <a href="/#experience">my experience</a>.</p>
+    </div>
+  </section>
+
+  <dialog class="qr-dialog" id="qr-dialog" aria-labelledby="qr-title">
+    <p class="qr-title" id="qr-title">Scan to open my CV</p>
+    <img src="/assets/img/cv-qr.svg" alt="QR code that opens imoaaz.pages.dev/cv" width="264" height="264">
+    <p class="qr-url mono">imoaaz.pages.dev/cv</p>
+    <form method="dialog"><button class="btn" type="submit">Close</button></form>
+  </dialog>
+
+</Base>
