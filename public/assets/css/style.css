@@ -1296,7 +1296,7 @@ strong { color: var(--bright); font-weight: 600; }
 }
 
 @media (max-width: 1020px) {
-  .post-layout { grid-template-columns: 1fr; }
+  .post-layout { grid-template-columns: minmax(0, 1fr); }
   .post-aside { position: static; padding-left: 0; border-left: 0; border-top: 1px solid var(--line-soft); padding-top: 1.75rem; flex-direction: row; flex-wrap: wrap; gap: 1.5rem 3rem; }
   .post-aside .toc { display: none; }
   .blog-hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 2rem; }
