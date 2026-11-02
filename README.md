@@ -49,6 +49,15 @@ Pushing to GitHub does **not** auto-deploy (direct-upload project). After editin
 
 The photo loads from the GitHub avatar (`avatars.githubusercontent.com/u/70091653`), so changing your GitHub profile picture updates the site automatically (allow a few hours for caching). If GitHub is unreachable it falls back to `assets/img/moaaz.jpg`; replace that file too when you change the photo. LinkedIn photo URLs are signed and expire, so they can't be used as a permanent source.
 
+## CV
+
+Put the PDF at `assets/cv/Moaaz-Afifi-CV.pdf`, commit, deploy. The CV section (`#cv`) checks for the file on load: when it exists, **View** and **Download** switch on and the size / date appear; until then they show "coming soon" with a link to request it. **Share** uses the phone's share sheet (or copies the link), and the QR code (`assets/img/cv-qr.svg`) points to `https://imoaaz.pages.dev/#cv`. If the domain changes, regenerate it:
+
+```bash
+python -m pip install --user segno
+python -c "import segno; segno.make('https://NEW-DOMAIN/#cv', error='m').save('assets/img/cv-qr.svg', scale=8, border=2, dark='#0b0d10', light='#ffffff', xmldecl=False)"
+```
+
 ## Contact form
 
 The form in `#contact` sends through [Web3Forms](https://web3forms.com) (free, no backend). To turn it on:

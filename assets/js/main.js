@@ -467,4 +467,75 @@
       }, { passive: true });
     });
   }
+
+  /* ================= terminal toggle on phones ================= */
+  var termToggle = document.querySelector(".term-toggle");
+  if (termToggle) {
+    termToggle.addEventListener("click", function () {
+      var right = termToggle.closest(".hero-right");
+      right.classList.add("open");
+      termToggle.setAttribute("aria-expanded", "true");
+      var screen = document.getElementById("term-screen");
+      if (screen) screen.click();
+    });
+  }
+
+  /* ================= CV: availability, share, QR ================= */
+  var cvCard = document.querySelector(".cv-card");
+  if (cvCard) {
+    var cvPath = cvCard.getAttribute("data-cv");
+    var cvUrl = location.origin + cvPath;
+    var sectionUrl = location.origin + "/#cv";
+    var dl = document.getElementById("cv-download");
+    var view = document.getElementById("cv-view");
+    var meta = document.getElementById("cv-meta");
+    var note = document.getElementById("cv-note");
+    var shareBtn = document.getElementById("cv-share");
+    var shareLabel = shareBtn.querySelector(".cv-share-label");
+    var cvReady = false;
+
+    var markPending = function () {
+      [dl, view].forEach(function (a) {
+        a.setAttribute("aria-disabled", "true");
+        a.setAttribute("tabindex", "-1");
+        a.removeAttribute("href");
+      });
+      meta.textContent = "PDF · coming soon";
+      note.hidden = false;
+    };
+    fetch(cvPath, { method: "HEAD", cache: "no-store" }).then(function (r) {
+      var type = r.headers.get("content-type") || "";
+      if (!r.ok || type.indexOf("pdf") === -1) { markPending(); return; }
+      cvReady = true;
+      var size = parseInt(r.headers.get("content-length") || "0", 10);
+      var mod = r.headers.get("last-modified");
+      var parts = ["PDF"];
+      if (size) parts.push(Math.max(1, Math.round(size / 1024)) + " KB");
+      if (mod) parts.push("updated " + new Date(mod).toLocaleDateString("en-GB", { month: "short", year: "numeric" }));
+      meta.textContent = parts.join(" · ");
+    }).catch(markPending);
+
+    shareBtn.addEventListener("click", function () {
+      var url = cvReady ? cvUrl : sectionUrl;
+      var data = { title: "Moaaz Afifi — CV", text: "Moaaz Afifi, Penetration Tester and Co-Founder at Raqyan", url: url };
+      var done = function (msg) {
+        shareLabel.textContent = msg;
+        setTimeout(function () { shareLabel.textContent = "Share"; }, 1800);
+      };
+      if (navigator.share) {
+        navigator.share(data).catch(function () {});
+      } else if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(function () { done("Link copied ✓"); }, function () { done("Copy failed"); });
+      } else {
+        window.prompt("Copy this link:", url);
+      }
+    });
+
+    var qrBtn = document.getElementById("cv-qr");
+    var qrDialog = document.getElementById("qr-dialog");
+    if (qrBtn && qrDialog && qrDialog.showModal) {
+      qrBtn.addEventListener("click", function () { qrDialog.showModal(); });
+      qrDialog.addEventListener("click", function (ev) { if (ev.target === qrDialog) qrDialog.close(); });
+    }
+  }
 })();
