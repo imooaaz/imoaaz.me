@@ -374,6 +374,15 @@ strong { color: var(--bright); font-weight: 600; }
   box-shadow: 0 8px 28px rgba(229, 172, 82, 0.28);
 }
 
+.dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.15);
+  animation: pulse 2.6s ease-in-out infinite;
+}
 @keyframes pulse { 50% { opacity: 0.45; } }
 
 /* hero entrance */
@@ -757,6 +766,12 @@ strong { color: var(--bright); font-weight: 600; }
 .card,
 
 /* ---------- profile photo ---------- */
+.hero-intro {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
 .hero-intro {
   display: flex;
   align-items: center;
@@ -1922,6 +1937,16 @@ abbr[title] { text-decoration: underline dotted rgba(185, 193, 204, 0.5); text-u
   color: var(--dim);
   margin: 0 0 0.8rem;
 }
+.edu-head,
+.footer-head {
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin: 0 0 0.8rem;
+}
 .edu-block p { margin: 0; color: var(--bright); line-height: 1.75; }
 
 /* ------------------------------------------------ skills ---- */
@@ -1989,8 +2014,12 @@ abbr[title] { text-decoration: underline dotted rgba(185, 193, 204, 0.5); text-u
   margin: 0 0 1.5rem;
 }
 
-
-
+.intents {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin: 0 0 1.25rem;
+}
 .intent {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -2106,7 +2135,7 @@ abbr[title] { text-decoration: underline dotted rgba(185, 193, 204, 0.5); text-u
 .contact-form.sent .field,
 .contact-form.sent .form-row { opacity: 0.55; pointer-events: none; }
 
-.contact-side { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
+.contact-side { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; position: sticky; top: 96px; }
 
 @media (max-width: 640px) {
   .contact-form { padding: 1.25rem 1.1rem 1.3rem; }
@@ -2189,6 +2218,7 @@ abbr[title] { text-decoration: underline dotted rgba(185, 193, 204, 0.5); text-u
   .blog-side { position: static; }
   .post-row { grid-template-columns: 1fr; gap: 0.4rem; padding-right: 1rem; }
   .contact-grid { grid-template-columns: minmax(0, 1fr); gap: 2.75rem; }
+  .contact-side { position: static; }
   .footer-top { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
 }
@@ -2233,6 +2263,7 @@ abbr[title] { text-decoration: underline dotted rgba(185, 193, 204, 0.5); text-u
 
 @media (max-width: 640px) {
   body { font-size: 1rem; }
+  .hero-actions .btn { flex: 1 1 auto; }
   .hero-intro { gap: 1rem; }
   .hero-photo { width: 112px; height: 128px; }
   .hero-intro .hero-name { font-size: clamp(2.2rem, 10vw, 3rem); }
