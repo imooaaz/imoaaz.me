@@ -485,7 +485,7 @@
   if (cvCard) {
     var cvPath = cvCard.getAttribute("data-cv");
     var cvUrl = location.origin + cvPath;
-    var sectionUrl = location.origin + "/#cv";
+    var sectionUrl = location.origin + "/cv/";
     var dl = document.getElementById("cv-download");
     var view = document.getElementById("cv-view");
     var meta = document.getElementById("cv-meta");
@@ -538,4 +538,21 @@
       qrDialog.addEventListener("click", function (ev) { if (ev.target === qrDialog) qrDialog.close(); });
     }
   }
+
+  /* ================= experience: "Show details" on phones ================= */
+  document.querySelectorAll(".exp .tl-item").forEach(function (item) {
+    var pts = item.querySelector(".tl-points");
+    if (!pts) return;
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "tl-more";
+    btn.textContent = "Show details";
+    btn.setAttribute("aria-expanded", "false");
+    pts.parentNode.insertBefore(btn, pts);
+    btn.addEventListener("click", function () {
+      var open = item.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      btn.textContent = open ? "Hide details" : "Show details";
+    });
+  });
 })();

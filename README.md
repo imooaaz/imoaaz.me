@@ -51,11 +51,11 @@ The photo loads from the GitHub avatar (`avatars.githubusercontent.com/u/7009165
 
 ## CV
 
-Put the PDF at `assets/cv/Moaaz-Afifi-CV.pdf`, commit, deploy. The CV section (`#cv`) checks for the file on load: when it exists, **View** and **Download** switch on and the size / date appear; until then they show "coming soon" with a link to request it. **Share** uses the phone's share sheet (or copies the link), and the QR code (`assets/img/cv-qr.svg`) points to `https://imoaaz.pages.dev/#cv`. If the domain changes, regenerate it:
+Put the PDF at `assets/cv/Moaaz-Afifi-CV.pdf`, commit, deploy. The CV page (`/cv/`) checks for the file on load: when it exists, **View** and **Download** switch on and the size / date appear; until then they show "coming soon" with a link to request it. **Share** uses the phone's share sheet (or copies the link), and the QR code (`assets/img/cv-qr.svg`) points to `https://imoaaz.pages.dev/cv/`. If the domain changes, regenerate it:
 
 ```bash
 python -m pip install --user segno
-python -c "import segno; segno.make('https://NEW-DOMAIN/#cv', error='m').save('assets/img/cv-qr.svg', scale=8, border=2, dark='#0b0d10', light='#ffffff', xmldecl=False)"
+python -c "import segno; segno.make('https://NEW-DOMAIN/cv/', error='m').save('assets/img/cv-qr.svg', scale=8, border=2, dark='#0b0d10', light='#ffffff', xmldecl=False)"
 ```
 
 ## Contact form

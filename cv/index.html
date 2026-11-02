@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CV — Moaaz Afifi</title>
+  <meta name="description" content="Download, view, or share the CV of Moaaz Afifi, penetration tester and co-founder of Raqyan.">
+  <meta name="author" content="Moaaz Afifi">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b0d10">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CV — Moaaz Afifi">
+  <meta property="og:description" content="Penetration tester and co-founder of Raqyan. Download or share my CV.">
+  <meta property="og:url" content="https://imoaaz.pages.dev/cv/">
+
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body id="top" class="blog cv-page">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="ambient" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary">
+      <a class="brand" href="/"><span class="brand-mark mono" aria-hidden="true">MA</span>Moaaz Afifi</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#experience">Experience</a></li>
+        <li><a href="/cv/" class="active" aria-current="page">CV</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#projects">Projects</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section class="hero hero-page cv-hero">
+      <div class="glow glow-a" aria-hidden="true"></div>
+      <div class="glow glow-b" aria-hidden="true"></div>
+      <div class="container">
+        <p class="hero-kicker mono">Résumé</p>
+        <h1 class="hero-name">Download my CV</h1>
+        <p class="hero-role">Experience, skills, and certifications in one document. View it, save it, or share it with your team.</p>
+      </div>
+    </section>
+
+    <section class="section cv-section">
+      <div class="container">
+        <div class="cv-card" data-cv="/assets/cv/Moaaz-Afifi-CV.pdf">
+          <div class="cv-doc" aria-hidden="true">
+            <span class="cv-doc-mark mono">MA</span>
+            <span class="cv-doc-name">Moaaz Afifi</span>
+            <span class="cv-doc-role mono">Penetration Tester · Co&#8209;Founder</span>
+            <span class="cv-doc-lines"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="cv-doc-tag mono">PDF</span>
+          </div>
+
+          <div class="cv-body">
+            <p class="cv-title">Moaaz Afifi — CV</p>
+            <p class="cv-meta mono" id="cv-meta">PDF</p>
+            <div class="cv-actions">
+              <a class="btn btn-solid" id="cv-download" href="/assets/cv/Moaaz-Afifi-CV.pdf" download="Moaaz-Afifi-CV.pdf"><svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg>Download PDF</a>
+              <a class="btn" id="cv-view" href="/assets/cv/Moaaz-Afifi-CV.pdf" target="_blank" rel="noopener"><svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>View</a>
+              <button class="btn" id="cv-share" type="button"><svg class="btn-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg><span class="cv-share-label">Share</span></button>
+            </div>
+            <p class="cv-note" id="cv-note" hidden>The PDF is being finalised. <a href="#contact" data-intent="Job opportunity / hiring">Request it</a> and I'll send it to you directly.</p>
+          </div>
+
+          <button class="cv-qr" id="cv-qr" type="button" aria-haspopup="dialog" aria-controls="qr-dialog">
+            <img src="/assets/img/cv-qr.svg" alt="QR code that opens this page" width="132" height="132">
+            <span>Scan or tap to enlarge</span>
+          </button>
+        </div>
+
+        <p class="cv-alt">Prefer to talk first? <a href="/#contact" data-intent="Job opportunity / hiring">Get in touch</a> or see <a href="/#experience">my experience</a>.</p>
+      </div>
+    </section>
+
+    <dialog class="qr-dialog" id="qr-dialog" aria-labelledby="qr-title">
+      <p class="qr-title" id="qr-title">Scan to open my CV</p>
+      <img src="/assets/img/cv-qr.svg" alt="QR code that opens imoaaz.pages.dev/cv" width="264" height="264">
+      <p class="qr-url mono">imoaaz.pages.dev/cv</p>
+      <form method="dialog"><button class="btn" type="submit">Close</button></form>
+    </dialog>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand" href="/"><span class="brand-mark mono" aria-hidden="true">MA</span>Moaaz Afifi</a>
+          <p class="footer-tag">Building software, and testing it the way attackers would.</p>
+          <a class="footer-mail" href="mailto:imooaaz@gmail.com">imooaaz@gmail.com</a>
+        </div>
+        <nav class="footer-col" aria-label="Footer">
+          <p class="footer-head">Site</p>
+          <ul>
+            <li><a href="/#experience">Experience</a></li>
+            <li><a href="/cv/" class="active" aria-current="page">CV</a></li>
+        <li><a href="/#about">About</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#projects">Projects</a></li>
+                <li><a href="/blog/">Blog</a></li>
+            <li><a href="/#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="footer-col">
+          <p class="footer-head">Elsewhere</p>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/imooaaz/" target="_blank" rel="noopener me">LinkedIn ↗</a></li>
+            <li><a href="https://github.com/m0442" target="_blank" rel="noopener me">GitHub ↗</a></li>
+            <li><a href="https://x.com/imooaaz" target="_blank" rel="noopener me">X ↗</a></li>
+            <li><a href="https://imooaaz.medium.com/" target="_blank" rel="noopener me">Medium ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Moaaz Afifi. All rights reserved.</p>
+        <p class="footer-links">
+          <a href="/.well-known/security.txt">security.txt</a>
+          <a href="#top" class="to-top">Back to top ↑</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="tabbar" aria-label="Quick navigation">
+    <a href="/#experience"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg><span>Experience</span></a>
+    <a href="/#projects"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg><span>Projects</span></a>
+    <a href="/cv/" class="active" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 11v6m0 0-3-3m3 3 3-3"/></svg><span>CV</span></a>
+    <a href="/blog/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19.5 8.5a2.1 2.1 0 0 0-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg><span>Blog</span></a>
+    <a href="/#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>Contact</span></a>
+  </nav>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>
