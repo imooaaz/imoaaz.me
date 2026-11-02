@@ -2700,26 +2700,24 @@ abbr[title] { text-decoration: underline dotted rgba(185, 193, 204, 0.5); text-u
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.018), rgba(255, 255, 255, 0.008));
 }
 
-/* ---------- currently learning ---------- */
-.learning { margin-top: 2rem; }
-.learning-head {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  margin: 0 0 0.75rem;
+/* ---------- security domains ---------- */
+.domains { margin-top: 2.5rem; }
+.domains-head {
+  margin: 0 0 0.85rem;
   font-size: var(--fs-xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--cyan);
+  color: var(--amber);
 }
-.learning-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 0 3px rgba(139, 180, 212, 0.18); animation: pulse 2.2s ease-in-out infinite; }
-.learning-list { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
-.learning-list li {
+.domains-list { display: flex; flex-wrap: wrap; gap: 0.55rem; list-style: none; margin: 0; padding: 0; }
+.domains-list li {
   font-size: var(--fs-sm);
-  color: var(--text);
-  border: 1px dashed rgba(139, 180, 212, 0.4);
-  background: rgba(139, 180, 212, 0.05);
+  font-weight: 500;
+  color: var(--bright);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 0.3em 0.9em;
+  padding: 0.35em 0.95em;
+  transition: border-color 0.18s ease, color 0.18s ease;
 }
-
+.domains-list li:hover { border-color: var(--amber-dark); color: var(--amber-soft); }
