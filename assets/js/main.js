@@ -468,17 +468,6 @@
     });
   }
 
-  /* ================= terminal toggle on phones ================= */
-  var termToggle = document.querySelector(".term-toggle");
-  if (termToggle) {
-    termToggle.addEventListener("click", function () {
-      var right = termToggle.closest(".hero-right");
-      right.classList.add("open");
-      termToggle.setAttribute("aria-expanded", "true");
-      var screen = document.getElementById("term-screen");
-      if (screen) screen.click();
-    });
-  }
 
   /* ================= CV: availability, share, QR ================= */
   var cvCard = document.querySelector(".cv-card");
