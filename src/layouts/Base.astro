@@ -74,5 +74,7 @@ const isHome = page === 'home';
   <TabBar page={page} />
 
   <script is:inline src="/assets/js/main.js" defer></script>
+  <!-- Cloudflare Web Analytics (cookie-free visit counts; dashboard: Analytics → Web analytics) -->
+  <script is:inline type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "377cbe67e57148209b0ad26d90edeb81"}'></script>
 </body>
 </html>
