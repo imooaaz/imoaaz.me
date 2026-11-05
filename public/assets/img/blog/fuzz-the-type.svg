@@ -76,6 +76,6 @@
       <rect x="6" y="34" width="56" height="44" rx="9" fill="#1b2029"/>
       <circle cx="34" cy="54" r="5" fill="#e5ac52" stroke="none"/>
     </g>
-    <text x="230" y="495" fill="#6d7785" font-size="16">validate the value — enforce the type</text>
+    <text x="230" y="495" fill="#6d7785" font-size="16">validate the value, enforce the type</text>
   </g>
 </svg>

@@ -19,12 +19,12 @@ const { post, more } = Astro.props;
 const d = post.data;
 const { Content } = await render(post);
 const url = SITE_URL + postUrl(post);
-const avatarFallback = "this.onerror=null;this.src='/assets/img/moaaz.jpg'";
+const avatarFallback = "this.onerror=null;this.src='/assets/img/moaaz-portrait.jpg'";
 ---
 <Base
   page="blog"
   bodyClass="blog"
-  title={`${d.title} — Moaaz Afifi`}
+  title={`${d.title} | Moaaz Afifi`}
   description={d.description}
   ogType="article"
   ogTitle={d.title}

@@ -1,7 +1,7 @@
 ---
 title: "From Comments to Command Execution: How an E-Book Platform Gave Me RCE"
 description: "A security research writeup: how a comment feature on an e-book platform led from stored XSS to a file-upload bypass and full remote code execution."
-ogDescription: From a stored XSS in a comment feature to remote code execution — a full file-upload bypass writeup.
+ogDescription: "From a stored XSS in a comment feature to remote code execution: a full file-upload bypass writeup."
 dek: From stored XSS in comments to file upload to remote code execution.
 date: 2024-12-20
 readTime: 6
@@ -34,7 +34,7 @@ platform to gain a comprehensive understanding of its attack surface. Using
 Wappalyzer, I identified the platform's tech stack, revealing that it was
 running on Linux and equipped with security features like Imunify360 and a
 Web Application Firewall (WAF). Additionally, it utilized NGINX as the web
-server and PHP as the scripting language — a combination that presented
+server and PHP as the scripting language, a combination that presented
 intriguing possibilities for exploitation.
 
 ## The comments feature: my entry point
@@ -51,7 +51,7 @@ vulnerabilities. The workflow was straightforward:
 
 To my surprise, the platform accepted an SVG file containing an XSS payload,
 and when the profile image was clicked, the payload executed successfully.
-I had discovered a stored XSS vulnerability — my first win.
+I had discovered a stored XSS vulnerability: my first win.
 
 ## Phase 1: the stored XSS experiment
 
@@ -103,7 +103,7 @@ platform was scrutinizing the file's signature, not just its extension.
   format, such as <code>89 50 4E 47</code> for PNG files.
 </blockquote>
 
-Aha! The platform was checking the file's magic bytes — its signature — to
+Aha! The platform was checking the file's magic bytes (its signature) to
 determine whether it was a legitimate image. This revelation got my mental
 gears turning.
 
@@ -131,14 +131,14 @@ executed a command through the `cmd` parameter:
 https://[target]/uploads/shell.php?cmd=ls
 ```
 
-The response returned the output of `ls` — a directory listing
+The response returned the output of `ls`: a directory listing
 from the server. I had achieved remote code execution. Game over.
 
 ## Impact
 
-1. **Full server compromise** — an attacker could execute arbitrary commands on the server.
-2. **Data breach** — sensitive user data and content could be accessed and exfiltrated.
-3. **Further attacks** — the compromised server could be used to launch additional attacks.
+1. **Full server compromise**: an attacker could execute arbitrary commands on the server.
+2. **Data breach**: sensitive user data and content could be accessed and exfiltrated.
+3. **Further attacks**: the compromised server could be used to launch additional attacks.
 
 ## Lessons learned and recommendations
 
@@ -149,8 +149,8 @@ This research project taught me several valuable lessons:
    - Store uploaded files outside the web root, or serve them from a separate domain.
    - Enforce a strict allowlist of file extensions and MIME types.
    - Never trust user-supplied filenames.
-2. **Security is a chain** — the individual flaws were manageable, but chained together they led to full compromise.
-3. **Keep learning** — understanding how defenses work (magic bytes, WAFs) is what makes bypassing them possible.
+2. **Security is a chain**: the individual flaws were manageable, but chained together they led to full compromise.
+3. **Keep learning**: understanding how defenses work (magic bytes, WAFs) is what makes bypassing them possible.
 
 ## Final thoughts
 
@@ -168,5 +168,5 @@ boundaries of what's possible. Happy hacking!
 
 *(Demonstrated and fixed in 2023.)*
 
-**Moaaz Afifi** — [Linkedin](https://www.linkedin.com/in/imooaaz/) ·
+**Moaaz Afifi** · [Linkedin](https://www.linkedin.com/in/imooaaz/) ·
 [X](https://twitter.com/imooaaz)

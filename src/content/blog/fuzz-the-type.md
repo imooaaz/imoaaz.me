@@ -1,7 +1,7 @@
 ---
 title: Fuzz the type, not just the value
 description: "A one-line habit that keeps finding authorization bugs: swap a parameter's type, not just its value. From a bug bounty hunter's notebook."
-ogDescription: Swap the type, not just the payload — a one-line habit that keeps finding authorization bugs.
+ogDescription: "Swap the type, not just the payload: a one-line habit that keeps finding authorization bugs."
 dek: Change a parameter's type, not just its value, to find authorization bugs.
 date: 2026-09-14
 readTime: 2
@@ -12,7 +12,7 @@ cover: /assets/img/blog/fuzz-the-type.svg
 ---
 
 Next time you hit an auth or permission check, don't just fuzz the
-value — **fuzz the type**.
+value: **fuzz the type**.
 
 Swap a string parameter for an object, an array, or a boolean:
 
@@ -28,21 +28,21 @@ and the authorization check gets skipped entirely.
 
 ## Where this earns acceptances
 
-- **NoSQL lookups** — Mongo-style operators
+- **NoSQL lookups**: Mongo-style operators
   (`{"$ne": null}`, `{"$gt": ""}`) sail
   through comparisons that were only ever tested against strings.
-- **ORMs and loose comparisons** — a boolean or an
+- **ORMs and loose comparisons**: a boolean or an
   array can bypass an equality or membership check written with
   strings in mind.
-- **Type juggling** — PHP-style loose comparison
+- **Type juggling**: PHP-style loose comparison
   behavior is old news, but it's still alive and well behind JSON
   APIs.
 
 ## How to run it
 
-Keep a small type-swap list — `{}`,
+Keep a small type-swap list (`{}`,
 `{"$ne": null}`, `[]`, `true`,
-`false`, `null`, `0` — and fire it
+`false`, `null`, `0`) and fire it
 at every ID-like parameter once the request is mapped. It takes
 minutes to build the list and seconds per endpoint.
 

@@ -1,5 +1,5 @@
 /* ============================================================
-   imoaaz — Moaaz Afifi
+   imoaaz | Moaaz Afifi
    Design system: Inter (text) · JetBrains Mono (technical labels)
    One accent (amber) for interaction; steel blue for quiet labels;
    green only for "available / ok" status.
@@ -32,7 +32,7 @@
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   /* type scale */
-  --fs-xs: 0.8125rem;   /* 13px — smallest text on the site */
+  --fs-xs: 0.8125rem;   /* 13px, smallest text on the site */
   --fs-sm: 0.875rem;    /* 14px */
   --fs-base: 1.0625rem; /* 17px */
   --fs-md: 1.125rem;    /* 18px */
@@ -555,10 +555,11 @@ strong { color: var(--bright); font-weight: 600; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 45% 10%;
-  transform: scale(1.9);
-  transform-origin: 45% 24%;
+  object-position: 50% 0%;
+  filter: grayscale(1) sepia(0.12) contrast(0.92) brightness(1.06);
+  transition: filter 0.6s ease;
 }
+.hero-photo:hover img { filter: none; }
 .shield-swords {
   position: absolute;
   inset: 0;
@@ -683,6 +684,7 @@ strong { color: var(--bright); font-weight: 600; }
   object-position: 45% 15%;
   transform: scale(3);
   transform-origin: 45% 19%;
+  filter: grayscale(1) sepia(0.12) contrast(0.92) brightness(1.06);
 }
 .face-sm { width: 44px; height: 44px; }
 .face-lg { width: 64px; height: 64px; }

@@ -1,4 +1,4 @@
-/* imoaaz — site chrome: nav, scroll reveals, spotlight, progress, copy.
+/* imoaaz: site chrome: nav, scroll reveals, spotlight, progress, copy.
    The interactive terminal lives in terminal.js.
    No frameworks, no dependencies. */
 
@@ -376,7 +376,7 @@
       if (!key) {
         var to = form.getAttribute("data-to");
         var subject = "[" + data.topic + "] from " + data.name;
-        var body = data.message + "\n\n— " + data.name + " <" + data.email + ">";
+        var body = data.message + "\n\nFrom: " + data.name + " <" + data.email + ">";
         window.location.href = "mailto:" + to + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
         setStatus("Your email app should open with the message ready to send.", "ok");
         return;
@@ -506,7 +506,7 @@
 
     shareBtn.addEventListener("click", function () {
       var url = cvReady ? cvUrl : sectionUrl;
-      var data = { title: "Moaaz Afifi — CV", text: "Moaaz Afifi, Cyber & Product Security Engineer and Co-Founder at Raqyan", url: url };
+      var data = { title: "Moaaz Afifi | CV", text: "Moaaz Afifi, Cyber & Product Security Engineer and Co-Founder at Raqyan", url: url };
       var done = function (msg) {
         shareLabel.textContent = msg;
         setTimeout(function () { shareLabel.textContent = "Share"; }, 1800);

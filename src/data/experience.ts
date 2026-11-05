@@ -30,7 +30,7 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    dates: 'Feb 2025 — Present',
+    dates: 'Feb 2025 – Present',
     role: 'Cyber Security Consultant & Penetration Tester',
     org: 'GCC',
     type: 'Part-time',
@@ -42,7 +42,7 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    dates: '2023 — Present',
+    dates: '2023 – Present',
     role: 'Cyber Security Researcher',
     org: 'HackerOne',
     type: 'Part-time',
@@ -54,7 +54,7 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    dates: 'Jun 2025 — Aug 2025',
+    dates: 'Jun 2025 – Aug 2025',
     role: 'Application Security Engineer',
     org: 'Robusta Technology Group (RTG)',
     type: 'Full-time',
@@ -65,7 +65,7 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    dates: 'Oct 2023 — Jan 2024',
+    dates: 'Oct 2023 – Jan 2024',
     role: 'Offensive Security Engineer',
     org: 'Cybrany',
     type: 'Part-time',

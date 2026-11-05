@@ -1,7 +1,7 @@
 export const SITE_URL = 'https://imoaaz.pages.dev';
 export const OG_IMAGE = `${SITE_URL}/assets/img/og.png`;
 export const EMAIL = 'imooaaz@gmail.com';
-export const AVATAR = 'https://avatars.githubusercontent.com/u/70091653?v=4&s=460';
+export const AVATAR = '/assets/img/moaaz-portrait.jpg';
 
 export const SOCIALS = {
   linkedin: 'https://www.linkedin.com/in/imooaaz/',

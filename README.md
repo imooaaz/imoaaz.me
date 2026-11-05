@@ -96,7 +96,7 @@ Add an object to `experience` in `src/data/experience.ts` (newest first):
 
 ```ts
 {
-  dates: 'Jan 2027 — Present',
+  dates: 'Jan 2027 – Present',
   role: 'Security Engineer',
   org: 'Company',
   type: 'Full-time',
