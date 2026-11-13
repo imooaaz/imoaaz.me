@@ -1,3 +1,6 @@
+---
+import { certs } from '../../data/certs';
+---
 <section class="hero" id="top">
   <div class="glow glow-a" aria-hidden="true"></div>
   <div class="glow glow-b" aria-hidden="true"></div>
@@ -86,8 +89,13 @@
 
       <div class="hero-actions">
         <a class="btn btn-solid" href="#contact">Get in touch</a>
-        <a class="btn" href="#contact" data-intent="Job opportunity / hiring">Hire me</a>
+        <a class="btn" href="/cv/">View my CV</a>
       </div>
+      <ul class="hero-proof mono" aria-label="Highlights">
+        <li><a href="#certs">{certs.length} security certifications</a></li>
+        <li><a href="#projects">CVE-2024-36436</a></li>
+        <li>HackerOne researcher</li>
+      </ul>
     </div>
 
     <div class="hero-right">
@@ -140,7 +148,7 @@
             <g clip-path="url(#sh-inner)"><rect class="sh-scanline" x="16" y="-10" width="108" height="26" fill="url(#sh-scan)"/></g>
             <path class="sh-outline" d="M70 10 L124 29.8 V76 C124 110.3 102.4 132.8 70 142 C37.6 132.8 16 110.3 16 76 V29.8 Z" fill="none" stroke="url(#sh-stroke)" stroke-width="3" stroke-linejoin="round"/>
           </svg>
-          <span class="hero-photo-dot" title="Available for new engagements"></span>
+          <span class="hero-photo-dot" title="Available for new engagements"><span class="sr-only">Available for new engagements</span></span>
         </figure>
       </div>
     </div>

@@ -13,7 +13,7 @@ cover: /assets/img/blog/comments-to-rce.svg
 medium: https://medium.com/@imooaaz/from-comments-to-command-execution-how-an-e-book-platform-gave-me-rce-f27a079ca584
 ---
 
-<p class="rtl">بسم الله، ربِّ يَسِّر وأعِن وامْنُن بالإخلاص والتوفيق والقبول.</p>
+<p class="rtl" lang="ar" dir="rtl">بسم الله، ربِّ يَسِّر وأعِن وامْنُن بالإخلاص والتوفيق والقبول.</p>
 
 What's better than curling up with a good book? For me, it was uncovering the
 security flaws lurking beneath an e-book platform's surface. Join me as I
@@ -87,7 +87,7 @@ echo "<br>=================================";
 and tried to upload it. As expected, the platform rejected my PHP file,
 denying its upload. Undeterred, I pondered my next move.
 
-<p class="rtl">«توكل على الله ولا تعجز»</p>
+<p class="rtl" lang="ar" dir="rtl">«توكل على الله ولا تعجز»</p>
 
 ## Phase 3: understanding the file validation
 
@@ -161,7 +161,7 @@ everything responsibly and worked with the team to get the issues fixed.
 Until next time, stay curious, stay persistent, and keep pushing the
 boundaries of what's possible. Happy hacking!
 
-<p class="rtl">
+<p class="rtl" lang="ar" dir="rtl">
   اللهم علمنا ما ينفعنا وانفعنا بما علمتنا، وصلى الله على سيدنا محمد
   وآله وصحبه وسلم.
 </p>

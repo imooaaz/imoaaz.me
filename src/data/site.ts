@@ -1,4 +1,5 @@
 export const SITE_URL = 'https://imoaaz.pages.dev';
+export const SITE_NAME = 'Moaaz Afifi';
 export const OG_IMAGE = `${SITE_URL}/assets/img/og.png`;
 export const EMAIL = 'imooaaz@gmail.com';
 export const AVATAR = '/assets/img/moaaz-portrait.jpg';

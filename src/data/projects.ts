@@ -30,7 +30,7 @@ export const projects: Project[] = [
     title: 'bookmark-path-finder',
     kind: 'tool',
     kindLabel: 'Tool · Open source',
-    desc: 'Finds hidden paths and API routes on any page.',
+    desc: 'A browser bookmarklet that pulls hidden paths and API routes out of any page and its scripts, for faster recon.',
     tags: ['javascript', 'recon', 'web appsec'],
     links: [{ label: 'Code', href: 'https://github.com/m0442/bookmark-path-finder' }],
   },
@@ -38,7 +38,7 @@ export const projects: Project[] = [
     title: 'CVE-2024-36436',
     kind: 'research',
     kindLabel: 'Research · Coordinated disclosure',
-    desc: 'Found and reported through coordinated disclosure.',
+    desc: 'A vulnerability I found and reported privately to the vendor through coordinated disclosure. It was assigned a CVE ID.',
     tags: ['vulnerability research', 'disclosure'],
   },
 ];

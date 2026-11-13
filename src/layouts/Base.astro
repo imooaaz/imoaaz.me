@@ -3,7 +3,7 @@ import Ambient from '../components/Ambient.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import TabBar from '../components/TabBar.astro';
-import { OG_IMAGE, SITE_URL, type Page } from '../data/site';
+import { OG_IMAGE, SITE_NAME, SITE_URL, type Page } from '../data/site';
 
 interface Props {
   title: string;
@@ -17,15 +17,17 @@ interface Props {
   publishedTime?: string;
   bodyClass?: string;
   noindex?: boolean;
-  /** Emit twitter:title / twitter:description (the home page sets them explicitly). */
-  twitter?: boolean;
+  /** schema.org JSON-LD object for this page. */
+  jsonLd?: Record<string, unknown>;
 }
 
 const {
   title, page, description, ogTitle, ogDescription, path, ogType,
-  publishedTime, bodyClass, noindex = false, twitter = false,
+  publishedTime, bodyClass, noindex = false, jsonLd,
 } = Astro.props;
 const isHome = page === 'home';
+const canonical = path ? SITE_URL + path : undefined;
+const jsonLdText = jsonLd ? JSON.stringify(jsonLd).replaceAll('<', '\\u003c') : undefined;
 ---
 <!doctype html>
 <html lang="en">
@@ -36,27 +38,36 @@ const isHome = page === 'home';
   {description && <meta name="description" content={description}>}
   {description && <meta name="author" content="Moaaz Afifi">}
   {noindex && <meta name="robots" content="noindex">}
+  {canonical && <link rel="canonical" href={canonical}>}
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#f6f7f9">
 
   {ogType && <meta property="og:type" content={ogType}>}
   {ogTitle && <meta property="og:title" content={ogTitle}>}
   {ogDescription && <meta property="og:description" content={ogDescription}>}
-  {path && <meta property="og:url" content={SITE_URL + path}>}
+  {canonical && <meta property="og:url" content={canonical}>}
+  <meta property="og:site_name" content={SITE_NAME}>
+  <meta property="og:locale" content="en_US">
   <meta property="og:image" content={OG_IMAGE}>
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Moaaz Afifi, Cyber & Product Security Engineer">
   {publishedTime && <meta property="article:published_time" content={publishedTime}>}
+  {publishedTime && <meta property="article:author" content="Moaaz Afifi">}
   <meta name="twitter:card" content="summary_large_image">
-  {twitter && ogTitle && <meta name="twitter:title" content={ogTitle}>}
-  {twitter && ogDescription && <meta name="twitter:description" content={ogDescription}>}
+  {ogTitle && <meta name="twitter:title" content={ogTitle}>}
+  {ogDescription && <meta name="twitter:description" content={ogDescription}>}
   <meta name="twitter:image" content={OG_IMAGE}>
 
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="Moaaz Afifi | Blog" href="/rss.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- Without JS nothing adds .in, so show scroll-reveal content straight away. -->
+  <noscript><style>.reveal { opacity: 1 !important; transform: none !important; filter: none !important; }</style></noscript>
+  {jsonLdText && <script is:inline type="application/ld+json" set:html={jsonLdText} />}
 </head>
 <body id={isHome ? undefined : 'top'} class={bodyClass}>
 

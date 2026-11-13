@@ -1,16 +1,41 @@
 ---
 import SectionTitle from '../SectionTitle.astro';
+import { certs, certsShort } from '../../data/certs';
+import { languages } from '../../data/services';
 ---
 <section class="section" id="about">
   <div class="container">
     <div class="about-grid">
-    <SectionTitle eyebrow="About">A product security engineer with a developer's background</SectionTitle>
+      <div>
+        <SectionTitle eyebrow="About">A security engineer with a developer's background</SectionTitle>
+        <div class="about-text">
+          <p class="reveal">I came to security from software development. I read the code, not just the responses, so I understand what the developer intended and where that intent breaks.</p>
+          <p class="reveal" style="--d:90ms">Today I work on both sides: shipping software as co-founder of Raqyan, and attacking it as a penetration tester and bug bounty researcher. That mix lets me report findings developers can act on, with a fix that fits how the product is actually built.</p>
+        </div>
+      </div>
 
-    <div class="about-text">
-      <p class="reveal">I came to security from software development, so I read code, not just responses, and understand what the developer intended.</p>
-      <p class="reveal" style="--d:90ms">I work on both sides: shipping software and attacking it.</p>
-      <p class="about-meta mono reveal" style="--d:160ms">Languages: Arabic · English</p>
-    </div>
+      <dl class="facts reveal" style="--d:140ms">
+        <div class="fact">
+          <dt class="mono">Focus</dt>
+          <dd>Product security, application security, DevSecOps</dd>
+        </div>
+        <div class="fact">
+          <dt class="mono">Current roles</dt>
+          <dd>Co-Founder at Raqyan · Security consultant · HackerOne researcher</dd>
+        </div>
+        <div class="fact">
+          <dt class="mono">Research</dt>
+          <dd><a href="#projects" class="nowrap">CVE-2024-36436</a>, public and private bug bounty programs</dd>
+        </div>
+        <div class="fact">
+          <dt class="mono">Certifications</dt>
+          <dd><a href="#certs">{certs.length} certifications</a>: {certsShort}</dd>
+        </div>
+        <div class="fact">
+          <dt class="mono">Languages</dt>
+          <dd>{languages.join(' · ')}</dd>
+        </div>
+      </dl>
     </div>
   </div>
 </section>
