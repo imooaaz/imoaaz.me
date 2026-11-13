@@ -1,7 +1,7 @@
 ---
 title: "From Comments to Command Execution: How an E-Book Platform Gave Me RCE"
-description: "A security research writeup: how a comment feature on an e-book platform led from stored XSS to a file-upload bypass and full remote code execution."
-ogDescription: "From a stored XSS in a comment feature to remote code execution: a full file-upload bypass writeup."
+description: "A security research write-up: how a comment feature on an e-book platform led from stored XSS to a file-upload bypass and full remote code execution."
+ogDescription: "From a stored XSS in a comment feature to remote code execution: a full file-upload bypass write-up."
 dek: From stored XSS in comments to file upload to remote code execution.
 date: 2024-12-20
 readTime: 6

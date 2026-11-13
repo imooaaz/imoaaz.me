@@ -7,29 +7,29 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    name: 'Product Security & DevSecOps',
+    name: 'Product security & DevSecOps',
     desc: 'Automated security checks and secure defaults built into the delivery pipeline.',
-    tags: ['CI/CD', 'DevOps', 'Linux (Red Hat)', 'Secure Delivery'],
+    tags: ['CI/CD', 'DevOps', 'Linux (Red Hat)', 'Secure delivery'],
   },
   {
-    name: 'Application Security',
+    name: 'Application security',
     desc: 'Secure code review and testing, done alongside your developers.',
-    tags: ['Secure Code Review', 'Secure SDLC', 'JavaScript / Node.js', 'MongoDB'],
+    tags: ['Secure code review', 'Secure SDLC', 'JavaScript / Node.js', 'MongoDB'],
   },
   {
-    name: 'Web & Mobile Penetration Testing',
+    name: 'Web & mobile penetration testing',
     desc: 'Web, API, and Android testing. Every finding is verified and comes with a clear fix.',
-    tags: ['Web', 'Mobile', 'API', 'Red Teaming', 'Reporting'],
+    tags: ['Web', 'Mobile', 'API', 'Red teaming', 'Reporting'],
   },
   {
-    name: 'Security Research & Bug Bounty',
+    name: 'Security research & bug bounty',
     desc: 'Finding vulnerabilities in live systems and disclosing them responsibly.',
-    tags: ['Bug Bounty', 'Recon', 'Vulnerability Research', 'Disclosure'],
+    tags: ['Bug bounty', 'Recon', 'Vulnerability research', 'Disclosure'],
   },
   {
-    name: 'AI Security',
+    name: 'AI security',
     desc: 'Testing AI features for prompt injection, weak authentication, and data exposure.',
-    tags: ['LLM Applications', 'Authentication', 'Abuse Cases'],
+    tags: ['LLM applications', 'Authentication', 'Abuse cases'],
   },
 ];
 

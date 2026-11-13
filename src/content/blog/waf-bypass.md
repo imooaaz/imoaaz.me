@@ -1,6 +1,6 @@
 ---
 title: "From Frustration to Exploitation: How a Link Shortener Helped Me Bypass WAF"
-description: "A bug bounty writeup: when a WAF blocked every XSS payload in the search box, the platform's own link shortener became the bypass."
+description: "A bug bounty write-up: when a WAF blocked every XSS payload in the search box, the platform's own link shortener became the bypass."
 ogDescription: When a WAF blocked every XSS payload in the search box, the platform's own link shortener became the bypass.
 dek: Getting past a WAF through the site's own link shortener.
 date: 2024-12-05
