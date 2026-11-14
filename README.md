@@ -9,7 +9,7 @@ Live: **https://imoaaz.pages.dev** (Cloudflare Pages project `imoaaz`).
 [Astro](https://astro.build) with static output only: every page is pre-rendered HTML in `dist/`, with no server and no framework runtime in the browser.
 
 - One global stylesheet: `public/assets/css/style.css` (Inter + JetBrains Mono, deep-gold accent; tokens in `:root`). Components use its class names directly; there are no scoped styles.
-- One script: `public/assets/js/main.js` handles the header, mobile menu, scroll-spy, reveals, filters, article TOC, copy buttons, contact form (Web3Forms + lazy hCaptcha), CV availability/share/QR, and the experience "Show details" toggle. It is plain JS with no dependencies, so no React islands are needed.
+- One script: `public/assets/js/main.js` handles the header, mobile menu, scroll-spy, reveals, filters, article TOC, copy buttons, contact form (Web3Forms + lazy hCaptcha), CV print/share/QR, and the experience "Show details" toggle. It is plain JS with no dependencies, so no React islands are needed.
 
 ```
 src/
@@ -27,10 +27,12 @@ src/
   content/blog/*.md           blog posts (one Markdown file each)
   data/
     experience.ts             experience timeline, education, volunteering
+    services.ts               services, security domains, languages
+    certs.ts                  certifications
     projects.ts               projects & tools
     site.ts                   URLs, email, socials
   lib/posts.ts                post sorting, dates, filter keys
-  pages/                      index, blog/index, blog/[slug], cv/index, 404
+  pages/                      index, blog/index, blog/[slug], cv/index, 404, sitemap.xml, rss.xml
 public/                       copied as-is: assets/, .well-known/security.txt, robots.txt
 tools/og.html                 source of assets/img/og.png (not deployed)
 ```
@@ -117,4 +119,4 @@ npx wrangler pages deploy dist --project-name imoaaz --branch main
 
 `dist/` contains only the built site, so there is no need for the old `git archive` clean-snapshot step. To get a preview URL instead of production, pass any other branch name, e.g. `--branch astro`.
 
-The contact form posts to Web3Forms with the access key in `src/components/home/Contact.astro` (`data-web3forms-key`). The CV page enables its buttons once `public/assets/cv/Moaaz-Afifi-CV.pdf` exists.
+The contact form posts to Web3Forms with the access key in `src/components/home/Contact.astro` (`data-web3forms-key`). The CV page (`/cv/`) is an HTML résumé generated from the files in `src/data/`, with a print stylesheet behind its "Print / Save as PDF" button. A "Download PDF" button also appears once `public/assets/cv/Moaaz-Afifi-CV.pdf` exists.

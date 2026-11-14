@@ -10,6 +10,24 @@ import Projects from '../components/home/Projects.astro';
 import Writing from '../components/home/Writing.astro';
 import Certs from '../components/home/Certs.astro';
 import Contact from '../components/home/Contact.astro';
+import { AVATAR, SITE_URL, SOCIALS } from '../data/site';
+import { certs } from '../data/certs';
+import { domains, languages } from '../data/services';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Moaaz Afifi',
+  url: SITE_URL + '/',
+  image: SITE_URL + AVATAR,
+  jobTitle: 'Cyber & Product Security Engineer',
+  worksFor: { '@type': 'Organization', name: 'Raqyan' },
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'Menoufia University' },
+  knowsLanguage: languages,
+  knowsAbout: domains,
+  hasCredential: certs.map((c) => ({ '@type': 'EducationalOccupationalCredential', name: `${c.abbr}: ${c.name}` })),
+  sameAs: Object.values(SOCIALS),
+};
 ---
 <Base
   page="home"
@@ -19,16 +37,16 @@ import Contact from '../components/home/Contact.astro';
   ogTitle="Moaaz Afifi | Cyber & Product Security Engineer"
   ogDescription="I build secure products and break them before attackers do. Cyber & Product Security Engineer, co-founder of Raqyan."
   path="/"
-  twitter
+  jsonLd={jsonLd}
 >
   <Hero />
-  <Experience />
   <LogoStrip />
-  <Business />
   <About />
   <Services />
+  <Business />
+  <Experience />
+  <Certs />
   <Projects />
   <Writing />
-  <Certs />
   <Contact />
 </Base>

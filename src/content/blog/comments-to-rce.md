@@ -1,7 +1,7 @@
 ---
 title: "From Comments to Command Execution: How an E-Book Platform Gave Me RCE"
-description: "A security research writeup: how a comment feature on an e-book platform led from stored XSS to a file-upload bypass and full remote code execution."
-ogDescription: "From a stored XSS in a comment feature to remote code execution: a full file-upload bypass writeup."
+description: "A security research write-up: how a comment feature on an e-book platform led from stored XSS to a file-upload bypass and full remote code execution."
+ogDescription: "From a stored XSS in a comment feature to remote code execution: a full file-upload bypass write-up."
 dek: From stored XSS in comments to file upload to remote code execution.
 date: 2024-12-20
 readTime: 6
@@ -13,7 +13,7 @@ cover: /assets/img/blog/comments-to-rce.svg
 medium: https://medium.com/@imooaaz/from-comments-to-command-execution-how-an-e-book-platform-gave-me-rce-f27a079ca584
 ---
 
-<p class="rtl">بسم الله، ربِّ يَسِّر وأعِن وامْنُن بالإخلاص والتوفيق والقبول.</p>
+<p class="rtl" lang="ar" dir="rtl">بسم الله، ربِّ يَسِّر وأعِن وامْنُن بالإخلاص والتوفيق والقبول.</p>
 
 What's better than curling up with a good book? For me, it was uncovering the
 security flaws lurking beneath an e-book platform's surface. Join me as I
@@ -87,7 +87,7 @@ echo "<br>=================================";
 and tried to upload it. As expected, the platform rejected my PHP file,
 denying its upload. Undeterred, I pondered my next move.
 
-<p class="rtl">«توكل على الله ولا تعجز»</p>
+<p class="rtl" lang="ar" dir="rtl">«توكل على الله ولا تعجز»</p>
 
 ## Phase 3: understanding the file validation
 
@@ -161,7 +161,7 @@ everything responsibly and worked with the team to get the issues fixed.
 Until next time, stay curious, stay persistent, and keep pushing the
 boundaries of what's possible. Happy hacking!
 
-<p class="rtl">
+<p class="rtl" lang="ar" dir="rtl">
   اللهم علمنا ما ينفعنا وانفعنا بما علمتنا، وصلى الله على سيدنا محمد
   وآله وصحبه وسلم.
 </p>

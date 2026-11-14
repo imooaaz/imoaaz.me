@@ -1,5 +1,5 @@
-/* imoaaz: site chrome: nav, scroll reveals, spotlight, progress, copy.
-   The interactive terminal lives in terminal.js.
+/* imoaaz: site chrome: nav, scroll reveals, spotlight, progress, copy,
+   filters, article TOC, contact form, CV page.
    No frameworks, no dependencies. */
 
 (function () {
@@ -88,7 +88,7 @@
     var setNav = function (open) {
       header.classList.toggle("nav-open", open);
       navToggle.setAttribute("aria-expanded", open ? "true" : "false");
-      navToggle.textContent = open ? "Close" : "Menu";
+      navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     };
     navToggle.addEventListener("click", function () {
       setNav(!header.classList.contains("nav-open"));
@@ -411,11 +411,11 @@
           submitBtn.disabled = true;
           submitLabel.textContent = "Sent ✓";
         } else {
-          setStatus("Couldn't send right now. Please email imooaaz@gmail.com directly.", "err");
+          setStatus("Couldn't send right now. Please email " + form.getAttribute("data-to") + " directly.", "err");
         }
       }).catch(function () {
         busy(false);
-        setStatus("Network error. Please try again, or email imooaaz@gmail.com directly.", "err");
+        setStatus("Network error. Please try again, or email " + form.getAttribute("data-to") + " directly.", "err");
       });
     });
   }
@@ -469,43 +469,25 @@
   }
 
 
-  /* ================= CV: availability, share, QR ================= */
-  var cvCard = document.querySelector(".cv-card");
-  if (cvCard) {
-    var cvPath = cvCard.getAttribute("data-cv");
-    var cvUrl = location.origin + cvPath;
-    var sectionUrl = location.origin + "/cv/";
+  /* ================= CV: print, optional PDF, share, QR ================= */
+  var cvBar = document.querySelector("[data-cv]");
+  if (cvBar) {
+    var cvPath = cvBar.getAttribute("data-cv");
     var dl = document.getElementById("cv-download");
-    var view = document.getElementById("cv-view");
-    var meta = document.getElementById("cv-meta");
-    var note = document.getElementById("cv-note");
+    var printBtn = document.getElementById("cv-print");
     var shareBtn = document.getElementById("cv-share");
     var shareLabel = shareBtn.querySelector(".cv-share-label");
-    var cvReady = false;
 
-    var markPending = function () {
-      [dl, view].forEach(function (a) {
-        a.setAttribute("aria-disabled", "true");
-        a.setAttribute("tabindex", "-1");
-        a.removeAttribute("href");
-      });
-      meta.textContent = "PDF · coming soon";
-      note.hidden = false;
-    };
+    printBtn.addEventListener("click", function () { window.print(); });
+
+    /* the PDF is optional: offer the download only once the file is really there */
     fetch(cvPath, { method: "HEAD", cache: "no-store" }).then(function (r) {
       var type = r.headers.get("content-type") || "";
-      if (!r.ok || type.indexOf("pdf") === -1) { markPending(); return; }
-      cvReady = true;
-      var size = parseInt(r.headers.get("content-length") || "0", 10);
-      var mod = r.headers.get("last-modified");
-      var parts = ["PDF"];
-      if (size) parts.push(Math.max(1, Math.round(size / 1024)) + " KB");
-      if (mod) parts.push("updated " + new Date(mod).toLocaleDateString("en-GB", { month: "short", year: "numeric" }));
-      meta.textContent = parts.join(" · ");
-    }).catch(markPending);
+      if (r.ok && type.indexOf("pdf") !== -1) dl.hidden = false;
+    }).catch(function () {});
 
     shareBtn.addEventListener("click", function () {
-      var url = cvReady ? cvUrl : sectionUrl;
+      var url = location.origin + "/cv/";
       var data = { title: "Moaaz Afifi | CV", text: "Moaaz Afifi, Cyber & Product Security Engineer and Co-Founder at Raqyan", url: url };
       var done = function (msg) {
         shareLabel.textContent = msg;
@@ -525,6 +507,8 @@
     if (qrBtn && qrDialog && qrDialog.showModal) {
       qrBtn.addEventListener("click", function () { qrDialog.showModal(); });
       qrDialog.addEventListener("click", function (ev) { if (ev.target === qrDialog) qrDialog.close(); });
+    } else if (qrBtn) {
+      qrBtn.hidden = true;
     }
   }
 

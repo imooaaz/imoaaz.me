@@ -50,7 +50,7 @@ export const experience: ExperienceEntry[] = [
     current: true,
     points: [
       { label: 'Bug bounty', text: 'public and private programs.' },
-      { label: 'Disclosure', text: 'one report was assigned <a href="#projects" class="nowrap">CVE-2024-36436</a>.' },
+      { label: 'Disclosure', text: 'one report was assigned <a href="/#projects" class="nowrap">CVE-2024-36436</a>.' },
     ],
   },
   {

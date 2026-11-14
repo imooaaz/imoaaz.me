@@ -3,11 +3,11 @@ import { EMAIL, SOCIALS, type Page } from '../data/site';
 interface Props { page: Page }
 const { page } = Astro.props;
 const site = [
-  { href: '/#experience', label: 'Experience' },
   { href: '/#about', label: 'About' },
   { href: '/#services', label: 'Services' },
+  { href: '/#experience', label: 'Experience' },
   { href: '/#projects', label: 'Projects' },
-  { href: '/blog/', label: 'Blog' },
+  { href: '/blog/', label: 'Blog', page: 'blog' },
   { href: '/cv/', label: 'CV', page: 'cv' },
   { href: '/#contact', label: 'Contact' },
 ];
@@ -17,6 +17,7 @@ const elsewhere = [
   { href: SOCIALS.x, label: 'X' },
   { href: SOCIALS.medium, label: 'Medium' },
 ];
+const year = new Date().getFullYear();
 ---
 <footer class="site-footer theme-dark">
   <div class="container">
@@ -44,8 +45,9 @@ const elsewhere = [
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Moaaz Afifi. All rights reserved.</p>
+      <p>© {year} Moaaz Afifi. All rights reserved.</p>
       <p class="footer-links">
+        <a href="/rss.xml">RSS</a>
         <a href="/.well-known/security.txt">security.txt</a>
         <a href="#top" class="to-top">Back to top ↑</a>
       </p>

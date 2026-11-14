@@ -1,35 +1,22 @@
 ---
 import SectionTitle from '../SectionTitle.astro';
+import { certs } from '../../data/certs';
 ---
 <section class="section theme-dark" id="certs">
   <div class="container">
-    <SectionTitle eyebrow="Certifications">Certifications</SectionTitle>
+    <SectionTitle eyebrow="Credentials">{certs.length} professional certifications</SectionTitle>
 
-    <div class="cert-grid">
-      <div class="cert reveal">
-        <img class="cert-badge" src="/assets/img/certs/ecppt.svg" alt="" loading="lazy" width="150" height="150">
-        <p class="cert-abbr">eCPPT</p>
-        <p class="cert-name">Certified Professional Penetration Tester</p>
-        <p class="cert-issuer mono">eLearnSecurity / INE</p>
-      </div>
-      <div class="cert reveal" style="--d:80ms">
-        <img class="cert-badge" src="/assets/img/certs/ewptx.svg" alt="" loading="lazy" width="150" height="150">
-        <p class="cert-abbr">eWPTX</p>
-        <p class="cert-name">Web Penetration Tester eXtreme</p>
-        <p class="cert-issuer mono">eLearnSecurity / INE</p>
-      </div>
-      <div class="cert reveal" style="--d:160ms">
-        <img class="cert-badge" src="/assets/img/certs/emapt.svg" alt="" loading="lazy" width="150" height="150">
-        <p class="cert-abbr">eMAPT</p>
-        <p class="cert-name">Mobile Application Penetration Tester</p>
-        <p class="cert-issuer mono">eLearnSecurity / INE</p>
-      </div>
-      <div class="cert reveal" style="--d:240ms">
-        <img class="cert-badge" src="/assets/img/certs/eais.svg" alt="" loading="lazy" width="150" height="150">
-        <p class="cert-abbr">eAIS</p>
-        <p class="cert-name">AI Systems Security Specialist</p>
-        <p class="cert-issuer mono">eLearnSecurity / INE</p>
-      </div>
-    </div>
+    <ul class="cert-grid">
+      {certs.map((c, i) => (
+        <li class="cert reveal" style={i ? `--d:${(i % 3) * 80}ms` : undefined}>
+          <img class:list={['cert-badge', { tile: c.tile }]} src={c.badge} alt="" loading="lazy" width="150" height="150">
+          <div class="cert-txt">
+            <h3 class="cert-abbr">{c.abbr}</h3>
+            <p class="cert-name">{c.name}</p>
+            <p class="cert-issuer mono">{c.issuer}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
   </div>
 </section>

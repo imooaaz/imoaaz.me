@@ -6,8 +6,9 @@ const { page } = Astro.props;
 const home = page === 'home';
 const base = home ? '' : '/';
 const links = [
-  { href: `${base}#experience`, label: 'Experience' },
+  { href: `${base}#about`, label: 'About' },
   { href: `${base}#services`, label: 'Services' },
+  { href: `${base}#experience`, label: 'Experience' },
   { href: `${base}#projects`, label: 'Projects' },
   { href: '/blog/', label: 'Blog', page: 'blog' },
   { href: '/cv/', label: 'CV', page: 'cv' },
@@ -16,7 +17,7 @@ const links = [
 <header class="site-header">
   <nav class="nav container" aria-label="Primary">
     <a class="brand" href={home ? '#top' : '/'}><span class="brand-mark mono" aria-hidden="true">MA</span>Moaaz Afifi</a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span></button>
     <ul class="nav-links" id="nav-links">
       {links.map((l) => (
         <li>{l.page === page

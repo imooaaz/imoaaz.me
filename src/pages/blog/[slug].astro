@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import PostCard from '../../components/PostCard.astro';
 import { formatDate, getPosts, isoDate, postUrl, type Post } from '../../lib/posts';
 import { AVATAR, SITE_URL, SOCIALS } from '../../data/site';
+import { certsShort } from '../../data/certs';
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -19,6 +20,18 @@ const { post, more } = Astro.props;
 const d = post.data;
 const { Content } = await render(post);
 const url = SITE_URL + postUrl(post);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: d.title,
+  description: d.description,
+  datePublished: isoDate(d.date),
+  image: SITE_URL + d.cover,
+  url,
+  mainEntityOfPage: url,
+  keywords: d.tags.join(', '),
+  author: { '@type': 'Person', name: 'Moaaz Afifi', url: SITE_URL + '/' },
+};
 const avatarFallback = "this.onerror=null;this.src='/assets/img/moaaz-portrait.jpg'";
 ---
 <Base
@@ -31,6 +44,7 @@ const avatarFallback = "this.onerror=null;this.src='/assets/img/moaaz-portrait.j
   ogDescription={d.ogDescription ?? d.description}
   path={postUrl(post)}
   publishedTime={isoDate(d.date)}
+  jsonLd={jsonLd}
 >
   <article class="post">
     <div class="container">
@@ -65,8 +79,8 @@ const avatarFallback = "this.onerror=null;this.src='/assets/img/moaaz-portrait.j
             <p class="aside-head mono">Share</p>
             <div class="share-row">
               <button class="btn-copy share-btn" type="button" data-copy={url} aria-label="Copy link to this article"><span class="btn-copy-label" aria-live="polite">Copy link</span></button>
-              <a class="share-btn" href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`} target="_blank" rel="noopener">LinkedIn</a>
-              <a class="share-btn" href={`https://x.com/intent/post?url=${url}&text=${encodeURI(d.title)}`} target="_blank" rel="noopener">X</a>
+              <a class="share-btn" href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`} target="_blank" rel="noopener">LinkedIn</a>
+              <a class="share-btn" href={`https://x.com/intent/post?url=${encodeURIComponent(url)}&text=${encodeURIComponent(d.title)}`} target="_blank" rel="noopener">X</a>
             </div>
           </div>
           <ul class="post-tags mono aside-tags">{d.tags.map((t) => <li>{t}</li>)}</ul>
@@ -78,7 +92,7 @@ const avatarFallback = "this.onerror=null;this.src='/assets/img/moaaz-portrait.j
           <span class="avatar-face face-lg"><img src={AVATAR} onerror={avatarFallback} alt="Moaaz Afifi" width="460" height="460" loading="lazy" referrerpolicy="no-referrer"></span>
           <div>
             <p class="author-name">Written by Moaaz Afifi</p>
-            <p class="author-bio">Cyber &amp; product security engineer and co-founder of Raqyan. <span class="nowrap">CVE-2024-36436</span> · eCPPT · eWPTX · eMAPT · eAIS.</p>
+            <p class="author-bio">Cyber &amp; Product Security Engineer and co-founder of Raqyan. <span class="nowrap">CVE-2024-36436</span> · {certsShort}.</p>
             <p class="author-links"><a href="/#contact">Work with me</a><a href={SOCIALS.linkedin} target="_blank" rel="noopener me">LinkedIn ↗</a><a href={SOCIALS.medium} target="_blank" rel="noopener me">Medium ↗</a></p>
           </div>
         </div>
