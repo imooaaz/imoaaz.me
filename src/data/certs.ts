@@ -1,4 +1,4 @@
-/** Certifications shown on the home page and the CV. */
+/** Certifications shown on the home page. */
 export interface Cert {
   abbr: string;
   name: string;

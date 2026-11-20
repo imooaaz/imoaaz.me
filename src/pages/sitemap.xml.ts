@@ -8,7 +8,6 @@ export const GET: APIRoute = async () => {
   const urls: { loc: string; lastmod?: string }[] = [
     { loc: '/' },
     { loc: '/blog/', lastmod: posts[0] && isoDate(posts[0].data.date) },
-    { loc: '/cv/' },
     ...posts.map((p) => ({ loc: postUrl(p), lastmod: isoDate(p.data.date) })),
   ];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
