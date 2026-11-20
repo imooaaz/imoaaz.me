@@ -12,7 +12,7 @@ import { experience, education, volunteering } from '../../data/experience';
         <li class:list={['tl-item', 'reveal', { current: e.current }]} style={i ? `--d:${30 * (i + 1)}ms` : undefined}>
           <p class="tl-dates mono">{e.dates}</p>
           <h3 class="tl-role">{e.role}</h3>
-          <p class="tl-org">{e.org} <span class="tl-type mono">{e.type}</span></p>
+          <p class="tl-org">{e.org}{e.type && <> <span class="tl-type mono">{e.type}</span></>}</p>
           <p class="tl-desc">{e.desc}</p>
           {e.points && (
             <ul class="tl-points">

@@ -15,6 +15,8 @@ export const certs: Cert[] = [
   { abbr: 'eMAPT', name: 'Mobile Application Penetration Tester', issuer: 'eLearnSecurity / INE', badge: '/assets/img/certs/emapt.svg' },
   { abbr: 'eAIS', name: 'AI Systems Security Specialist', issuer: 'eLearnSecurity / INE', badge: '/assets/img/certs/eais.svg' },
   { abbr: 'CySA+', name: 'CompTIA Cybersecurity Analyst', issuer: 'CompTIA', badge: '/assets/img/certs/cysa.webp', tile: true },
+  { abbr: 'Security+', name: 'CompTIA Security+', issuer: 'CompTIA', badge: '/assets/img/certs/secplus.webp', tile: true },
+  { abbr: 'RH124', name: 'Red Hat System Administration I', issuer: 'Red Hat', badge: '/assets/img/certs/rh124.webp', tile: true },
   { abbr: 'PWPE', name: 'Practical Web Pentest Expert', issuer: 'TCM Security', badge: '/assets/img/certs/pwpe.webp', tile: true },
   { abbr: 'PMPA', name: 'Practical Mobile Pentest Associate', issuer: 'TCM Security', badge: '/assets/img/certs/pmpa.webp', tile: true },
   { abbr: 'PORP', name: 'Practical OSINT Research Professional', issuer: 'TCM Security', badge: '/assets/img/certs/porp.webp', tile: true },

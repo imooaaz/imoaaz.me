@@ -68,7 +68,7 @@ const short = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '').replace(/
                   <h3 class="resume-role">{e.role}</h3>
                   <p class="resume-dates mono">{e.dates}</p>
                 </div>
-                <p class="resume-org">{e.org} <span class="resume-type">· {e.type}</span></p>
+                <p class="resume-org">{e.org}{e.type && <> <span class="resume-type">· {e.type}</span></>}</p>
                 <p class="resume-desc">{e.desc}</p>
                 {e.points && (
                   <ul class="resume-points">
