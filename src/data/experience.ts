@@ -18,9 +18,9 @@ export interface ExperienceEntry {
 export const experience: ExperienceEntry[] = [
   {
     dates: 'Present',
-    role: 'Co-Founder & Product Engineer',
+    role: 'Cyber & Product Security Engineer',
     org: 'Raqyan',
-    type: 'Co-founder',
+    type: 'Full-time',
     desc: 'Running delivery from code to production, with security built in.',
     current: true,
     points: [

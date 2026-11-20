@@ -6,9 +6,10 @@ const { page } = Astro.props;
 const home = page === 'home';
 const base = home ? '' : '/';
 const links = [
+  { href: `${base}#certs`, label: 'Certifications' },
+  { href: `${base}#experience`, label: 'Experience' },
   { href: `${base}#about`, label: 'About' },
   { href: `${base}#services`, label: 'Services' },
-  { href: `${base}#experience`, label: 'Experience' },
   { href: `${base}#projects`, label: 'Projects' },
   { href: '/blog/', label: 'Blog', page: 'blog' },
   { href: '/cv/', label: 'CV', page: 'cv' },
