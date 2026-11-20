@@ -8,7 +8,7 @@ export interface ExperienceEntry {
   role: string;
   org: string;
   /** Small mono tag after the org, e.g. "Full-time". */
-  type: string;
+  type?: string;
   desc: string;
   points?: { label: string; text: string }[];
   /** Still ongoing: gets the highlighted timeline dot. */
@@ -70,6 +70,16 @@ export const experience: ExperienceEntry[] = [
     org: 'Cybrany',
     type: 'Part-time',
     desc: 'Simulating attacks and researching new vulnerabilities.',
+  },
+  {
+    dates: 'Apr 2022 – Sep 2022',
+    role: 'Software Engineer',
+    org: 'Kalbonyan-Elmarsos',
+    desc: 'Building full-stack web applications with the MERN stack.',
+    points: [
+      { label: 'MERN stack', text: 'MongoDB, Express, React, and Node.js.' },
+      { label: 'Cloud', text: 'serverless applications on AWS.' },
+    ],
   },
 ];
 
