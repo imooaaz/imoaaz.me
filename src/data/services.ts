@@ -1,4 +1,4 @@
-/** "Services" rows on the home page; also the skills block on the CV. */
+/** "Services" rows on the home page. */
 export interface Service {
   name: string;
   desc: string;

@@ -12,4 +12,4 @@ export const SOCIALS = {
 };
 
 /** Which top-level page a layout is rendering; drives active nav links. */
-export type Page = 'home' | 'blog' | 'cv' | '404';
+export type Page = 'home' | 'blog' | '404';

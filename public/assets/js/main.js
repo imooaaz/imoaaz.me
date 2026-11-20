@@ -1,5 +1,5 @@
 /* imoaaz: site chrome: nav, scroll reveals, spotlight, progress, copy,
-   filters, article TOC, contact form, CV page.
+   filters, article TOC, contact form.
    No frameworks, no dependencies. */
 
 (function () {
@@ -468,49 +468,6 @@
     });
   }
 
-
-  /* ================= CV: print, optional PDF, share, QR ================= */
-  var cvBar = document.querySelector("[data-cv]");
-  if (cvBar) {
-    var cvPath = cvBar.getAttribute("data-cv");
-    var dl = document.getElementById("cv-download");
-    var printBtn = document.getElementById("cv-print");
-    var shareBtn = document.getElementById("cv-share");
-    var shareLabel = shareBtn.querySelector(".cv-share-label");
-
-    printBtn.addEventListener("click", function () { window.print(); });
-
-    /* the PDF is optional: offer the download only once the file is really there */
-    fetch(cvPath, { method: "HEAD", cache: "no-store" }).then(function (r) {
-      var type = r.headers.get("content-type") || "";
-      if (r.ok && type.indexOf("pdf") !== -1) dl.hidden = false;
-    }).catch(function () {});
-
-    shareBtn.addEventListener("click", function () {
-      var url = location.origin + "/cv/";
-      var data = { title: "Moaaz Afifi | CV", text: "Moaaz Afifi, Cyber & Product Security Engineer and Co-Founder at Raqyan", url: url };
-      var done = function (msg) {
-        shareLabel.textContent = msg;
-        setTimeout(function () { shareLabel.textContent = "Share"; }, 1800);
-      };
-      if (navigator.share) {
-        navigator.share(data).catch(function () {});
-      } else if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(url).then(function () { done("Link copied ✓"); }, function () { done("Copy failed"); });
-      } else {
-        window.prompt("Copy this link:", url);
-      }
-    });
-
-    var qrBtn = document.getElementById("cv-qr");
-    var qrDialog = document.getElementById("qr-dialog");
-    if (qrBtn && qrDialog && qrDialog.showModal) {
-      qrBtn.addEventListener("click", function () { qrDialog.showModal(); });
-      qrDialog.addEventListener("click", function (ev) { if (ev.target === qrDialog) qrDialog.close(); });
-    } else if (qrBtn) {
-      qrBtn.hidden = true;
-    }
-  }
 
   /* ================= experience: "Show details" on phones ================= */
   document.querySelectorAll(".exp .tl-item").forEach(function (item) {
